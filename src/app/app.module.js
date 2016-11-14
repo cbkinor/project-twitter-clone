@@ -6,6 +6,7 @@ import uiRouter from 'angular-ui-router'
 
 // import clickerHome from './home/home.module'
 // import clickerGame from './game/game.module'
+import twitterTweets from './main-page/page/tweets/tweets.module'
 import twitterLogin from './login/login.module'
 
 import { app } from './app.component'
@@ -20,7 +21,8 @@ export default
       ngMaterial,
       ngMessages,
       uiRouter,
-      twitterLogin
+      twitterLogin,
+      twitterTweets
 
       // clickerHome,
       // clickerGame

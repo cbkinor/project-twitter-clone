@@ -1,0 +1,26 @@
+<md-card>
+  <md-card-content>
+    {{$tweets.message}}
+  </md-card-content>
+  <md-card-actions>
+    testing!
+  </md-card-actions>
+</md-card>
+
+<div>
+	<form class="form-horizontal">
+
+		<div class="form-tweet">
+			<div class="page-header" id="tweets">
+				<h1>New Tweets from Users I Follow</h1>
+			<br><br><br>
+				<div class = "jumbotron" ng-repeat="tweet in $home.newsfeed" class="col-sm-8">
+					Author: <p placeholder="Name" >{{tweet.author}}</p>
+
+					<p placeholder="Name" >{{tweet.content}}</p>
+					<p class= "time" placeholder="Name" >{{tweet.timestamp}}</p>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
