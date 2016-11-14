@@ -1,13 +1,13 @@
 import templateUrl from './menubar.component.html'
 
 /* @ngInject */
-class LoginController {
+class MenubarController {
   constructor ($log) {
     $log.debug('menuBar instantiated')
   }
 }
 
-export const login = {
+export const menubar = {
   templateUrl,
   controller: MenubarController,
   controllerAs: '$menubar'
