@@ -6,6 +6,7 @@ import uiRouter from 'angular-ui-router'
 import ngCookies from 'angular-cookies'
 import twitterLogin from './login/login.module'
 import mainpage from './mainpage/mainpage.module'
+import { SearchService } from './global/search.service.js'
 
 import { app } from './app.component'
 import { configure } from './app.config'
@@ -25,6 +26,7 @@ export default
 
     ])
     .component('app', app)
+    .service('$searchService', SearchService)
     .config(configure)
     .run(visualizeRouting)
     .name

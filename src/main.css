@@ -54,5 +54,12 @@ i {
 	height: 0;
 	width: 20%;
   margin-left: 150%;
+}
 
+.SearchTabs {
+  width: 70vw
+}
+
+.search-tab {
+  width: 100%
 }
