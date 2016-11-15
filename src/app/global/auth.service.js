@@ -25,8 +25,8 @@ export class AuthenticateService {
     }).then(
       (response) => {
         this.$log.debug(response.data)
-        $cookies.put('username', this.username)
-        $cookies.put('password', this.password)
+        this.$cookies.put('username', this.username)
+        this.$cookies.put('password', this.password)
         this.firstName = response.data.profile.firstName
         this.lastName = response.data.profile.lastName
         this.email = response.data.profile.email
