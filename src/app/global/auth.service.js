@@ -1,10 +1,17 @@
 export class AuthenticateService {
 
   /* @ngInject */
-  constructor ($log, $http, $state) {
+  constructor ($log, $http, $state, $cookies) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
+    this.$cookies = $cookies
+    this.profile = {
+                      firstName: this.firstName,
+                      lastName: this.lastName,
+                      email: this.email,
+                      phone: this.phone
+                    }
     this.incorrectUser = false
     this.invalidUsername = false
     $log.debug('AuthenticateService created')
@@ -17,7 +24,13 @@ export class AuthenticateService {
       url: 'http://localhost:8080/users/@' + this.username + '/@' + this.password
     }).then(
       (response) => {
-        this.$log.debug(response)
+        this.$log.debug(response.data)
+        this.$cookies.put('username', this.username)
+        this.$cookies.put('password', this.password)
+        this.firstName = response.data.profile.firstName
+        this.lastName = response.data.profile.lastName
+        this.email = response.data.profile.email
+        this.phone = response.data.profile.phone
         this.$state.go('mainpage')
       },
       (error) => {
@@ -28,6 +41,10 @@ export class AuthenticateService {
         }
       }
     )
+  }
+
+  logout () {
+    this.profile = undefined
   }
 
   validateUsername () {
@@ -53,17 +70,12 @@ export class AuthenticateService {
       method: 'POST',
       url: 'http://localhost:8080/users',
       data: {
-      "credentials": {
-        "username": this.username,
-        "password": this.password
-      },
-      "profile": {
-          "firstName": this.firstName,
-          "lastName": this.lastName,
-          "email": this.email,
-          "phone": this.phone
-        }
-      }
+              "credentials": {
+                                "username": this.username,
+                                "password": this.password
+                              },
+              "profile": this.profile
+            }
     }).then(
       (response) => {
         this.$log.debug(response)
@@ -75,4 +87,25 @@ export class AuthenticateService {
     )
   }
 
+  update () {
+    this.$http({
+      method: 'PATCH',
+      url: 'http://localhost:8080/users/@' + this.username,
+      data: {
+              "credentials": {
+                                "username": this.username,
+                                "password": this.password
+                              },
+              "profile": this.profile
+            }
+    }).then(
+      (response) => {
+        this.$log.debug(response)
+        this.$state.go('mainpage')
+      },
+      (error) => {
+        this.$log.debug(error)
+      }
+    )
+  }
 }

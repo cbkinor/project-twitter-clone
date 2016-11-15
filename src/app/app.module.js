@@ -3,6 +3,7 @@ import ngAria from 'angular-aria'
 import ngMaterial from 'angular-material'
 import ngMessages from 'angular-messages'
 import uiRouter from 'angular-ui-router'
+import ngCookies from 'angular-cookies'
 
 import twitterPage from './mainpage/page/page.module'
 import twitterLogin from './login/login.module'
@@ -20,6 +21,7 @@ export default
       ngMaterial,
       ngMessages,
       uiRouter,
+      ngCookies,
       twitterLogin,
       twitterPage,
       mainpage
