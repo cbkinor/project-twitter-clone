@@ -1,15 +1,15 @@
-import templateUrl from './login.component.html'
+import templateUrl from './hashtag.component.html'
 
 /* @ngInject */
-class LoginController {
+class CurrentController {
   constructor ($log) {
     this.messge = "Welcome to TeamSlowTrack's own Twitter"
-    $log.debug('HomeController instantiated')
+    $log.debug('LogController instantiated')
   }
 }
 
-export const login = {
+export const hashtag = {
   templateUrl,
-  controller: LoginController,
-  controllerAs: '$login'
+  controller: HashtagController,
+  controllerAs: '$hashtag'
 }
