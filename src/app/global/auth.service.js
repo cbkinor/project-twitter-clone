@@ -1,6 +1,4 @@
 export class AuthenticateService {
-  username = undefined
-  password = undefined
 
   /* @ngInject */
   constructor ($log, $http, $state) {
@@ -14,6 +12,33 @@ export class AuthenticateService {
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + this.username
+    }).then(
+      (response) => {
+        this.$log.debug(response)
+        this.$state.go('mainpage')
+      },
+      (error) => {
+        this.$log.debug(error)
+      }
+    )
+  }
+
+  create () {
+    this.$http({
+      method: 'POST',
+      url: 'http://localhost:8080/users',
+      data: {
+              "credentials": {
+                                "username": this.username,
+                                "password": this.password
+                              },
+              "profile": {
+                            "firstName": this.firstName,
+                            "lastName": this.lastName,
+                            "email": this.email,
+                            "phone": this.phone
+                          }
+            }
     }).then(
       (response) => {
         this.$log.debug(response)
