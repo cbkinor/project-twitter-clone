@@ -10,6 +10,7 @@ import mainpage from './mainpage/mainpage.module'
 import { app } from './app.component'
 import { configure } from './app.config'
 import { visualizeRouting } from './app.run'
+import { AuthenticateService } from './global/auth.service.js'
 
 export default
   angular
@@ -25,6 +26,7 @@ export default
 
     ])
     .component('app', app)
+    .service('$authenticate', AuthenticateService)
     .config(configure)
     .run(visualizeRouting)
     .name
