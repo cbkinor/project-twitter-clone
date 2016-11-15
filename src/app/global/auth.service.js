@@ -44,7 +44,13 @@ export class AuthenticateService {
   }
 
   logout () {
+    this.$log.debug("test")
     this.profile = undefined
+    this.$cookies.remove('username')
+    this.$cookies.remove('password')
+    this.username = undefined
+    this.password = undefined
+    this.$state.go('login')
   }
 
   validateUsername () {
