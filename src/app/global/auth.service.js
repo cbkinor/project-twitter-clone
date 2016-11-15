@@ -27,10 +27,7 @@ export class AuthenticateService {
         this.$log.debug(response.data)
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
-        this.firstName = response.data.profile.firstName
-        this.lastName = response.data.profile.lastName
-        this.email = response.data.profile.email
-        this.phone = response.data.profile.phone
+        this.profile = response.data.profile
         this.$state.go('mainpage')
       },
       (error) => {
