@@ -1,4 +1,4 @@
-<div>
+<div class="menubarContainer">
   <md-toolbar class="toolbar" layout="row">
     <div class="md-toolbar-tools">
 
@@ -34,10 +34,10 @@
     </md-menu>
 
       <span flex></span>
-      <svg class="tweetButton" width="200" height="200">
+      <svg width="200" height="200">
         <g>
-          <polygon stroke="white" fill="rgb(63,81,181)" points="200,50 150,150 50,150 0,50"/>
-          <text x="76" y="135"fill="white" class="material-icons tweetIcon">&#xE0E1;</text>
+          <polygon class="tweetButton" ng-click"$menubar.tweet()" stroke="white" fill="rgb(63,81,181)" points="200,50 150,150 50,150 0,50"/>
+          <text class="tweetButton tweetIcon material-icons" ng-click="$menubar.tweet()" x="76" y="135" fill="white">&#xE0E1;</text>
         </g>
       </svg>
       <span flex></span>

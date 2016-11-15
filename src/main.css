@@ -27,14 +27,17 @@ margin-top: 68px;
   font-style: italic;
 }
 
+.menubarContainer {
+  display: flex;
+}
+
 .search {
   margin-top: 40px;
   border-radius: 10px;
-
 }
 
 .tweetButton:hover {
-
+  cursor: pointer;
 }
 
 .tweetIcon {
