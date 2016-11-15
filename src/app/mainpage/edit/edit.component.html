@@ -1,0 +1,29 @@
+<md-card>
+  <md-card-actions>
+    <form name=createUserForm>
+      <div>
+        <md-input-container>
+          <label>First Name</label>
+          <input type="text" ng-model="$edit.$authenticate.firstName"/>
+        </md-input-container>
+        <md-input-container>
+          <label>Last Name</label>
+          <input type="text" ng-model="$edit.$authenticate.lastName"/>
+        </md-input-container>
+      </div>
+      <div>
+        <md-input-container>
+          <label>Email</label>
+          <input type="text" ng-model="$edit.$authenticate.email" required/>
+        </md-input-container>
+        <md-input-container>
+          <label>Phone</label>
+          <input type="text" ng-model="$edit.$authenticate.phone"/>
+        </md-input-container>
+      </div>
+      <div align="center">
+        <md-button class="md-raised md-primary" type="submit" ng-click="$edit.update()" layout-fill>Update</md-button>
+      </div>
+    </form>
+  </md-card-actions>
+</md-card>
