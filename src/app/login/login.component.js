@@ -4,6 +4,7 @@ import templateUrl from './login.component.html'
 class LoginController {
   constructor ($log, $authenticate, $cookies) {
     this.$authenticate = $authenticate
+    this.$authenticate.incorrectUser = undefined
     $authenticate.username = $cookies.get('username')
     $authenticate.password = $cookies.get('password')
     $authenticate.login(true)
