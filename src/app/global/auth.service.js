@@ -17,6 +17,10 @@ export class AuthenticateService {
     $log.debug('AuthenticateService created')
   }
 
+  authenticate () {
+    return (this.$cookies.get('username') && this.$cookies.get('password')) ? true : false
+  }
+
   login (initial) {
     if (initial === undefined) initial = false
     this.$http({
@@ -27,10 +31,7 @@ export class AuthenticateService {
         this.$log.debug(response.data)
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
-        this.firstName = response.data.profile.firstName
-        this.lastName = response.data.profile.lastName
-        this.email = response.data.profile.email
-        this.phone = response.data.profile.phone
+        this.profile = response.data.profile
         this.$state.go('mainpage')
       },
       (error) => {
@@ -44,7 +45,6 @@ export class AuthenticateService {
   }
 
   logout () {
-    this.$log.debug("test")
     this.profile = undefined
     this.$cookies.remove('username')
     this.$cookies.remove('password')
@@ -86,6 +86,9 @@ export class AuthenticateService {
       (response) => {
         this.$log.debug(response)
         this.$state.go('mainpage')
+        this.profile = response.data.profile
+        this.$cookies.put('username', this.username)
+        this.$cookies.put('password', this.password)
       },
       (error) => {
         this.$log.debug(error)
