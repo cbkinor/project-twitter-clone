@@ -2,9 +2,10 @@ import templateUrl from './menubar.component.html'
 
 /* @ngInject */
 class MenubarController {
-  constructor ($log, $state, $authenticate) {
+  constructor ($log, $state, $authenticate, $searchService) {
     $log.debug('menuBar instantiated')
 
+    this.$searchService = $searchService
     this.$authenticate = $authenticate
     this.$state = $state
 
@@ -24,6 +25,7 @@ class MenubarController {
     }
 
     this.search = () => {
+
       this.$state.go('mainpage.search')
     }
 
