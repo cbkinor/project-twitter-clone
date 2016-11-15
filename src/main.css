@@ -1,6 +1,10 @@
 .pageWidth {
   width: 90vw;
 }
+.pageHeight {
+  height: 80vh;
+}
+
   margin-top: 68px;
   .searchDial {
     margin-top: 68px;
