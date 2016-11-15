@@ -10,6 +10,10 @@ class NewUserController {
   create () {
     this.$authenticate.create()
   }
+
+  validateUsername () {
+    this.$authenticate.validateUsername()
+  }
 }
 
 export const newuser = {
