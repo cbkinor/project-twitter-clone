@@ -1,17 +1,27 @@
-<md-toolbar>
-      <div class="md-toolbar-tools">
-        <md-button aria-label="Go Back">
-          Go Back
-        </md-button>
-        <h2>
-          <span>Toolbar with Standard Buttons</span>
-        </h2>
-        <span flex></span>
-        <md-button class="md-raised" aria-label="Learn More">
-          Learn More
-        </md-button>
-        <md-button class="md-fab md-mini" aria-label="Favorite">
-          <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
+<div>
+  <md-toolbar class="toolbar" layout="row">
+    <div class="md-toolbar-tools">
+
+      <md-button class="homeButton">
+        <i layout="fill" class="material-icons">home</i>
+      </md-button>
+
+      <span flex></span>
+      <md-button class="tweetButton" aria-label="Tweet!">Tweet!</md-button>
+      <span flex></span>
+
+      <md-fab-speed-dial md-direction="down" layout="fill" class="md-scale searchDial">
+        <md-fab-trigger>
+          <md-button>
+            <i layout="fill" class="material-icons">search</i>
+          </md-button>
+        </md-fab-trigger>
+
+       <md-fab-actions>
+         <md-button aria-label="Username">Username</md-button>
+         <md-button aria-label="Hashtag">Hashtag</md-button>
+       </md-fab-actions>
+      </md-fab-speed-dial>
+    </div>
+  </md-toolbar>
+</div>
