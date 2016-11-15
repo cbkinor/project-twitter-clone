@@ -1,21 +1,19 @@
-<div ng-cloak="" class="tabsdemoDynamicHeight pageWidth pageHeight" ng-app="MyApp" layout = "row">
-  <div flex = "20" layout = "column">
-    <md-content>
-      <md-tabs md-dynamic-height="" md-border-bottom="">
-        <md-tab label="Follower">
-          <md-content class="md-padding">
-            <h1 class="md-display-2">Followers</h1>
-          </md-content>
-        </md-tab>
-        <md-tab label="Following">
-          <md-content class="md-padding">
-            <h1 class="md-display-2">Following</h1>
-          </md-content>
-        </md-tab>
-      </md-tabs>
-    </md-content>
-</div>
-<div flex = "60" layout = "column">
-  <feed></feed>
-</div>
+<div class="pageWidth pageHeight" layout = "row">
+  <follow flex = "20" layout = "column"></follow>
+  <md-content layout-align="center center" layout="column" flex="60" layout-fill>
+    <md-tabs md-dynamic-height md-border-bottom class="login-tab">
+      <md-tab id="tab1">
+        <md-tab-label>{{$page.state}}</md-tab-label>
+        <md-tab-body>
+          <ui-view></ui-view>
+        </md-tab-body>
+      </md-tab>
+      <md-tab id="tab2">
+        <md-tab-label>Mentions</md-tab-label>
+        <md-tab-body>
+          <mentions></mentions>
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+  </md-content>
 </div>
