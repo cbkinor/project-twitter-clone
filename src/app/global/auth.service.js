@@ -30,6 +30,10 @@ export class AuthenticateService {
     )
   }
 
+  logout () {
+    this.profile = undefined
+  }
+
   validateUsername () {
     this.$http({
       method: 'GET',
@@ -74,5 +78,4 @@ export class AuthenticateService {
       }
     )
   }
-
 }
