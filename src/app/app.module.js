@@ -4,7 +4,6 @@ import ngMaterial from 'angular-material'
 import ngMessages from 'angular-messages'
 import uiRouter from 'angular-ui-router'
 import ngCookies from 'angular-cookies'
-
 import twitterLogin from './login/login.module'
 import mainpage from './mainpage/mainpage.module'
 
@@ -24,8 +23,6 @@ export default
       twitterLogin,
       mainpage
 
-      // clickerHome,
-      // clickerGame
     ])
     .component('app', app)
     .config(configure)
