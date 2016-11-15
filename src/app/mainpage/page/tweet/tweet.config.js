@@ -1,7 +1,7 @@
-import { tweets } from './tweets.states'
+import { tweet } from './tweet.states'
 
 /* @ngInject */
 export function configure ($stateProvider) {
   $stateProvider
-    .state(tweets)
+    .state(tweet)
 }

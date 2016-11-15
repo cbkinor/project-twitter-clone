@@ -4,10 +4,9 @@ import ngMaterial from 'angular-material'
 import ngMessages from 'angular-messages'
 import uiRouter from 'angular-ui-router'
 
-// import clickerHome from './home/home.module'
-// import clickerGame from './game/game.module'
-import twitterTweets from './main_page/page/tweets/tweets.module'
+import twitterTweet from './mainpage/page/tweet/tweet.module'
 import twitterLogin from './login/login.module'
+import mainpage from './mainpage/mainpage.module'
 
 import { app } from './app.component'
 import { configure } from './app.config'
@@ -22,10 +21,9 @@ export default
       ngMessages,
       uiRouter,
       twitterLogin,
-      twitterTweets
+      twitterTweet,
+      mainpage
 
-      // clickerHome,
-      // clickerGame
     ])
     .component('app', app)
     .config(configure)
