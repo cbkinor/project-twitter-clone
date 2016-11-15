@@ -9,5 +9,6 @@ export default
     .component('mainpage', login)
     .component('menubar', menubar)
     .component('edit', edit)
+    .component('hashtag', hashtag)
     .config(configure)
     .name
