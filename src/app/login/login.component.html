@@ -1,14 +1,16 @@
-<md-content layout-align="center center" layout="column" layout-fill>
-  <md-tabs md-dynamic-height md-border-bottom>
-    <md-tab label="Current User">
-      <md-content>
+<md-content layout-align="center center" layout="column" layout-fill class="ocean-background">
+  <md-tabs md-dynamic-height md-border-bottom class="login-tab">
+    <md-tab id="tab1">
+      <md-tab-label>Current User</md-tab-label>
+      <md-tab-body>
         <current></current>
-      </md-content>
+      </md-tab-body>
     </md-tab>
-    <md-tab label="New User">
-      <md-content>
+    <md-tab id="tab2">
+      <md-tab-label>New User</md-tab-label>
+      <md-tab-body>
         <newuser></newuser>
-      </md-content>
+      </md-tab-body>
     </md-tab>
   </md-tabs>
 </md-content>

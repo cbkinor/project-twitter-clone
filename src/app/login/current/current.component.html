@@ -1,20 +1,17 @@
 <md-card>
   <md-card-actions>
-    <md-card-content>
-      Random message
-    </md-card-content>
     <div>
       <md-input-container flex>
         <label>Username</label>
-        <input type="text" ng-model="$current.username"/>
+        <input type="text" ng-model="$current.$authenticate.username"/>
       </md-input-container>
       <md-input-container flex>
         <label>Password</label>
-        <input type="text" ng-model="$current.password"/>
+        <input type="text" ng-model="$current.$authenticate.password"/>
       </md-input-container>
     </div>
     <div>
-      <md-button ng-click="">Login</md-button>
+      <md-button class="md-raised md-primary" ng-click="$current.login()" layout-fill>Login</md-button>
     </div>
   </md-card-actions>
 </md-card>
