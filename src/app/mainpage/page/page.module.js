@@ -1,4 +1,5 @@
-// import { follow } from './follow/follow.component'
+import { page } from './page.component'
+import { follow } from './follow/follow.component'
 // import { FollowService } from './follow/follow.service'
 import { page } from './page/page.component'
 import { configure } from './page.config'
@@ -10,7 +11,8 @@ import { tweet } from './tweet/tweet.component'
 export default
   angular
     .module('twitter-page', [])
-    // .component('follow', follow)
+    .component('page', page)
+    .component('follow', follow)
     // .service('$follow', FollowService)
     .component('page', page)
     .component('feed', feed)

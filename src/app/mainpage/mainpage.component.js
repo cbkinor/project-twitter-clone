@@ -4,7 +4,7 @@ import templateUrl from './mainpage.component.html'
 class MainpageController {
   constructor ($log, $authenticate) {
     $log.debug('mainpage instantiated')
-    
+
     if (!$authenticate.authenticate()) {
       $authenticate.logout()
     } else {
@@ -13,7 +13,7 @@ class MainpageController {
   }
 }
 
-export const login = {
+export const mainpage = {
   templateUrl,
   controller: MainpageController,
   controllerAs: '$mainpage'

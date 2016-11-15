@@ -1,7 +1,8 @@
-import { page } from './page.states'
+import { feed, tweet } from './page.states'
 
 /* @ngInject */
 export function configure ($stateProvider) {
   $stateProvider
-    .state(page)
+    .state(feed)
+    .state(tweet)
 }

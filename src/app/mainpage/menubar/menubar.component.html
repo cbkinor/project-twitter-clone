@@ -2,7 +2,7 @@
   <md-toolbar class="toolbar" layout="row">
     <div class="md-toolbar-tools">
 
-      <md-button class="homeButton">
+      <md-button class="homeButton" ng-click="$menubar.home()">
         <i class="material-icons" layout="fill" >home</i>
       </md-button>
 
@@ -12,13 +12,13 @@
       </md-button>
       <md-menu-content width="4">
         <md-menu-item>
-          <md-button ng-click="ctrl.redial($event)">
+          <md-button ng-click="$menubar.viewProfile()">
             <i class="material-icons">perm_identity</i>
             View profile
           </md-button>
         </md-menu-item>
         <md-menu-item>
-          <md-button disabled="disabled" ng-click="ctrl.checkVoicemail()">
+          <md-button ng-click="$menubar.editProfile()">
             <i class="material-icons">edit</i>
             Edit profile
           </md-button>
@@ -34,9 +34,11 @@
     </md-menu>
 
       <span flex></span>
-      <md-button class="tweetButton">
-          <i class="material-icons" layout="fill">mail_outline</i>
-      </md-button>
+      <svg width="200" height="200">
+        <a xlink:href="http://www.google.com" target="_blank">
+          <polygon stroke="blue" fill="purple" points="200,50 150,150 50,150 0,50"/>
+        </a>
+      </svg>
       <span flex></span>
 
       <md-button class="md-icon-button" aria-label="More">
