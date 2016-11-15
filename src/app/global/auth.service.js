@@ -17,7 +17,11 @@ export class AuthenticateService {
       url: 'http://localhost:8080/users/@' + this.username + '/@' + this.password
     }).then(
       (response) => {
-        this.$log.debug(response)
+        this.$log.debug(response.data)
+        this.firstName = response.data.profile.firstName
+        this.lastName = response.data.profile.lastName
+        this.email = response.data.profile.email
+        this.phone = response.data.profile.phone
         this.$state.go('mainpage')
       },
       (error) => {
@@ -52,6 +56,33 @@ export class AuthenticateService {
     this.$http({
       method: 'POST',
       url: 'http://localhost:8080/users',
+      data: {
+              "credentials": {
+                                "username": this.username,
+                                "password": this.password
+                              },
+              "profile": {
+                            "firstName": this.firstName,
+                            "lastName": this.lastName,
+                            "email": this.email,
+                            "phone": this.phone
+                          }
+            }
+    }).then(
+      (response) => {
+        this.$log.debug(response)
+        this.$state.go('mainpage')
+      },
+      (error) => {
+        this.$log.debug(error)
+      }
+    )
+  }
+
+  update () {
+    this.$http({
+      method: 'PATCH',
+      url: 'http://localhost:8080/users/@' + this.username,
       data: {
               "credentials": {
                                 "username": this.username,
