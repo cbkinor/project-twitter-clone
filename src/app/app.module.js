@@ -4,7 +4,7 @@ import ngMaterial from 'angular-material'
 import ngMessages from 'angular-messages'
 import uiRouter from 'angular-ui-router'
 
-import twitterTweets from './main-page/page/tweets/tweets.module'
+import twitterTweets from './mainpage/page/tweets/tweets.module'
 import twitterLogin from './login/login.module'
 import mainpage from './mainpage/mainpage.module'
 
