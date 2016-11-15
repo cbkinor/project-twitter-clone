@@ -41,6 +41,10 @@ margin-top: 68px;
   font-size: 48px;
 }
 
+.search:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: white
+}
+
 input[type=text].searchInput {
   background-color: rgb(255, 255, 255);
 }
