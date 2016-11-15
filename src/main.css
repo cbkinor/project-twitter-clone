@@ -2,11 +2,13 @@
   width: 90vw;
 }
   margin-top: 68px;
-.searchDial {
+  .searchDial {
+    margin-top: 68px;
+  }
 .ocean-background {
   background-image: url('./app/global/resources/ocean-background.png');
   background-size: 100% 100%;
-
+}
 .login-tab {
   background-color: rgba(255, 255, 255, .5);
 }

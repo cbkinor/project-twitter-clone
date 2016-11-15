@@ -4,9 +4,6 @@ import ngMaterial from 'angular-material'
 import ngMessages from 'angular-messages'
 import uiRouter from 'angular-ui-router'
 import ngCookies from 'angular-cookies'
-
-import twitterTweet from './mainpage/page/tweet/tweet.module'
-import twitterFeed from './mainpage/page/feed/feed.module'
 import twitterLogin from './login/login.module'
 import mainpage from './mainpage/mainpage.module'
 
@@ -24,8 +21,6 @@ export default
       uiRouter,
       ngCookies,
       twitterLogin,
-      twitterTweet,
-      twitterFeed,
       mainpage
 
     ])
