@@ -1,7 +1,8 @@
-import { mainpage } from './mainpage.states'
+import { mainpage, edit } from './mainpage.states'
 
 /* @ngInject */
 export function configure ($stateProvider) {
   $stateProvider
     .state(mainpage)
+    .state(edit)
 }

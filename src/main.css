@@ -11,6 +11,10 @@
   background-color: rgba(255, 255, 255, .5);
 }
 
+.fullWidth {
+  width: 100vw;
+}
+
 .error {
   color: red;
   font-style: italic;

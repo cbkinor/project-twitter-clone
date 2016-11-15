@@ -23,7 +23,7 @@ const entry = {
     'angular-messages',
     'angular-ui-router',
     'angular-material/angular-material.css',
-    // 'angular-cookies'
+    'angular-cookies'
   ]
 }
 
