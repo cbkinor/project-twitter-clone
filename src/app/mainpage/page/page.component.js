@@ -2,8 +2,9 @@ import templateUrl from './page.component.html'
 
 /* @ngInject */
 class PageController {
-  constructor ($log) {
+  constructor ($log, $authenticate) {
     $log.debug('page instantiated')
+    $authenticate.authenticate()
   }
 }
 
