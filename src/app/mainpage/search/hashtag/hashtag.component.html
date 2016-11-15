@@ -1,0 +1,23 @@
+<md-card-content>
+    <md-list flex="">
+      <md-list-item class="md-3-line" ng-repeat="item in results" ng-click="null">
+        <div class="md-list-item-text" layout="column">
+          <h1>Main tweet</h1>
+          <h3>Author: {{ item.author.username }}</h3>
+          <p>Content: {{ item.content }}</p>
+          <p>Posted: {{ item.posted }}</p>
+          <div ng-show='item.inReplyTo'>
+            <h2>In reply to: </h2>
+            <h3>Author: {{ item.inReplyTo.author.username }}</h3>
+            <p>Content: {{ item.inReplyTo.content }}</p>
+            <p>Posted: {{ item.inReplyTo.posted }}</p>
+          </div>
+          <div ng-show='item.repostOf'>
+            <h2>Repost of: </h2>
+            <h3>Author: {{ item.repostOf.author.username }}</h3>
+            <p>Content: {{ item.repostOf.content }}</p>
+            <p>Posted: {{ item.repostOf.posted }}</p>
+          </div>
+        </div>
+    </md-list>
+</md-card-content>
