@@ -1,16 +1,16 @@
-<div ng-cloak>
-  <md-content>
-    <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab label="Current User">
-        <md-content>
-          <current></current>
-        </md-content>
-      </md-tab>
-      <md-tab label="New User">
-        <md-content>
-          <newuser></newuser>
-        </md-content>
-      </md-tab>
-    </md-tabs>
-  </md-content>
-</div>
+<md-content layout-align="center center" layout="column" layout-fill class="ocean-background">
+  <md-tabs md-dynamic-height md-border-bottom class="login-tab">
+    <md-tab id="tab1">
+      <md-tab-label>Current User</md-tab-label>
+      <md-tab-body>
+        <current></current>
+      </md-tab-body>
+    </md-tab>
+    <md-tab id="tab2">
+      <md-tab-label>New User</md-tab-label>
+      <md-tab-body>
+        <newuser></newuser>
+      </md-tab-body>
+    </md-tab>
+  </md-tabs>
+</md-content>

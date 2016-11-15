@@ -2,10 +2,15 @@ import templateUrl from './current.component.html'
 
 /* @ngInject */
 class CurrentController {
-  constructor ($log) {
-    this.messge = "Welcome to TeamSlowTrack's own Twitter"
+  constructor ($log, $authenticate) {
+    this.$authenticate = $authenticate
     $log.debug('LogController instantiated')
   }
+
+  login () {
+    this.$authenticate.login()
+  }
+
 }
 
 export const current = {

@@ -1,29 +1,42 @@
 <md-card>
   <md-card-actions>
-    <md-input-container flex>
-      <label>First Name</label>
-      <input type="text" ng-model="$log.firstName"/>
-    </md-input-container>
-    <md-input-container flex>
-      <label>Last Name</label>
-      <input type="text" ng-model="$log.lastName"/>
-    </md-input-container>
-    <md-input-container flex>
-      <label>Username</label>
-      <input type="text" ng-model="$log.username"/>
-    </md-input-container>
-    <md-input-container flex>
-      <label>Password</label>
-      <input type="text" ng-model="$log.password"/>
-    </md-input-container>
-    <md-input-container flex>
-      <label>Email</label>
-      <input type="text" ng-model="$log.email"/>
-    </md-input-container>
-    <md-input-container flex>
-      <label>Phone</label>
-      <input type="text" ng-model="$log.phone"/>
-    </md-input-container>
-    <md-button >Create</md-button>
+    <form name=createUserForm>
+      <div>
+        <md-input-container>
+          <label>First Name</label>
+          <input type="text" ng-model="$newuser.$authenticate.firstName"/>
+        </md-input-container>
+        <md-input-container>
+          <label>Last Name</label>
+          <input type="text" ng-model="$newuser.$authenticate.lastName"/>
+        </md-input-container>
+      </div>
+      <div>
+        <md-input-container>
+          <label>Username</label>
+          <input type="text" ng-model="$newuser.$authenticate.username" ng-blur="$newuser.validateUsername()" required/>
+          <div ng-show='$newuser.$authenticate.invalidUsername' class="error">
+            *Username is already taken
+          </div>
+        </md-input-container>
+        <md-input-container>
+          <label>Password</label>
+          <input type="text" ng-model="$newuser.$authenticate.password" required/>
+        </md-input-container>
+      </div>
+      <div>
+        <md-input-container>
+          <label>Email</label>
+          <input type="text" ng-model="$newuser.$authenticate.email" required/>
+        </md-input-container>
+        <md-input-container>
+          <label>Phone</label>
+          <input type="text" ng-model="$newuser.$authenticate.phone"/>
+        </md-input-container>
+      </div>
+      <div align="center">
+        <md-button class="md-raised md-primary" type="submit" ng-click="$newuser.create()" layout-fill>Create</md-button>
+      </div>
+    </form>
   </md-card-actions>
 </md-card>
