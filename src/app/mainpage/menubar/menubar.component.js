@@ -15,8 +15,16 @@ class MenubarController {
       $mdOpenMenu(ev)
     }
 
+    this.home = () => {
+      this.$state.go('mainpage')
+    }
+
     this.logout = () => {
       this.$authenticate.logout()
+    }
+
+    this.editProfile = () => {
+      this.$state.go('mainpage.edit')
     }
   }
 }
