@@ -25,7 +25,7 @@ class MenubarController {
     }
 
     this.search = () => {
-
+      this.$searchService.search()
       this.$state.go('mainpage.search')
     }
 
