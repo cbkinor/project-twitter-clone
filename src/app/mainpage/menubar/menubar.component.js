@@ -4,6 +4,8 @@ import templateUrl from './menubar.component.html'
 class MenubarController {
   constructor ($log) {
     $log.debug('menuBar instantiated')
+
+    this.searchFabIsOpen = false
   }
 }
 

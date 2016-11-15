@@ -11,3 +11,25 @@
   color: red;
   font-style: italic;
 }
+
+.search {
+  margin-top: 40px;
+
+}
+
+input[type=text].searchInput {
+  background-color: rgb(255, 255, 255);
+}
+
+i {
+  align-items: center;
+  justify-content: center;
+}
+
+.tweetButton {
+  background-color: rgb(63,81,181);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin-left: 140px;
+  height: 150%;
+}
