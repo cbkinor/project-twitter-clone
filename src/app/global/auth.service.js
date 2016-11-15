@@ -1,10 +1,17 @@
 export class AuthenticateService {
 
   /* @ngInject */
-  constructor ($log, $http, $state) {
+  constructor ($log, $http, $state, $cookies) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
+    this.$cookies = $cookies
+    this.profile = {
+                      firstName: this.firstName,
+                      lastName: this.lastName,
+                      email: this.email,
+                      phone: this.phone
+                    }
     this.incorrectUser = false
     this.invalidUsername = false
     $log.debug('AuthenticateService created')
@@ -18,6 +25,8 @@ export class AuthenticateService {
     }).then(
       (response) => {
         this.$log.debug(response.data)
+        this.$cookies.put('username', this.username)
+        this.$cookies.put('password', this.password)
         this.firstName = response.data.profile.firstName
         this.lastName = response.data.profile.lastName
         this.email = response.data.profile.email
@@ -32,6 +41,10 @@ export class AuthenticateService {
         }
       }
     )
+  }
+
+  logout () {
+    this.profile = undefined
   }
 
   validateUsername () {
@@ -61,12 +74,7 @@ export class AuthenticateService {
                                 "username": this.username,
                                 "password": this.password
                               },
-              "profile": {
-                            "firstName": this.firstName,
-                            "lastName": this.lastName,
-                            "email": this.email,
-                            "phone": this.phone
-                          }
+              "profile": this.profile
             }
     }).then(
       (response) => {
@@ -88,12 +96,7 @@ export class AuthenticateService {
                                 "username": this.username,
                                 "password": this.password
                               },
-              "profile": {
-                            "firstName": this.firstName,
-                            "lastName": this.lastName,
-                            "email": this.email,
-                            "phone": this.phone
-                          }
+              "profile": this.profile
             }
     }).then(
       (response) => {
@@ -105,5 +108,4 @@ export class AuthenticateService {
       }
     )
   }
-
 }

@@ -6,6 +6,33 @@
         <i class="material-icons" layout="fill" >home</i>
       </md-button>
 
+      <md-menu>
+      <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="$menubar.openMenu($mdOpenMenu, $event)">
+        <i class="material-icons">perm_identity</i>
+      </md-button>
+      <md-menu-content width="4">
+        <md-menu-item>
+          <md-button ng-click="ctrl.redial($event)">
+            <i class="material-icons">perm_identity</i>
+            View profile
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button disabled="disabled" ng-click="ctrl.checkVoicemail()">
+            <i class="material-icons">edit</i>
+            Edit profile
+          </md-button>
+        </md-menu-item>
+        <md-menu-divider></md-menu-divider>
+        <md-menu-item>
+          <md-button ng-click="$menubar.logout()">
+            <i class="material-icons">directions_run</i>
+            Logout
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+
       <span flex></span>
       <md-button class="tweetButton">
           <i class="material-icons" layout="fill">mail_outline</i>
