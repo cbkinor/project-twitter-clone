@@ -9,3 +9,9 @@ export const edit = {
   url: '/edit',
   component: 'edit'
 }
+
+export const page = {
+  name: 'mainpage.page',
+  url: '/page',
+  component: 'page'
+}

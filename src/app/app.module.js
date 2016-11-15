@@ -5,7 +5,6 @@ import ngMessages from 'angular-messages'
 import uiRouter from 'angular-ui-router'
 import ngCookies from 'angular-cookies'
 
-import twitterPage from './mainpage/page/page.module'
 import twitterLogin from './login/login.module'
 import mainpage from './mainpage/mainpage.module'
 
@@ -23,7 +22,6 @@ export default
       uiRouter,
       ngCookies,
       twitterLogin,
-      twitterPage,
       mainpage
 
     ])
