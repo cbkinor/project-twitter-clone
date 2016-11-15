@@ -3,25 +3,22 @@
     <div class="md-toolbar-tools">
 
       <md-button class="homeButton">
-        <i layout="fill" class="material-icons">home</i>
+        <i class="material-icons" layout="fill" >home</i>
       </md-button>
 
       <span flex></span>
-      <md-button class="tweetButton" aria-label="Tweet!">Tweet!</md-button>
+      <md-button class="tweetButton">
+          <i class="material-icons" layout="fill">mail_outline</i>
+      </md-button>
       <span flex></span>
 
-      <md-fab-speed-dial md-direction="down" layout="fill" class="md-scale searchDial">
-        <md-fab-trigger>
-          <md-button>
-            <i layout="fill" class="material-icons">search</i>
-          </md-button>
-        </md-fab-trigger>
-
-       <md-fab-actions>
-         <md-button aria-label="Username">Username</md-button>
-         <md-button aria-label="Hashtag">Hashtag</md-button>
-       </md-fab-actions>
-      </md-fab-speed-dial>
+      <md-button class="md-icon-button" aria-label="More">
+        <i layout="fill" class="material-icons">search</i>
+      </md-button>
+      <md-input-container md-no-float class="search md-block">
+        <label>#tag, @mention, username</label>
+        <input class="searchInput" type="text" ng-model="$menubar.searchText" >
+      </md-input-container>
     </div>
   </md-toolbar>
 </div>
