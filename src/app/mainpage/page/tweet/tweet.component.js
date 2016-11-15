@@ -1,15 +1,15 @@
-import templateUrl from './follow.component.html'
+import templateUrl from './tweet.component.html'
 
 /* @ngInject */
-class followController {
+class tweetController {
   constructor ($log) {
     this.messge = "Welcome to TeamSlowTrack's own Twitter"
     $log.debug('HomeController instantiated')
   }
 }
 
-export const follow = {
+export const tweet = {
   templateUrl,
-  controller: followController,
-  controllerAs: '$follow'
+  controller: tweetController,
+  controllerAs: '$tweet'
 }
