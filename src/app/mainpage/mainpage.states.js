@@ -15,3 +15,9 @@ export const page = {
   url: '/page',
   component: 'page'
 }
+
+export const search = {
+  name: 'mainpage.search',
+  url: '/search',
+  component: 'search'
+}
