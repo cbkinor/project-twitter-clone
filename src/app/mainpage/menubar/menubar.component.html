@@ -34,20 +34,22 @@
     </md-menu>
 
       <span flex></span>
-      <svg width="200" height="200">
-        <a xlink:href="http://www.google.com" target="_blank">
-          <polygon stroke="blue" fill="purple" points="200,50 150,150 50,150 0,50"/>
-        </a>
+      <svg class="tweetButton" width="200" height="200">
+        <g>
+          <polygon stroke="white" fill="rgb(63,81,181)" points="200,50 150,150 50,150 0,50"/>
+          <text x="76" y="135"fill="white" class="material-icons tweetIcon">&#xE0E1;</text>
+        </g>
       </svg>
       <span flex></span>
 
-      <md-button class="md-icon-button" aria-label="More">
+      <md-button class="md-icon-button searchButton" ng-click="$menubar.search()">
         <i layout="fill" class="material-icons">search</i>
       </md-button>
-      <md-input-container md-no-float class="search md-block">
-        <label>#tag, @mention, username</label>
-        <input class="searchInput" type="text" ng-model="$menubar.searchText" >
-      </md-input-container>
+      <form id="searchInput" autocomplete="off" ng-submit="$menubar.search()">
+        <md-input-container md-no-float class="search md-block">
+          <input class="searchInput" placeholder=" Search Twitter" type="text" ng-model="$searchService.searchText" >
+        </md-input-container>
+      </form>
     </div>
   </md-toolbar>
 </div>

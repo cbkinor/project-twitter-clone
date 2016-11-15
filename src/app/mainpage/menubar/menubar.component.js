@@ -19,12 +19,17 @@ class MenubarController {
       this.$state.go('mainpage')
     }
 
-    this.logout = () => {
-      this.$authenticate.logout()
-    }
-
     this.editProfile = () => {
       this.$state.go('mainpage.edit')
+    }
+
+    this.search = () => {
+      console.log("searching...")
+      this.$state.go('mainpage.search')
+    }
+
+    this.logout = () => {
+      this.$authenticate.logout()
     }
   }
 }

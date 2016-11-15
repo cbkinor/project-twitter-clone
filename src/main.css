@@ -5,10 +5,11 @@
   height: 80vh;
 }
 
+margin-top: 68px;
+.searchDial {
   margin-top: 68px;
-  .searchDial {
-    margin-top: 68px;
-  }
+}
+
 .ocean-background {
   background-image: url('./app/global/resources/ocean-background.png');
   background-size: 100% 100%;
@@ -28,7 +29,16 @@
 
 .search {
   margin-top: 40px;
+  border-radius: 10px;
 
+}
+
+.tweetButton:hover {
+
+}
+
+.tweetIcon {
+  font-size: 48px;
 }
 
 input[type=text].searchInput {
@@ -38,21 +48,4 @@ input[type=text].searchInput {
 i {
   align-items: center;
   justify-content: center;
-}
-
-
-.tweetButton:hover {
-    cursor: hand;
-    border-color: rgb(255, 255, 255);
-}
-
-.tweetButton {
-  border-color: rgba(255, 255, 255, .5);
-	border-top: 100px solid red;
-	border-left: 50px solid transparent;
-	border-right: 50px solid transparent;
-	height: 0;
-	width: 20%;
-  margin-left: 150%;
-
 }
