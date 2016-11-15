@@ -16,8 +16,7 @@ class MenubarController {
     }
 
     this.logout = () => {
-      this.$authenticate.logout
-      this.$state.go('login')
+      this.$authenticate.logout()
     }
   }
 }
