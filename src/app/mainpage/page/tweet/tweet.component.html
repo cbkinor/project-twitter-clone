@@ -1,13 +1,10 @@
-
-
-<div ng-cloak="" class="tabsdemoDynamicHeight pageWidth pageHeight" ng-app="MyApp">
-  <md-content>
-    <md-tabs md-dynamic-height="" md-border-bottom="">
-      <md-tab label="Your Tweets">
-        <md-content class="md-padding">
-          <h1 class="md-display-2"></h1>
-        </md-content>
-      </md-tab>
-    </md-tabs>
-  </md-content>
-</div>
+<md-content layout-align="center center" layout="column" layout-fill class="ocean-background">
+  <md-tabs md-dynamic-height md-border-bottom class="login-tab">
+    <md-tab id="tab1">
+      <md-tab-label>Your Feeds</md-tab-label>
+      <md-tab-body>
+        <tweet></tweet>
+      </md-tab-body>
+    </md-tab>
+  </md-tabs>
+</md-content>

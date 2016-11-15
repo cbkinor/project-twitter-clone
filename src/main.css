@@ -4,6 +4,7 @@
 }
 .pageHeight {
   height: 80vh;
+}
 
 .ocean-background {
   background-image: url('./app/global/resources/ocean-background.png');
@@ -17,5 +18,4 @@
 .error {
   color: red;
   font-style: italic;
->>>>>>> 8e33f861146a36ddbb22d4a20344b166d50c8d9c
 }
