@@ -9,9 +9,3 @@ export const edit = {
   url: '/edit',
   component: 'edit'
 }
-
-export const hashtag = {
-  name: 'mainpage.hashtag',
-  url: '/hashtag',
-  component: 'hashtag'
-}
