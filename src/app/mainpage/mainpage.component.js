@@ -13,7 +13,7 @@ class MainpageController {
   }
 }
 
-export const login = {
+export const mainpage = {
   templateUrl,
   controller: MainpageController,
   controllerAs: '$mainpage'
