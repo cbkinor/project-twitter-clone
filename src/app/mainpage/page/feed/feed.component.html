@@ -9,7 +9,7 @@
               <div class="md-list-item-text" layout="column">
                 <h3 ng-click="null">>{{ item.author.username }}</h3>
                 <p>{{ item.content }}</p>
-                <p>{{ item.posted }}</p>
+                <p>{{ item.posted * 1000 | date:'HH:mm:ss' }}</p>
                 <div ng-show='item.inReplyTo'>
                   <h3 ng-click="null">Reply From {{ item.author.username }}</h3>
                 </div>

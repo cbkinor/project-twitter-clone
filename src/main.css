@@ -76,3 +76,7 @@ i {
 .listUsage md-divider {
   margin-top: 10px;
   margin-bottom: 0; }
+
+html {
+  overflow-y: scroll;
+}
