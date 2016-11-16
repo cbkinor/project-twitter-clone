@@ -1,13 +1,10 @@
 export class FeedService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $authenticate) {
+  constructor ($log, $http, $authenticate) {
     this.$log = $log
     this.$http = $http
-    this.$state = $state
     this.$authenticate = $authenticate
-    this.username = undefined
-    this.tweet = undefined
   }
 
   getFeed () {

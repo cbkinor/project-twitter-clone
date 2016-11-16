@@ -5,7 +5,7 @@
         <md-tab-body>
           <md-list flex="">
             <!-- <md-list-item ng-hide="$feed.$feedService.getFeed()">No results found</md-list-item> -->
-            <md-list-item class="md-3-line" ng-init="$feed.$feedService.getFeed()" ng-repeat="item in $feed.$feedService.tweets">
+            <md-list-item class="md-3-line" ng-init="$feed.getFeed()" ng-repeat="item in $feed.$feedService.tweets">
               <div class="md-list-item-text" layout="column">
                 <h3 ng-click="null">>{{ item.author.username }}</h3>
                 <p>{{ item.content }}</p>
