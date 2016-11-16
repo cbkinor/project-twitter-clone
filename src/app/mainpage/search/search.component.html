@@ -26,26 +26,12 @@
       </md-tab-body>
     </md-tab>
     <md-tab id="tab2">
-      <md-tab-label>Author</md-tab-label>
+      <md-tab-label>Users</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.author.data && $search.$searchService.author.data.length > 0">No results found</md-list-item>
-          <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.author.data">
-            <div class="md-list-item-text md-whiteframe-2dp" layout="column">
-              <h3 ng-click="null">>{{ item.author.username }}</h3>
-              <p>{{ item.content }}</p>
-              <p>{{ item.posted | date:'HH:mm:ss' }}</p>
-              <div ng-show='item.inReplyTo'>
-                <h3 ng-click="null">Reply From</h3>
-              </div>
-              <div ng-show='item.repostOf'>
-                <h3 ng-click="null">Repost Of</h3>
-                <h3>>{{item.repostOf.author.username}} </h3>
-                <p>{{ item.repostOf.content }}</p>
-                <p>{{ item.repostOf.posted | date:'HH:mm:ss' }}</p>
-              </div>
-            </div>
-            </br>
+          <md-list-item ng-hide="$search.$searchService.author.data">No results found</md-list-item>
+          <md-list-item>
+            <md-button ng-click="$search.userProfile($search.$searchService.author.data.username)">{{ $search.$searchService.author.data.username }}</h3>
           </md-list-item>
         </md-list>
       </md-tab-body>
