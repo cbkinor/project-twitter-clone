@@ -10,6 +10,7 @@ import { SearchService } from './global/services/search.service.js'
 import { TweetService } from './global/services/tweet.service.js'
 import { ProfileService } from './global/services/profile.service.js'
 import { HomeService } from './global/services/home.service.js'
+import { CurrentStateService } from './global/services/currentState.service.js'
 import { app } from './app.component'
 import { configure } from './app.config'
 import { visualizeRouting } from './app.run'
@@ -34,6 +35,7 @@ export default
     .service('$tweetService', TweetService)
     .service('$profileService', ProfileService)
     .service('$homeService', HomeService)
+    .service('$currentStateService', CurrentStateService)
     .config(configure)
     .run(visualizeRouting)
     .name
