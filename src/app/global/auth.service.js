@@ -18,7 +18,9 @@ export class AuthenticateService {
   }
 
   authenticate () {
-    return (this.$cookies.get('username') && this.$cookies.get('password')) ? true : false
+    this.username = this.$cookies.get('username')
+    this.password = this.$cookies.get('password')
+    this.login();
   }
 
   login (initial) {
@@ -38,6 +40,7 @@ export class AuthenticateService {
         this.$log.debug(error)
         if (error.data.message === 'Username not found' && !initial) {
           this.$log.debug('Username not found')
+          this.$state.go('login')
           this.incorrectUser = true
         }
       }

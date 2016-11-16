@@ -5,10 +5,11 @@
   height: 80vh;
 }
 
+margin-top: 68px;
+.searchDial {
   margin-top: 68px;
-  .searchDial {
-    margin-top: 68px;
-  }
+}
+
 .ocean-background {
   background-image: url('./app/global/resources/ocean-background.png');
   background-size: 100% 100%;
@@ -26,9 +27,24 @@
   font-style: italic;
 }
 
+.menubarContainer {
+  display: flex;
+}
+
 .search {
   margin-top: 40px;
+}
 
+.tweetButton:hover {
+  cursor: pointer;
+}
+
+.tweetIcon {
+  font-size: 48px;
+}
+
+.search:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: white
 }
 
 input[type=text].searchInput {
@@ -40,19 +56,23 @@ i {
   justify-content: center;
 }
 
-
 .tweetButton:hover {
     cursor: hand;
     border-color: rgb(255, 255, 255);
 }
 
-.tweetButton {
-  border-color: rgba(255, 255, 255, .5);
-	border-top: 100px solid red;
-	border-left: 50px solid transparent;
-	border-right: 50px solid transparent;
-	height: 0;
-	width: 20%;
-  margin-left: 150%;
-
+.tweetButtonContainer {
+  margin-left: 65px
 }
+
+.SearchTabs {
+  width: 70vw
+}
+
+.search-tab {
+  width: 100%
+}
+
+.listUsage md-divider {
+  margin-top: 10px;
+  margin-bottom: 0; }
