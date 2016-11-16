@@ -4,7 +4,7 @@ import templateUrl from './mainpage.component.html'
 class MainpageController {
   constructor ($log, $state) {
     $log.debug('mainpage instantiated')
-    $state.go('mainpage.page.feed')
+    $state.go('mainpage.page.home')
   }
 }
 
