@@ -1,4 +1,4 @@
-export class FeedService {
+export class HomeService {
 
   /* @ngInject */
   constructor ($log, $http, $state, $authenticate) {
@@ -8,7 +8,7 @@ export class FeedService {
     this.$authenticate = $authenticate
     this.username = undefined
     this.tweet = undefined
-    this.$log.debug("FeedService instantiated")
+    this.$log.debug("HomeService instantiated")
   }
 
   getFeed () {

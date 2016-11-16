@@ -2,15 +2,15 @@ import templateUrl from './feed.component.html'
 
 /* @ngInject */
 class feedController {
-  constructor ($log, $state, $feedService, $authenticate) {
-    this.$feedService = $feedService
+  constructor ($log, $state, $homeService, $authenticate) {
+    this.$homeService = $homeService
     this.$state = $state
     $log.debug('feedController instantiated')
     $authenticate.authenticate()
   }
 
   getFeed () {
-    this.$feedService.getFeed()
+    this.$homeService.getFeed()
   }
 }
 
