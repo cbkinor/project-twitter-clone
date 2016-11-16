@@ -89,7 +89,7 @@ export class AuthenticateService {
     }).then(
       (response) => {
         this.$log.debug(response)
-        this.$state.go('mainpage')
+        this.$state.go('mainpage.page.feed')
         this.profile = response.data.profile
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
@@ -111,7 +111,7 @@ export class AuthenticateService {
     }).then(
       (response) => {
         this.$log.debug(response)
-        this.$state.go('mainpage')
+        this.$state.go('mainpage.page.feed')
       },
       (error) => {
         this.$log.debug(error)
