@@ -2,11 +2,11 @@ import templateUrl from './follow.component.html'
 
 /* @ngInject */
 class followController {
-  constructor ($log, $state, $followservice, $authenticate, $tweetservice) {
+  constructor ($log, $state, $followservice, $authenticate, $profileService) {
     this.$followservice = $followservice
     this.$authenticate = $authenticate
     this.$state = $state
-    this.$tweetservice = $tweetservice
+    this.$profileService = $profileService
     this.initiatefollowers = $followservice.getfollower($authenticate.$cookies.get('username'))
     this.initiatefollowings = $followservice.getfollowing($authenticate.$cookies.get('username'))
     $log.debug('FollowController instantiated')
@@ -21,11 +21,8 @@ class followController {
   }
 
   google (username) {
-    console.log(username)
-    this.$tweetservice.setusername(username)
-    this.$tweetservice.gettweets()
-    this.$state.go('mainpage.page.tweet')
-  }
+    this.$profileService.viewProfile(username)
+    }
 
 }
 

@@ -17,7 +17,7 @@ export const page = {
 }
 
 // export const feed = {
-//   name: 'mainpage.page.feed',
+//   name: 'mainpage.page.home',
 //   url: '/feed',
 //   component: 'feed'
 // }

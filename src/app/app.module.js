@@ -8,6 +8,7 @@ import twitterLogin from './login/login.module'
 import mainpage from './mainpage/mainpage.module'
 import { SearchService } from './global/search.service.js'
 import { TweetService } from './global/tweet.service.js'
+import { ProfileService } from './global/profile.service.js'
 import { app } from './app.component'
 import { configure } from './app.config'
 import { visualizeRouting } from './app.run'
@@ -30,6 +31,7 @@ export default
     .service('$authenticate', AuthenticateService)
     .service('$searchService', SearchService)
     .service('$tweetService', TweetService)
+    .service('$profileService', ProfileService)
     .config(configure)
     .run(visualizeRouting)
     .name
