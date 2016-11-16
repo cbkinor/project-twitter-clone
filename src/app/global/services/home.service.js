@@ -1,13 +1,10 @@
 export class HomeService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $authenticate) {
+  constructor ($log, $http, $authenticate) {
     this.$log = $log
     this.$http = $http
-    this.$state = $state
     this.$authenticate = $authenticate
-    this.username = undefined
-    this.tweet = undefined
     this.$log.debug("HomeService instantiated")
   }
 
@@ -15,7 +12,7 @@ export class HomeService {
     this.$log.debug('We have feeds')
     this.$http({
       method: 'GET',
-      url: 'http://localhost:8080/users/@' + this.$authenticate.username + '/feed'
+      url: 'http://localhost:8080/users/@' + this.$authenticate.$cookies.get('username') + '/feed'
     }).then(
       (response) => {
         this.tweets = response.data

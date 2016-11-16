@@ -5,6 +5,7 @@ class feedController {
   constructor ($log, $state, $homeService, $authenticate) {
     this.$homeService = $homeService
     this.$state = $state
+    this.feed = $feedService.getFeed()
     $log.debug('feedController instantiated')
     $authenticate.authenticate()
   }
