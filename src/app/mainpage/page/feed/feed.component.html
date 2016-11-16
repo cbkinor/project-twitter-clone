@@ -13,10 +13,10 @@
                 <p>{{ item.content }}</p>
                 <p>{{ item.posted }}</p>
                 <div ng-show='item.inReplyTo'>
-                  <h3 ng-click="null">Reply From</h3>
+                  <h3 ng-click="null">Reply From {{ item.author.username }}</h3>
                 </div>
                 <div ng-show='item.repostOf'>
-                  <h3 ng-click="null">Repost Of</h3>
+                  <h3 ng-click="null">Repost Of {{ item.author.username }}</h3>
                 </div>
                 </br>
               </div>
