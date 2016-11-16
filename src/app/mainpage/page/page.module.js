@@ -1,7 +1,6 @@
 import { page } from './page.component'
 import { follow } from './follow/follow.component'
-// import { FollowService } from './follow/follow.service'
-
+import { FollowService } from './follow/follow.service'
 import { configure } from './page.config'
 import { feed } from './feed/feed.component'
 import { FeedService } from './feed/feed.service'
@@ -13,8 +12,7 @@ export default
     .module('twitter-page', [])
     .component('page', page)
     .component('follow', follow)
-    // .service('$follow', FollowService)
-
+    .service('$followservice', FollowService)
     .component('feed', feed)
     .service('$feedService', FeedService)
     .component('tweet', tweet)

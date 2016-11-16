@@ -1,14 +1,22 @@
 <md-content layout-fill>
   <md-tabs md-dynamic-height="" md-border-bottom="">
     <md-tab label="Follower">
-      <md-content class="md-padding">
-        <h1 class="md-display-2">Followers</h1>
-      </md-content>
+      <md-tab-body>
+        <md-list>
+          <md-list-item ng-repeat="item in $follow.getfollower()">
+            <p>{{item.username}}</p>
+          </md-list-item>
+        </md-list>
+      </md-tab-body>
     </md-tab>
     <md-tab label="Following">
-      <md-content class="md-padding">
-        <h1 class="md-display-2">Following</h1>
-      </md-content>
+      <md-tab-body>
+        <md-list>
+          <md-list-item ng-repeat="item in $follow.getfollowing()">
+            <p>{{item.username}}</p>
+          </md-list-item>
+        </md-list>
+      </md-tab-body>
     </md-tab>
   </md-tabs>
 </md-content>
