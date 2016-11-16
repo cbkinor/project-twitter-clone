@@ -2,59 +2,55 @@
   <md-toolbar class="toolbar" layout="row">
     <div class="md-toolbar-tools">
 
-      <div id="menubar1">
-        <md-button class="homeButton md-whiteframe-2dp" ng-click="$menubar.home()">
-          <i class="material-icons" layout="fill" >home</i>
+      <md-button class="homeButton md-whiteframe-2dp" ng-click="$menubar.home()">
+        <i class="material-icons" layout="fill" >home</i>
+      </md-button>
+
+      <md-menu>
+        <md-button class="md-icon-button md-whiteframe-2dp" ng-click="$menubar.openMenu($mdOpenMenu, $event)">
+          <i class="material-icons">person</i>
         </md-button>
-        <md-menu>
-          <md-button class="md-icon-button md-whiteframe-2dp" ng-click="$menubar.openMenu($mdOpenMenu, $event)">
-            <i class="material-icons">person</i>
+      <md-menu-content width="4">
+        <md-menu-item>
+          <md-button ng-click="$menubar.viewProfile()">
+            <i class="material-icons">perm_identity</i>
+            View profile
           </md-button>
-          <md-menu-content width="4">
-            <md-menu-item>
-              <md-button ng-click="$menubar.viewProfile()">
-                <i class="material-icons">perm_identity</i>
-                View profile
-              </md-button>
-            </md-menu-item>
-            <md-menu-item>
-              <md-button ng-click="$menubar.editProfile()">
-                <i class="material-icons">edit</i>
-                Edit profile
-              </md-button>
-            </md-menu-item>
-            <md-menu-divider></md-menu-divider>
-            <md-menu-item>
-              <md-button ng-click="$menubar.logout()">
-                <i class="material-icons">directions_run</i>
-                Logout
-              </md-button>
-            </md-menu-item>
-          </md-menu-content>
-        </md-menu>
-      </div>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="$menubar.editProfile()">
+            <i class="material-icons">edit</i>
+            Edit profile
+          </md-button>
+        </md-menu-item>
+        <md-menu-divider></md-menu-divider>
+        <md-menu-item>
+          <md-button ng-click="$menubar.logout()">
+            <i class="material-icons">directions_run</i>
+            Logout
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
 
-      <span id="menubar2"></span>
-      <div id="menubar3">
-        <svg class="tweetButtonContainer" ng-click="$menubar.showTweetPrompt($event)" width="200" height="200">
-          <g ng-mouseover="$menubar.mouseOnTweet($event)" ng-mouseleave="$menubar.mouseOffTweet($event)">
-            <polygon class="tweetButton" ng-click"$menubar.tweet()" stroke="white" stroke-width="5" fill="rgb(63,81,181)" points="200,50 150,150 50,150 0,50"/>
-            <text id="tweetIcon" class="tweetButton tweetIcon material-icons" ng-click="$menubar.tweet()" x="76" y="135" fill="white" stroke="rgb(63,81,181)">&#xE0E1;</text>
-          </g>
-        </svg>
-      </div>
-      <span flex id="menubar4"></span>
+    <span flex></span>
+    <svg class="tweetButtonContainer" ng-click="$menubar.showTweetPrompt($event)" width="200" height="200">
+      <g ng-mouseover="$menubar.mouseOnTweet($event)" ng-mouseleave="$menubar.mouseOffTweet($event)">
+        <polygon class="tweetButton" ng-click"$menubar.tweet()" stroke="white" stroke-width="5" fill="rgb(63,81,181)" points="200,50 150,150 50,150 0,50"/>
+        <text id="tweetIcon" class="tweetButton tweetIcon material-icons" ng-click="$menubar.tweet()" x="76" y="135" fill="white" stroke="rgb(63,81,181)">&#xE0E1;</text>
+      </g>
+    </svg>
+    <span flex></span>
 
-      <div id="menubar5">
-        <md-button class="md-icon-button searchButton md-whiteframe-2dp" ng-click="$menubar.search()">
-          <i layout="fill" class="material-icons">search</i>
-        </md-button>
-        <form id="searchForm" autocomplete="off" ng-submit="$menubar.search()">
-          <md-input-container md-no-float class="search">
-            <input class="searchInput md-whiteframe-6dp" placeholder=" Search Twitter" type="text" ng-model="$menubar.$searchService.searchText" >
-          </md-input-container>
-        </form>
-      </div>
+    <md-button class="md-icon-button searchButton md-whiteframe-2dp" ng-click="$menubar.search()">
+      <i layout="fill" class="material-icons">search</i>
+    </md-button>
+    <form id="searchForm" autocomplete="off" ng-submit="$menubar.search()">
+      <md-input-container md-no-float class="search">
+        <input class="searchInput md-whiteframe-6dp" placeholder=" Search Twitter" type="text" ng-model="$menubar.$searchService.searchText" >
+      </md-input-container>
+    </form>
+
     </div>
   </md-toolbar>
 </div>
