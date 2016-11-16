@@ -10,7 +10,7 @@ export class FeedService {
   }
 
   getFeed = () => {
-    console.log('got feeds')
+    // console.log('got feeds')
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + this.$authenticate.username + '/feed'
