@@ -2,13 +2,15 @@ import templateUrl from './menubar.component.html'
 
 /* @ngInject */
 class MenubarController {
-  constructor ($log, $state, $authenticate, $searchService, $mdDialog, $tweetService) {
+  constructor ($log, $state, $authenticate, $searchService, $mdDialog, $tweetService, $profileService) {
     $log.debug('menuBar instantiated')
 
+    this.$log = $log
     this.$searchService = $searchService
     this.$authenticate = $authenticate
     this.$state = $state
     this.$tweetService = $tweetService
+    this.$profileService = $profileService
 
     this.openMenu = function ($mdOpenMenu, ev) {
       this.originatorEv = ev
@@ -36,16 +38,8 @@ class MenubarController {
       this.tweetElement = $event.target
     }
 
-    this.mouseOnTweet = ($event) => {
-      if ($event.target.id !== 'tweetIcon') {
-        $event.target.setAttribute('stroke', 'rgba(231,236,238,.5)')
-      }
-    }
-
-    this.mouseOffTweet = ($event) => {
-      if ($event.target.id !== 'tweetIcon') {
-        $event.target.setAttribute('stroke', 'white')
-      }
+    this.viewProfile = () => {
+      this.$profileService.viewProfile(this.$authenticate.username)
     }
 
     this.showTweetPrompt = ($event) => {
@@ -64,6 +58,23 @@ class MenubarController {
         }, () => {
           console.log('tweet didn\'t have contents')
         })
+    }
+
+    this.getUsername = () => {
+      this.$log.debug(this.$authenticate.username)
+      return this.$authenticate.username
+    }
+
+    this.mouseOnTweet = ($event) => {
+      if ($event.target.id !== 'tweetIcon') {
+        $event.target.setAttribute('stroke', 'rgba(231,236,238,.5)')
+      }
+    }
+
+    this.mouseOffTweet = ($event) => {
+      if ($event.target.id !== 'tweetIcon') {
+        $event.target.setAttribute('stroke', 'white')
+      }
     }
   }
 }
