@@ -2,9 +2,10 @@ import templateUrl from './feed.component.html'
 
 /* @ngInject */
 class feedController {
-  constructor ($log, $state, $homeService, $authenticate) {
+  constructor ($log, $state, $homeService, $authenticate, $currentStateService) {
     this.$homeService = $homeService
     this.$state = $state
+    $currentStateService.currentTab = 'Feed'
     $log.debug('feedController instantiated')
     if (!$authenticate.username) {
       $log.debug('Authenticating User')

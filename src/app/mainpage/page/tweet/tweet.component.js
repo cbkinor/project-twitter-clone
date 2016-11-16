@@ -2,9 +2,10 @@ import templateUrl from './tweet.component.html'
 
 /* @ngInject */
 class tweetController {
-  constructor ($log, $state, $profileService) {
+  constructor ($log, $state, $profileService, $currentStateService) {
     this.$profileService = $profileService
     this.$state = $state
+    $currentStateService.currentTab = 'Tweets'
     $log.debug('TweetController instantiated')
   }
 
