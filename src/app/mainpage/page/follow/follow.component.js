@@ -22,8 +22,7 @@ class followController {
 
   google (username) {
     this.$profileService.viewProfile(username)
-    }
-
+  }
 }
 
 export const follow = {
