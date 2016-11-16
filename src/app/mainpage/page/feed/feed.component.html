@@ -1,8 +1,4 @@
-<md-content md-dynamic-height md-border-bottom layout-fill >
-  <md-tabs class="">
-      <md-tab id="tab1">
-        <md-tab-label>Feeds</md-tab-label>
-        <md-tab-body>
+
           <md-list flex="">
             <md-list-item ng-hide="$feed.getFeed()  && $feed.getFeed().length > 0">No results found</md-list-item>
             <md-list-item class="md-3-line" ng-repeat="item in $feed.getFeed()">
@@ -20,7 +16,3 @@
               </div>
             </md-list-item>
           </md-list>
-        </md-tab-body>
-    </md-tab>
-  </md-tabs>
-</md-content>
