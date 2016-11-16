@@ -27,18 +27,24 @@ margin-top: 68px;
   font-style: italic;
 }
 
+.menubarContainer {
+  display: flex;
+}
+
 .search {
   margin-top: 40px;
-  border-radius: 10px;
-
 }
 
 .tweetButton:hover {
-
+  cursor: pointer;
 }
 
 .tweetIcon {
   font-size: 48px;
+}
+
+.search:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: white
 }
 
 input[type=text].searchInput {
@@ -48,4 +54,21 @@ input[type=text].searchInput {
 i {
   align-items: center;
   justify-content: center;
+}
+
+.tweetButton:hover {
+    cursor: hand;
+    border-color: rgb(255, 255, 255);
+}
+
+.tweetButtonContainer {
+  margin-left: 65px
+}
+
+.SearchTabs {
+  width: 70vw
+}
+
+.search-tab {
+  width: 100%
 }
