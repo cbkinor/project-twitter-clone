@@ -4,18 +4,18 @@
         <md-tab-label>Feeds</md-tab-label>
         <md-tab-body>
           <md-list flex="">
-            <!-- <md-list-item ng-hide="$feed.$feedService.getFeed()">No results found</md-list-item> -->
-            <md-list-item class="md-3-line" ng-init="$feed.$feedService.getFeed()" ng-repeat="item in $feed.$feedService.tweets">
+            <md-list-item ng-hide="$feed.$feedService.tweets  && $feed.$feedService.tweets.length > 0">No results found</md-list-item>
+            <md-list-item class="md-3-line" ng-repeat="item in $feed.getfeeds()">
               <div class="md-list-item-text" layout="column">
                 <h3 ng-click="null">>{{ item.author.username }}</h3>
                 <p>{{ item.content }}</p>
                 <p>{{ item.posted }}</p>
-                <!-- <div ng-show='item.inReplyTo'>
+                <div ng-show='item.inReplyTo'>
                   <h3 ng-click="null">Reply From</h3>
                 </div>
                 <div ng-show='item.repostOf'>
                   <h3 ng-click="null">Repost Of</h3>
-                </div> -->
+                </div>
                 </br>
               </div>
             </md-list-item>
