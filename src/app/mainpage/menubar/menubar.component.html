@@ -2,12 +2,12 @@
   <md-toolbar class="toolbar" layout="row">
     <div class="md-toolbar-tools">
 
-      <md-button class="homeButton" ng-click="$menubar.home()">
+      <md-button flex="10" class="homeButton md-whiteframe-2dp" ng-click="$menubar.home()">
         <i class="material-icons" layout="fill" >home</i>
       </md-button>
 
-      <md-menu>
-      <md-button class="md-icon-button" ng-click="$menubar.openMenu($mdOpenMenu, $event)">
+      <md-menu flex="10">
+      <md-button class="md-icon-button md-whiteframe-2dp" ng-click="$menubar.openMenu($mdOpenMenu, $event)">
         <i class="material-icons">person</i>
       </md-button>
       <md-menu-content width="4">
@@ -34,22 +34,23 @@
     </md-menu>
 
       <span flex></span>
-      <svg width="200" height="200">
-        <g>
-          <polygon class="tweetButton" ng-click"$menubar.tweet()" stroke="white" fill="rgb(63,81,181)" points="200,50 150,150 50,150 0,50"/>
-          <text class="tweetButton tweetIcon material-icons" ng-click="$menubar.tweet()" x="76" y="135" fill="white">&#xE0E1;</text>
+      <svg class="tweetButtonContainer" width="200" height="200">
+        <g ng-mouseover="$menubar.mouseOnTweet($event)" ng-mouseleave="$menubar.mouseOffTweet($event)">
+          <polygon class="tweetButton" ng-click"$menubar.tweet()" stroke="white" stroke-width="5" fill="rgb(63,81,181)" points="200,50 150,150 50,150 0,50"/>
+          <text id="tweetIcon" class="tweetButton tweetIcon material-icons" ng-click="$menubar.tweet()" x="76" y="135" fill="white" stroke="rgb(63,81,181)">&#xE0E1;</text>
         </g>
       </svg>
       <span flex></span>
 
-      <md-button class="md-icon-button searchButton" ng-click="$menubar.search()">
+      <md-button class="md-icon-button searchButton md-whiteframe-2dp" ng-click="$menubar.search()">
         <i layout="fill" class="material-icons">search</i>
       </md-button>
-      <form id="searchInput" autocomplete="off" ng-submit="$menubar.search()">
-        <md-input-container md-no-float class="search md-block">
-          <input class="searchInput" placeholder=" Search Twitter" type="text" ng-model="$menubar.$searchService.searchText" >
+      <form id="searchForm" autocomplete="off" ng-submit="$menubar.search()">
+        <md-input-container md-no-float class="search">
+          <input class="searchInput md-whiteframe-6dp" placeholder=" Search Twitter" type="text" ng-model="$menubar.$searchService.searchText" >
         </md-input-container>
       </form>
+
     </div>
   </md-toolbar>
 </div>

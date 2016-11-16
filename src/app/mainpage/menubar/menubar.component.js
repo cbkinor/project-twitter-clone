@@ -9,10 +9,8 @@ class MenubarController {
     this.$authenticate = $authenticate
     this.$state = $state
 
-    let originatorEv
-
     this.openMenu = function ($mdOpenMenu, ev) {
-      originatorEv = ev
+      this.originatorEv = ev
       $mdOpenMenu(ev)
     }
 
@@ -32,6 +30,24 @@ class MenubarController {
     this.logout = () => {
       this.$authenticate.logout()
     }
+
+    this.setTweetElement = ($event) => {
+      this.tweetElement = $event.target
+    }
+
+    this.mouseOnTweet = ($event) => {
+      if ($event.target.id !== 'tweetIcon') {
+        $event.target.setAttribute('stroke', 'rgba(231,236,238,.5)')
+      }
+    }
+
+    this.mouseOffTweet = ($event) => {
+      if ($event.target.id !== 'tweetIcon') {
+        $event.target.setAttribute('stroke', 'white')
+      }
+    }
+
+
   }
 }
 
