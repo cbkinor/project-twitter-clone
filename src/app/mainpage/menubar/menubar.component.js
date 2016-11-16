@@ -2,30 +2,52 @@ import templateUrl from './menubar.component.html'
 
 /* @ngInject */
 class MenubarController {
-  constructor ($log, $state, $authenticate) {
+  constructor ($log, $state, $authenticate, $searchService) {
     $log.debug('menuBar instantiated')
 
+    this.$searchService = $searchService
     this.$authenticate = $authenticate
     this.$state = $state
 
-    let originatorEv
-
     this.openMenu = function ($mdOpenMenu, ev) {
-      originatorEv = ev
+      this.originatorEv = ev
       $mdOpenMenu(ev)
     }
 
     this.home = () => {
-      this.$state.go('mainpage')
+      this.$state.go('mainpage.page')
+    }
+
+    this.editProfile = () => {
+      this.$state.go('mainpage.edit')
+    }
+
+    this.search = () => {
+      this.$searchService.search()
+      this.$state.go('mainpage.search')
     }
 
     this.logout = () => {
       this.$authenticate.logout()
     }
 
-    this.editProfile = () => {
-      this.$state.go('mainpage.edit')
+    this.setTweetElement = ($event) => {
+      this.tweetElement = $event.target
     }
+
+    this.mouseOnTweet = ($event) => {
+      if ($event.target.id !== 'tweetIcon') {
+        $event.target.setAttribute('stroke', 'rgba(231,236,238,.5)')
+      }
+    }
+
+    this.mouseOffTweet = ($event) => {
+      if ($event.target.id !== 'tweetIcon') {
+        $event.target.setAttribute('stroke', 'white')
+      }
+    }
+
+
   }
 }
 
