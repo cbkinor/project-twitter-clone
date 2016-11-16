@@ -1,10 +1,11 @@
-export class FeedService {
+export class HomeService {
 
   /* @ngInject */
   constructor ($log, $http, $authenticate) {
     this.$log = $log
     this.$http = $http
     this.$authenticate = $authenticate
+    this.$log.debug("HomeService instantiated")
   }
 
   getFeed () {
@@ -19,6 +20,7 @@ export class FeedService {
       },
       (error) => {
         this.$log.debug(error)
-      })
+      }
+    )
   }
 }

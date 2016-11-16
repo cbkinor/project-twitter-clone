@@ -3,9 +3,7 @@ import { follow } from './follow/follow.component'
 import { FollowService } from './follow/follow.service'
 import { configure } from './page.config'
 import { feed } from './feed/feed.component'
-import { FeedService } from './feed/feed.service'
 import { tweet } from './tweet/tweet.component'
-import { TweetService } from './tweet/tweet.service'
 
 export default
   angular
@@ -13,9 +11,7 @@ export default
     .component('page', page)
     .component('follow', follow)
     .service('$followservice', FollowService)
-    .component('feed', feed)
-    .service('$feedService', FeedService)
-    .component('tweet', tweet)
-    .service('$tweetservice', TweetService)
+    .component('home', feed)
+    .component('profile', tweet)
     .config(configure)
     .name

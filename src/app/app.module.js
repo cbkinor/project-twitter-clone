@@ -6,12 +6,14 @@ import uiRouter from 'angular-ui-router'
 import ngCookies from 'angular-cookies'
 import twitterLogin from './login/login.module'
 import mainpage from './mainpage/mainpage.module'
-import { SearchService } from './global/search.service.js'
-import { TweetService } from './global/tweet.service.js'
+import { SearchService } from './global/services/search.service.js'
+import { TweetService } from './global/services/tweet.service.js'
+import { ProfileService } from './global/services/profile.service.js'
+import { HomeService } from './global/services/home.service.js'
 import { app } from './app.component'
 import { configure } from './app.config'
 import { visualizeRouting } from './app.run'
-import { AuthenticateService } from './global/auth.service.js'
+import { AuthenticateService } from './global/services/auth.service.js'
 
 export default
   angular
@@ -30,6 +32,8 @@ export default
     .service('$authenticate', AuthenticateService)
     .service('$searchService', SearchService)
     .service('$tweetService', TweetService)
+    .service('$profileService', ProfileService)
+    .service('$homeService', HomeService)
     .config(configure)
     .run(visualizeRouting)
     .name

@@ -16,7 +16,7 @@ class MenubarController {
     }
 
     this.home = () => {
-      this.$state.go('mainpage.page.feed')
+      this.$state.go('mainpage.page.home')
     }
 
     this.editProfile = () => {
