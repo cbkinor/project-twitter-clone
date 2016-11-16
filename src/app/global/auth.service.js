@@ -20,11 +20,12 @@ export class AuthenticateService {
   authenticate () {
     this.username = this.$cookies.get('username')
     this.password = this.$cookies.get('password')
-    this.login();
+    this.login()
   }
 
   login (initial) {
     if (initial === undefined) initial = false
+    if (!this.username || !this.password) return
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + this.username + '/@' + this.password

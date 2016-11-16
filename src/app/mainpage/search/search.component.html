@@ -4,8 +4,8 @@
       <md-tab-label>Hashtag</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="item">No results found</md-list-item>
-          <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.data">
+          <md-list-item ng-hide="$search.$searchService.hashtag.data">No results found</md-list-item>
+          <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.hashtag.data">
             <div class="md-list-item-text" layout="column">
               <h3 ng-click="null">>{{ item.author.username }}</h3>
               <p>{{ item.content }}</p>
@@ -23,11 +23,11 @@
       </md-tab-body>
     </md-tab>
     <md-tab id="tab2">
-      <md-tab-label>Username</md-tab-label>
+      <md-tab-label>Author</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="item">No results found</md-list-item>
-          <md-list-item class="md-3-line" ng-repeat="item in $search.results">
+          <md-list-item ng-hide="$search.$searchService.author.data">No results found</md-list-item>
+          <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.author.data">
             <div class="md-list-item-text" layout="column">
               <h3 ng-click="null">>{{ item.author.username }}</h3>
               <p>{{ item.content }}</p>
@@ -48,8 +48,8 @@
       <md-tab-label>Mentions</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="item">No results found</md-list-item>
-          <md-list-item class="md-3-line" ng-repeat="item in $search.results">
+          <md-list-item ng-hide="$search.$searchService.mentioned.data">No results found</md-list-item>
+          <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.mentioned.data">
             <div class="md-list-item-text" layout="column">
               <h3 ng-click="null">>{{ item.author.username }}</h3>
               <p>{{ item.content }}</p>
