@@ -35,7 +35,7 @@ export class AuthenticateService {
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
         this.profile = response.data.profile
-        this.$state.go('mainpage.page')
+        this.$state.go('mainpage.page.feed')
       },
       (error) => {
         this.$log.debug(error)
@@ -80,10 +80,7 @@ export class AuthenticateService {
       method: 'POST',
       url: 'http://localhost:8080/users',
       data: {
-              "credentials": {
-                                "username": this.username,
-                                "password": this.password
-                              },
+              "credentials": this.getCredentials(),
               "profile": this.profile
             }
     }).then(
@@ -105,10 +102,7 @@ export class AuthenticateService {
       method: 'PATCH',
       url: 'http://localhost:8080/users/@' + this.username,
       data: {
-              "credentials": {
-                                "username": this.username,
-                                "password": this.password
-                              },
+              "credentials": this.getCredentials(),
               "profile": this.profile
             }
     }).then(
@@ -120,5 +114,12 @@ export class AuthenticateService {
         this.$log.debug(error)
       }
     )
+  }
+
+  getCredentials () {
+    return {
+      'username': this.username,
+      'password': this.password
+    }
   }
 }

@@ -2,9 +2,9 @@ import templateUrl from './page.component.html'
 
 /* @ngInject */
 class PageController {
-  constructor ($log, $authenticate) {
+  constructor ($log, $authenticate, $state) {
     $log.debug('page instantiated')
-    $authenticate.authenticate()
+    $state.go('mainpage.page.feed')
   }
 }
 

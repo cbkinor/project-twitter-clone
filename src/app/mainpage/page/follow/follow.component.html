@@ -4,7 +4,7 @@
       <md-tab-body>
         <md-list>
           <md-list-item ng-repeat="item in $follow.getfollower()">
-            <p>{{item.username}}</p>
+            <md-button ng-click="$follow.google(item.username)">{{item.username}}</md-button>
           </md-list-item>
         </md-list>
       </md-tab-body>

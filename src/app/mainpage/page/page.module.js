@@ -5,7 +5,7 @@ import { configure } from './page.config'
 import { feed } from './feed/feed.component'
 import { FeedService } from './feed/feed.service'
 import { tweet } from './tweet/tweet.component'
-// import { TweetService } from './tweet/tweet.service'
+import { TweetService } from './tweet/tweet.service'
 
 export default
   angular
@@ -16,6 +16,6 @@ export default
     .component('feed', feed)
     .service('$feedService', FeedService)
     .component('tweet', tweet)
-    // .service('$tweet', TweetService)
+    .service('$tweetservice', TweetService)
     .config(configure)
     .name

@@ -1,8 +1,16 @@
-
-  <md-card>
-    <md-card-actions>
-
-            <label>Tweets</label>
-
-    </md-card-actions>
-  </md-card>
+<md-card-content>
+  <h2 ng-click="null">Tweets</h2>
+  <h3 ng-click="null">User: {{$tweet.getuser()}}</h3>>
+  <md-list flex="">
+    <md-list-item ng-repeat="item in $tweet.gettweets()" ng-click="null">
+      <p>Content: {{item.content}}</p>
+      <p>Posted: {{ item.posted }}</p>
+      <div ng-show='item.inReplyTo'>
+        <h3 ng-click="null">Reply From</h3>
+      </div>
+      <div ng-show='item.repostOf'>
+        <h3 ng-click="null">Repost Of</h3>
+      </div>
+    </md-list-item>
+  </md-list>
+</md-card-content>
