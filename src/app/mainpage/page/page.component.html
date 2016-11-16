@@ -1,7 +1,9 @@
-<div class="pageWidth pageHeight" layout = "row">
-  <follow flex = "20" layout = "column"></follow>
-  <md-content layout-align="center center" layout="column" flex="60" layout-fill>
-    <md-tabs md-dynamic-height md-border-bottom class="login-tab">
+<div class="pageWidth pageHeight" layout-padding layout-margin layout = "row">
+
+  <follow layout-align="center center" layout="column" flex="25" layout-fill class="md-padding"></follow>
+
+  <feed layout-align="center center" layout="column" flex="60" layout-fill class="md-padding">
+    <!-- <md-tabs md-dynamic-height md-border-bottom>
       <md-tab id="tab1">
         <md-tab-label>{{$page.state}}</md-tab-label>
         <md-tab-body>
@@ -13,7 +15,7 @@
         <md-tab-body>
           <mentions></mentions>
         </md-tab-body>
-      </md-tab>
+      </md-tab> -->
     </md-tabs>
-  </md-content>
+  </feed>
 </div>
