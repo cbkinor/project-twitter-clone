@@ -25,7 +25,10 @@ export class AuthenticateService {
 
   login (initial) {
     if (initial === undefined) initial = false
-    if (!this.username || !this.password) return
+    if (!this.username || !this.password) {
+      this.$state.go('login')
+      return
+    }
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + this.username + '/@' + this.password
