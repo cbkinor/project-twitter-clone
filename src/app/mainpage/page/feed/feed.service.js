@@ -11,7 +11,7 @@ export class FeedService {
     this.$log.debug('We have feeds')
     this.$http({
       method: 'GET',
-      url: 'http://localhost:8080/users/@' + this.$authenticate.username + '/feed'
+      url: 'http://localhost:8080/users/@' + this.$authenticate.$cookies.get('username') + '/feed'
     }).then(
       (response) => {
         this.tweets = response.data
