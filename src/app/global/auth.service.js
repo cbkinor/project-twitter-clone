@@ -25,7 +25,10 @@ export class AuthenticateService {
 
   login (initial) {
     if (initial === undefined) initial = false
-    if (!this.username || !this.password) return
+    if (!this.username || !this.password) {
+      this.$state.go('login')
+      return
+    }
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + this.username + '/@' + this.password
@@ -86,7 +89,7 @@ export class AuthenticateService {
     }).then(
       (response) => {
         this.$log.debug(response)
-        this.$state.go('mainpage')
+        this.$state.go('mainpage.page.feed')
         this.profile = response.data.profile
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
@@ -108,7 +111,7 @@ export class AuthenticateService {
     }).then(
       (response) => {
         this.$log.debug(response)
-        this.$state.go('mainpage')
+        this.$state.go('mainpage.page.feed')
       },
       (error) => {
         this.$log.debug(error)
