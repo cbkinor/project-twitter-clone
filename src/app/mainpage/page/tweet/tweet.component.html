@@ -1,16 +1,16 @@
-<md-card-content>
-  <h2 ng-click="null">Tweets</h2>
-  <h3 ng-click="null">User: {{$tweet.getuser()}}</h3>>
-  <md-list flex="">
-    <md-list-item ng-repeat="item in $tweet.gettweets()" ng-click="null">
-      <p>Content: {{item.content}}</p>
-      <p>Posted: {{ item.posted }}</p>
-      <div ng-show='item.inReplyTo'>
-        <h3 ng-click="null">Reply From</h3>
-      </div>
-      <div ng-show='item.repostOf'>
-        <h3 ng-click="null">Repost Of</h3>
-      </div>
-    </md-list-item>
-  </md-list>
-</md-card-content>
+<md-content md-dynamic-height md-border-bottom layout-fill >
+  <md-tabs class="">
+    <md-tab id="tab1">
+      <md-tab-label>Tweets</md-tab-label>
+      <md-tab-body>
+        <h3 ng-click="null">User: {{$tweet.getuser()}}</h3>
+        <md-list flex="">
+          <md-list-item ng-repeat="item in $tweet.gettweets()" ng-click="null">
+            <p>Posted: {{ item.posted * 1000 | date:'HH:mm:ss' }}</p> <br>
+            <p>{{item.content}}</p><br>
+          </md-list-item>
+        </md-list>
+      </md-tab-body>
+    </md-tab>
+  </md-tabs>
+</md-content>
