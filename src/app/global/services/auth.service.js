@@ -1,11 +1,12 @@
 export class AuthenticateService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $cookies) {
+  constructor ($log, $http, $state, $cookies, $homeService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
     this.$cookies = $cookies
+    this.$homeService = $homeService
     this.profile = {
                       firstName: this.firstName,
                       lastName: this.lastName,
@@ -38,7 +39,7 @@ export class AuthenticateService {
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
         this.profile = response.data.profile
-        this.$state.go('mainpage.page.home')
+        this.$homeService.viewHome(this.username)
       },
       (error) => {
         this.$log.debug(error)
@@ -89,10 +90,10 @@ export class AuthenticateService {
     }).then(
       (response) => {
         this.$log.debug(response)
-        this.$state.go('mainpage.page.home')
         this.profile = response.data.profile
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
+        this.$homeService.viewHome(this.username)
       },
       (error) => {
         this.$log.debug(error)
@@ -111,7 +112,7 @@ export class AuthenticateService {
     }).then(
       (response) => {
         this.$log.debug(response)
-        this.$state.go('mainpage.page.home')
+        this.$homeService.viewHome(this.username)
       },
       (error) => {
         this.$log.debug(error)

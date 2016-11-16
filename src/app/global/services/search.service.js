@@ -28,9 +28,10 @@ export class SearchService {
     )
     this.$http({
       method: 'GET',
-      url: 'http://localhost:8080/users/@' + this.searchText + '/tweets'
+      url: 'http://localhost:8080/users/@' + this.searchText
     }).then(
       (response) => {
+        this.$log.debug(response)
         this.author = response
       },
       (error) => {
