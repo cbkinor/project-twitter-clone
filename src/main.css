@@ -5,35 +5,17 @@
   height: 80vh;
 }
 
+margin-top: 68px;
+.searchDial {
+  margin-top: 68px;
+}
+
 .ocean-background {
   background-image: url('./app/global/resources/ocean-background.png');
   background-size: 100% 100%;
 }
-
 .login-tab {
   background-color: rgba(255, 255, 255, .5);
-}
-
-#menubar1 {
-  display: flex;
-  flex: 20;
-}
-
-#menubar2 {
-  flex: 61;
-}
-
-#menubar3 {
-  flex: 38;
-}
-
-#menubar4 {
-  flex: 41;
-}
-
-#menubar5 {
-  display: flex;
-  flex: 40;
 }
 
 .fullWidth {
@@ -49,6 +31,10 @@
   display: flex;
 }
 
+.search {
+  margin-top: 40px;
+}
+
 md-dialog {
   width: 80vw;
 }
@@ -61,18 +47,8 @@ md-dialog {
   font-size: 48px;
 }
 
-.search {
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
 .search:not(.md-input-invalid).md-input-focused .md-input {
     border-color: white
-}
-
-.search {
-  margin-top: 40px;
 }
 
 input[type=text].searchInput {
