@@ -35,7 +35,7 @@ export class AuthenticateService {
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
         this.profile = response.data.profile
-        this.$state.go('mainpage.page.feed')
+        this.$state.go('mainpage.page')
       },
       (error) => {
         this.$log.debug(error)
