@@ -2,7 +2,7 @@ import templateUrl from './menubar.component.html'
 
 /* @ngInject */
 class MenubarController {
-  constructor ($log, $state, $authenticate, $searchService) {
+  constructor ($log, $state, $authenticate, $searchService, $mdDialog) {
     $log.debug('menuBar instantiated')
 
     this.$searchService = $searchService
@@ -47,6 +47,17 @@ class MenubarController {
       }
     }
 
+    this.showTweetPrompt = ($event) => {
+      let confirm = $mdDialog.prompt()
+        .title('Post a tweet!')
+        .placeholder('Post content')
+        .ariaLabel('Dog name')
+        .initialValue('')
+        .targetEvent($event)
+        .ok('Post!')
+        .cancel('Close')
+      $mdDialog.show(confirm).then
+    }
 
   }
 }
