@@ -72,3 +72,7 @@ i {
 .search-tab {
   width: 100%
 }
+
+.listUsage md-divider {
+  margin-top: 10px;
+  margin-bottom: 0; }
