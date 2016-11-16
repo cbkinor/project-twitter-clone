@@ -16,12 +16,6 @@ export const page = {
   component: 'page'
 }
 
-// export const feed = {
-//   name: 'mainpage.page.feed',
-//   url: '/feed',
-//   component: 'feed'
-// }
-
 export const search = {
   name: 'mainpage.search',
   url: '/search',

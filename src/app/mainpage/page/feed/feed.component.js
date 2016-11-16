@@ -5,10 +5,15 @@ class feedController {
   constructor ($log, $state, $feedService, $authenticate) {
     this.$feedService = $feedService
     this.$state = $state
-    this.$log = $log
+    this.feed = $feedService.getFeed()
     $log.debug('feedController instantiated')
     $authenticate.authenticate()
     this.$feedService.getFeed()
+    this.$log.debug('We have feeds')
+  }
+
+  getfeeds() {
+    return this.$feedService.tweets
   }
 }
 
