@@ -9,7 +9,7 @@ export class FeedService {
     this.tweet = undefined
   }
 
-  getFeed = () => {
+  getFeed () {
     console.log('got feeds')
     this.$http({
       method: 'GET',
