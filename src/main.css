@@ -35,6 +35,10 @@ margin-top: 68px;
   margin-top: 40px;
 }
 
+md-dialog {
+  width: 80vw;
+}
+
 .tweetButton:hover {
   cursor: pointer;
 }
@@ -59,10 +63,6 @@ i {
 .tweetButton:hover {
     cursor: hand;
     border-color: rgb(255, 255, 255);
-}
-
-.tweetButtonContainer {
-  margin-left: 65px
 }
 
 .SearchTabs {
