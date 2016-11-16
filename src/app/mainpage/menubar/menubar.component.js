@@ -2,12 +2,13 @@ import templateUrl from './menubar.component.html'
 
 /* @ngInject */
 class MenubarController {
-  constructor ($log, $state, $authenticate, $searchService, $mdDialog) {
+  constructor ($log, $state, $authenticate, $searchService, $mdDialog, $tweetService) {
     $log.debug('menuBar instantiated')
 
     this.$searchService = $searchService
     this.$authenticate = $authenticate
     this.$state = $state
+    this.$tweetService = $tweetService
 
     this.openMenu = function ($mdOpenMenu, ev) {
       this.originatorEv = ev
@@ -56,9 +57,14 @@ class MenubarController {
         .targetEvent($event)
         .ok('Post!')
         .cancel('Close')
-      $mdDialog.show(confirm).then
-    }
 
+      $mdDialog.show(confirm)
+        .then((result) => {
+          this.$tweetService.postTweet(result)
+        }, () => {
+          console.log('tweet didn\'t have contents')
+        })
+    }
   }
 }
 

@@ -2,10 +2,10 @@ import templateUrl from './feed.component.html'
 
 /* @ngInject */
 class feedController {
-  constructor ($log, $feedService) {
+  constructor ($log, $feedService, $authenticate) {
     this.$feedService = $feedService
-    this.messge = "Welcome to TeamSlowTrack's own Twitter"
-    $log.debug('HomeController instantiated')
+    $log.debug('feedController instantiated')
+    $authenticate.authenticate()
   }
 
   getFeed () {
