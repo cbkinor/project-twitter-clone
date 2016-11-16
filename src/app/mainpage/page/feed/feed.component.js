@@ -5,14 +5,17 @@ class feedController {
   constructor ($log, $state, $homeService, $authenticate) {
     this.$homeService = $homeService
     this.$state = $state
-    this.feed = $homeService.getFeed()
     $log.debug('feedController instantiated')
-    $authenticate.authenticate()
+    if (!$authenticate.username) {
+      $log.debug('Authenticating User')
+      $authenticate.authenticate()
+    }
   }
 
   getFeed () {
-    this.$homeService.getFeed()
+    return this.$homeService.feed
   }
+
 }
 
 export const feed = {
