@@ -20,8 +20,6 @@ export class SearchService {
       url: 'http://localhost:8080/users/@' + this.searchText + '/mentions'
     }).then(
       (response) => {
-        this.$log.debug("MENTIONS====================================")
-        this.$log.debug(response)
         this.mentioned = response
       },
       (error) => {
@@ -33,8 +31,6 @@ export class SearchService {
       url: 'http://localhost:8080/users/@' + this.searchText + '/tweets'
     }).then(
       (response) => {
-        this.$log.debug("TWEETS====================================")
-        this.$log.debug(response)
         this.author = response
       },
       (error) => {
@@ -46,8 +42,6 @@ export class SearchService {
       url: 'http://localhost:8080/tags/' + this.searchText
     }).then(
       (response) => {
-        this.$log.debug("HASHTAGS====================================")
-        this.$log.debug(response)
         this.hashtag = response
       },
       (error) => {

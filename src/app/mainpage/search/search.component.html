@@ -4,9 +4,9 @@
       <md-tab-label>Hashtag</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.hashtag.data">No results found</md-list-item>
+          <md-list-item ng-hide="$search.$searchService.hashtag.data && $search.$searchService.hashtag.data.length > 0">No results found</md-list-item>
           <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.hashtag.data">
-            <div class="md-list-item-text" layout="column">
+            <div class="md-list-item-text md-whiteframe-2dp" layout="column">
               <h3 ng-click="null">>{{ item.author.username }}</h3>
               <p>{{ item.content }}</p>
               <p>{{ item.posted }}</p>
@@ -16,8 +16,8 @@
               <div ng-show='item.repostOf'>
                 <h3 ng-click="null">Repost Of</h3>
               </div>
-              </br>
             </div>
+            </br>
           </md-list-item>
         </md-list>
       </md-tab-body>
@@ -26,9 +26,9 @@
       <md-tab-label>Author</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.author.data">No results found</md-list-item>
+          <md-list-item ng-hide="$search.$searchService.author.data && $search.$searchService.author.data.length > 0">No results found</md-list-item>
           <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.author.data">
-            <div class="md-list-item-text" layout="column">
+            <div class="md-list-item-text md-whiteframe-2dp" layout="column">
               <h3 ng-click="null">>{{ item.author.username }}</h3>
               <p>{{ item.content }}</p>
               <p>{{ item.posted }}</p>
@@ -38,8 +38,8 @@
               <div ng-show='item.repostOf'>
                 <h3 ng-click="null">Repost Of</h3>
               </div>
-              </br>
             </div>
+            </br>
           </md-list-item>
         </md-list>
       </md-tab-body>
@@ -48,9 +48,9 @@
       <md-tab-label>Mentions</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.mentioned.data">No results found</md-list-item>
+          <md-list-item ng-hide="$search.$searchService.mentioned.data && $search.$searchService.mentioned.data.length > 0">No results found</md-list-item>
           <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.mentioned.data">
-            <div class="md-list-item-text" layout="column">
+            <div class="md-list-item-text md-whiteframe-2dp" layout="column">
               <h3 ng-click="null">>{{ item.author.username }}</h3>
               <p>{{ item.content }}</p>
               <p>{{ item.posted }}</p>
@@ -60,8 +60,8 @@
               <div ng-show='item.repostOf'>
                 <h3 ng-click="null">Repost Of</h3>
               </div>
-              </br>
             </div>
+            </br>
           </md-list-item>
         </md-list>
       </md-tab-body>
