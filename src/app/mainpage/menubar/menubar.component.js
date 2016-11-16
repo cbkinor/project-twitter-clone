@@ -61,7 +61,6 @@ class MenubarController {
     }
 
     this.getUsername = () => {
-      this.$log.debug(this.$authenticate.username)
       return this.$authenticate.username
     }
 
