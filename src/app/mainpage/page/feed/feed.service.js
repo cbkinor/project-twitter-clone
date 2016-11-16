@@ -8,20 +8,21 @@ export class FeedService {
     this.$authenticate = $authenticate
     this.username = undefined
     this.tweet = undefined
+    this.$log.debug("FeedService instantiated")
   }
 
   getFeed () {
     this.$log.debug('We have feeds')
-    this.$http({
-      method: 'GET',
-      url: 'http://localhost:8080/users/@' + this.$authenticate.username + '/feed'
-    }).then(
-      (response) => {
-        this.tweets = response.data
-        this.$log.debug(response.data)
-      },
-      (error) => {
-        this.$log.debug(error)
-      })
+    // this.$http({
+    //   method: 'GET',
+    //   url: 'http://localhost:8080/users/@' + this.$authenticate.username + '/feed'
+    // }).then(
+    //   (response) => {
+    //     this.tweets = response.data
+    //     this.$log.debug(response.data)
+    //   },
+    //   (error) => {
+    //     this.$log.debug(error)
+    //   })
   }
 }
