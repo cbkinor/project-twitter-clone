@@ -1,11 +1,11 @@
 <md-content layout-align="center center" layout="column" class="searchTabs">
   <md-tabs md-dynamic-height md-border-bottom class="loginTab" layout-fill>
     <md-tab id="tab1">
-      <md-tab-label>Hashtag</md-tab-label>
+      <md-tab-label>Tweets with Hashtag</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.hashtag.data && $search.$searchService.hashtag.data.length > 0">No results found</md-list-item>
-          <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.hashtag.data">
+          <md-list-item ng-hide="$search.$searchService.tweets.data && $search.$searchService.tweets.data.length > 0">No results found</md-list-item>
+          <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.tweets.data">
             <div class="md-list-item-text md-whiteframe-2dp" layout="column">
               <h3 ng-click="null">>{{ item.author.username }}</h3>
               <p>{{ item.content }}</p>
@@ -19,9 +19,8 @@
                 <p>{{ item.repostOf.content }}</p>
                 <p>{{ item.repostOf.posted | date:'medium' }}</p>
               </div>
-              <div ng-init="$search.$searchService.checkLikeTweet(item)"></div>
-              <md-button ng-click="$search.$searchService.likeTweet(item)" ng-hide="item.liked">like</md-button>
-              <md-button ng-click="$search.$searchService.unlikeTweet(item)" ng-show="item.liked">unlike</md-button>
+              <md-button ng-click="$search.$tweetService.likeTweet(item)" ng-hide="item.liked">like</md-button>
+              <md-button ng-click="$search.$tweetService.unlikeTweet(item)" ng-show="item.liked">unlike</md-button>
             </div>
             </br>
           </md-list-item>

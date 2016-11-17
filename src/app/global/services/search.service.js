@@ -1,74 +1,14 @@
 export class SearchService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $cookies, $authenticate) {
+  constructor ($log, $http, $state, $cookies, $tweetService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
     this.$cookies = $cookies
-    this.$authenticate = $authenticate
+    this.$tweetService = $tweetService
     this.searchText = undefined
     $log.debug('SearchService created')
-  }
-  likeTweet (item) {
-    this.$http({
-      method: 'POST',
-      url: 'http://localhost:8080/tweets/' + item.id + '/like',
-      data: {
-        username: this.$authenticate.username,
-        password: this.$authenticate.password
-      }
-    }).then(
-          (response) => {
-            this.$log.debug(response)
-            item.liked = true
-          },
-          (error) => {
-            this.$log.debug(error)
-          }
-        )
-  }
-  unlikeTweet (item) {
-    this.$http({
-      method: 'POST',
-      url: 'http://localhost:8080/tweets/' + item.id + '/unlike',
-      data: {
-        username: this.$authenticate.username,
-        password: this.$authenticate.password
-      }
-    }).then(
-          (response) => {
-            this.$log.debug(response)
-            item.liked = false
-          },
-          (error) => {
-            this.$log.debug(error)
-          }
-        )
-  }
-
-  checkLikeTweet (item) {
-    this.$http({
-      method: 'GET',
-      url: 'http://localhost:8080/tweets/' + item.id + '/likes',
-      data: {
-        username: this.$authenticate.username,
-        password: this.$authenticate.password
-      }
-    }).then(
-          (response) => {
-            this.$log.debug(response)
-            response.data.filter((user) => user.username === this.$authenticate.username)
-            if (response.data.length > 0) {
-              item.liked = true
-            } else {
-              item.liked = false
-            }
-          },
-          (error) => {
-            this.$log.debug(error)
-          }
-        )
   }
   search () {
     this.mentioned = undefined
@@ -83,7 +23,7 @@ export class SearchService {
         this.mentioned = response
       },
       (error) => {
-        this.$log.debug(error)
+        this.$log.debug('no mentions with this text')
       }
     )
     this.$http({
@@ -95,7 +35,7 @@ export class SearchService {
         this.author = response
       },
       (error) => {
-        this.$log.debug(error)
+        this.$log.debug('no users with this name')
       }
     )
     this.$http({
@@ -103,10 +43,10 @@ export class SearchService {
       url: 'http://localhost:8080/tags/' + this.searchText
     }).then(
       (response) => {
-        this.hashtag = response
+        this.tweets = this.$tweetService.checkAllTweetLikes(response)
       },
       (error) => {
-        this.$log.debug(error)
+        this.$log.debug('no tags with this text')
       }
     )
   }
