@@ -4,15 +4,15 @@
             <md-list-item class="md-3-line" ng-repeat="item in $feed.getFeed()">
               <div class="md-list-item-text" layout="column">
                 <md-divider></md-divider>
-                <h3 ng-click="$feed.feedUser(item.author.username)">{{ item.author.username }}</h3>
+                <h3 ng-click="$feed.goToProfile(item.author.username)"><a href="">{{ item.author.username }}</a></h3>
                 <p compile="item.content"></p>
-                <p>{{ item.posted * 1000 | date:'HH:mm:ss' }}</p>
-                <!-- <div ng-show='item.inReplyTo'>
-                  <h3 ng-click="null">Reply From {{ item.author.username }}</h3>
+                <p>{{ item.posted | date:'medium' }}</p>
+                <div ng-show='item.inReplyTo'>
+                  <h3 ng-click="$feed.goToProfile(item.inReplyTo.author.username)">In Reply To: <a href="">{{ item.inReplyTo.author.username }}</a></h3>
                 </div>
                 <div ng-show='item.repostOf'>
-                  <h3 ng-click="null">Repost Of {{ item.author.username }}</h3>
-                </div> -->
+                  <h3 ng-click="$feed.goToProfile(item.repostOf.author.username)">Repost Of: <a href="">{{ item.repostOf.author.username }}</a></h3>
+                </div>
                 </br>
               </div>
             </md-list-item>

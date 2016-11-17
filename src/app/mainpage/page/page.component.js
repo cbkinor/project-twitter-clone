@@ -2,9 +2,15 @@ import templateUrl from './page.component.html'
 
 /* @ngInject */
 class PageController {
-  constructor ($log, $authenticate, $stateService) {
+  constructor ($log, $authenticate, $cookies, $stateService) {
     $log.debug('page instantiated')
-    this.$stateService = $stateService
+    this.$stateService = $stateService  // NEEDED FOR HTML
+    let currentState = $cookies.get('currentState')
+    !currentState
+      ? $authenticate.authenticate('login')
+      : (currentState === 'login')
+        ? $authenticate.authenticate('home')
+        : $authenticate.authenticate(currentState)
   }
 }
 

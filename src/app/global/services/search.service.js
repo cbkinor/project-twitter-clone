@@ -1,52 +1,53 @@
 export class SearchService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $cookies) {
+  constructor ($log, $http, $state, $cookies, $tweetService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
     this.$cookies = $cookies
-    this.searchText = undefined
+    this.$tweetService = $tweetService
+    this.searchText = ''
     $log.debug('SearchService created')
   }
-
   search () {
-    this.mentioned = undefined
-    this.author = undefined
+    this.tweets = undefined
+    this.users = undefined
     this.hashtag = undefined
+
+    this.searchText = this.inputText
     this.$log.debug(this.searchText)
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + this.searchText + '/mentions'
     }).then(
       (response) => {
-        this.mentioned = response
+        this.mentioned = response.data
       },
       (error) => {
-        this.$log.debug(error)
+        this.$log.debug('no mentions with this text')
       }
     )
     this.$http({
       method: 'GET',
-      url: 'http://localhost:8080/users/@' + this.searchText
+      url: 'http://localhost:8080/users/partial/@' + this.searchText
     }).then(
       (response) => {
-        this.$log.debug(response)
-        this.author = response
+        this.users = response.data
       },
       (error) => {
-        this.$log.debug(error)
+        this.$log.debug('no users with this name')
       }
     )
     this.$http({
       method: 'GET',
-      url: 'http://localhost:8080/tags/' + this.searchText
+      url: 'http://localhost:8080/tags/partial/' + this.searchText
     }).then(
       (response) => {
-        this.hashtag = response
+        this.tweets = this.$tweetService.checkAllTweetLikes(response.data)
       },
       (error) => {
-        this.$log.debug(error)
+        this.$log.debug('no tags with this text')
       }
     )
   }

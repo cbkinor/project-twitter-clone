@@ -19,5 +19,9 @@ export const page = {
 export const search = {
   name: 'mainpage.search',
   url: '/search',
-  component: 'search'
+  component: 'search',
+  onExit: ($searchService) => {
+    'ngInject'
+    $searchService.inputText = ''
+  }
 }

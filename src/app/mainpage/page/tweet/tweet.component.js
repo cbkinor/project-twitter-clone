@@ -6,9 +6,14 @@ class tweetController {
     this.$profileService = $profileService
     this.$followservice = $followservice
     this.$authenticate = $authenticate
+    this.$homeService = $homeService
     this.$state = $state
     $log.debug('TweetController instantiated')
     this.$log = $log
+  }
+
+  getFeed () {
+    return this.$homeService.feed
   }
 
   getuser () {
