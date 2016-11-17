@@ -26,7 +26,6 @@ export class ProfileService {
       }
     )
     this.mentioned = undefined
-    this.$log.debug('')
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/mentions'
@@ -71,5 +70,10 @@ export class ProfileService {
   refreshFollow (username) {
     this.$followService.getfollower(username)
     this.$followService.getfollowing(username)
+  }
+
+  goToProfile (name) {
+    this.refreshProfile(name)
+    this.$stateService.state['profile']()
   }
 }

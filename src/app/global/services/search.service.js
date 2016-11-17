@@ -30,9 +30,9 @@ export class SearchService {
                   let temp = word.replace(/[^a-z0-9]/gmi, '')
                   this.$log.debug(word)
                   return (word.substring(0, 1) === '@')
-                    ? '<a href="#" ng-click="$feed.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                    ? '<a href="#" ng-click="$search.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                     : (word.substring(0, 1) === '#')
-                      ? '<a href="#" ng-click="$feed.search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                      ? '<a href="#" ng-click="$search.search(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : word
                 })
             .join(' ')
@@ -70,9 +70,9 @@ export class SearchService {
                     let temp = word.replace(/[^a-z0-9]/gmi, '')
                     this.$log.debug(word)
                     return (word.substring(0, 1) === '@')
-                      ? '<a href="#" ng-click="$feed.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                      ? '<a href="#" ng-click="$search.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : (word.substring(0, 1) === '#')
-                        ? '<a href="#" ng-click="$feed.search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                        ? '<a href="#" ng-click="$search.search(' + "'" + temp + "'" + ')">' + word + '</a>'
                         : word
                   })
               .join(' ')
