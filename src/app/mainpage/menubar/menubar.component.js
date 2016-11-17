@@ -40,7 +40,7 @@ class MenubarController {
     }
 
     this.viewProfile = () => {
-      this.$profileService.viewProfile(this.$authenticate.username)
+      this.$stateService.state['profile']()
     }
 
     this.showTweetPrompt = ($event) => {
@@ -59,6 +59,7 @@ class MenubarController {
         }, () => {
           console.log('tweet didn\'t have contents')
         }).then(() => {
+          this.$log.debug(this.$stateService.currentState)
           this.$stateService.state[this.$stateService.currentState](true)
         })
     }
