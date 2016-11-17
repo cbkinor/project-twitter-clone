@@ -20,7 +20,7 @@ class MenubarController {
     }
 
     this.home = () => {
-      this.$stateService.state['home']()
+      this.$stateService.state['home'](true)
       this.$homeService.refreshFeed(this.$authenticate.username)
     }
 
