@@ -7,7 +7,7 @@ export class SearchService {
     this.$state = $state
     this.$cookies = $cookies
     this.$authenticate = $authenticate
-    this.searchText = undefined
+    this.searchText = ''
     $log.debug('SearchService created')
   }
   likeTweet (item) {
@@ -74,6 +74,8 @@ export class SearchService {
     this.mentioned = undefined
     this.author = undefined
     this.hashtag = undefined
+
+    this.searchText = this.inputText;
     this.$log.debug(this.searchText)
     this.$http({
       method: 'GET',
