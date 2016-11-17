@@ -9,7 +9,7 @@ class SearchController {
     this.$stateService = $stateService
     $log.debug('SearchController instantiated')
   }
-
+  
   userProfile (username) {
     this.$profileService.refreshProfile(username)
     this.$stateService.state['profile']
