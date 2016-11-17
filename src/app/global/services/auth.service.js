@@ -40,7 +40,7 @@ export class AuthenticateService {
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
         this.profile = response.data.profile
-        this.$homeService.viewHome(this.username)
+        this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)
@@ -94,7 +94,7 @@ export class AuthenticateService {
         this.profile = response.data.profile
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
-        this.$homeService.viewHome(this.username)
+        this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)
@@ -113,7 +113,7 @@ export class AuthenticateService {
     }).then(
       (response) => {
         this.$log.debug(response)
-        this.$homeService.viewHome(this.username)
+        this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)

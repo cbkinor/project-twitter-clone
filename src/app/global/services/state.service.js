@@ -7,22 +7,18 @@ export class StateService {
     this.$state = $state
     this.$log.debug('StateService instantiated')
 
-    this.loadState = (name, componentName, tabName) => {
-      this.$state.go(name)
-      this.currentState = componentName
-      this.currentTab = tabName
-    }
-
     this.state = {
-      'login': () => { this.loadState('login', 'login') },
-      'home': () => { this.loadState('mainpage.page.home', 'home', 'feed') },
-      'profile': () => { this.loadState('mainpage.page.profile', 'profile', 'tweets') },
-      'edit': () => { this.loadState('mainpage.edit', 'edit') },
-      'search': () => { this.loadState('mainpage.search') }
+      'login': (refresh) => { this.loadState(refresh, 'login', 'login') },
+      'home': (refresh) => { this.loadState(refresh, 'mainpage.page.home', 'home', 'feed') },
+      'profile': (refresh) => { this.loadState(refresh, 'mainpage.page.profile', 'profile', 'tweets') },
+      'edit': (refresh) => { this.loadState(refresh, 'mainpage.edit', 'edit') },
+      'search': (refresh) => { this.loadState(refresh, 'mainpage.search') }
     }
   }
 
-  ngInjectMandatoryMethod () {
-    return
+  loadState (refresh, name, componentName, tabName) {
+    this.$state.go(name, {}, {reload: refresh, inherit: false, notify: true})
+    this.currentState = componentName
+    this.currentTab = tabName
   }
 }
