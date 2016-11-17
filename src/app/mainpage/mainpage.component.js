@@ -2,9 +2,13 @@ import templateUrl from './mainpage.component.html'
 
 /* @ngInject */
 class MainpageController {
-  constructor ($log, $state) {
+  constructor ($log, $stateService, $authenticate, $cookies) {
     $log.debug('mainpage instantiated')
-    $state.go('mainpage.page.home')
+    if (!$authenticate.username) {
+      $log.debug('Authenticating User')
+      const state = $cookies.get('currentState')
+      $authenticate.authenticate(!state ? 'login' : state)
+    }
   }
 }
 

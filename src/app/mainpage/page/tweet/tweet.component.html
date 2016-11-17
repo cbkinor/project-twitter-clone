@@ -1,8 +1,11 @@
 
-        <h3 ng-click="null">User: {{$tweet.getuser()}}</h3>
-        <md-list flex="">
-          <md-list-item ng-repeat="item in $tweet.gettweets()" ng-click="null">
-            <p>Posted: {{ item.posted * 1000 | date:'HH:mm:ss' }}</p> <br>
-            <p>{{item.content}}</p><br>
-          </md-list-item>
-        </md-list>
+<h3 ng-click="null">User: {{$tweet.$profileService.username}}</h3>
+<md-list flex="">
+  <div class="md-list-item-text" layout="column">
+    <md-divider></md-divider>
+    <md-list-item ng-repeat="item in $tweet.gettweets()" ng-click="null">
+      <p>Posted: {{ item.posted | date:'HH:mm:ss' }}</p>
+      <p>{{item.content}}</p>
+    </div>
+  </md-list-item>
+</md-list>

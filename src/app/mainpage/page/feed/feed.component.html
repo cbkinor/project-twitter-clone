@@ -4,16 +4,15 @@
             <md-list-item class="md-3-line" ng-repeat="item in $feed.getFeed()">
               <div class="md-list-item-text" layout="column">
                 <md-divider></md-divider>
-                <h3 ng-click="null">{{ item.author.username }}</h3>
-                <!-- <p>{{ item.content }}</p> -->
+                <h3 ng-click="$feed.feedUser(item.author.username)">{{ item.author.username }}</h3>
                 <p compile="item.content"></p>
                 <p>{{ item.posted * 1000 | date:'HH:mm:ss' }}</p>
-                <div ng-show='item.inReplyTo'>
+                <!-- <div ng-show='item.inReplyTo'>
                   <h3 ng-click="null">Reply From {{ item.author.username }}</h3>
                 </div>
                 <div ng-show='item.repostOf'>
                   <h3 ng-click="null">Repost Of {{ item.author.username }}</h3>
-                </div>
+                </div> -->
                 </br>
               </div>
             </md-list-item>

@@ -7,6 +7,7 @@ class SearchController {
     this.$profileService = $profileService
     $log.debug('SearchController instantiated')
   }
+  
   userProfile (username) {
     this.$profileService.viewProfile(username)
   }

@@ -10,9 +10,7 @@ export class HomeService {
     this.$log.debug('HomeService instantiated')
   }
 
-  viewHome (username) {
-    let homeService = this
-    this.$log.debug(username)
+  refreshFeed (username) {
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/feed'
@@ -27,7 +25,7 @@ export class HomeService {
                     let temp = word.replace(/[^a-z0-9]/gmi, '')
                     this.$log.debug(word)
                     return (word.substring(0, 1) === '@')
-                      ? '<a href="#" ng-click="$feed.$homeService.viewHome(' + "'" + temp + "'" + ')">' + word + '</a>'
+                      ? '<a href="#" ng-click="$feed.$profileService.viewProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : (word.substring(0, 1) === '#')
                         ? '<a href="#" ng-click="$feed.test()">' + word + '</a>'
                         : word
@@ -37,7 +35,6 @@ export class HomeService {
             return tweet
           })
         this.$log.debug(this.feed)
-        this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)

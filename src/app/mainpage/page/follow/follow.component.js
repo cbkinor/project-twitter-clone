@@ -21,6 +21,9 @@ class followController {
   }
 
   google (username) {
+    console.log(username)
+    this.$followservice.getfollower(username)
+    this.$followservice.getfollowing(username)
     this.$profileService.viewProfile(username)
   }
 }

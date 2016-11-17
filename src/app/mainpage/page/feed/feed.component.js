@@ -4,15 +4,11 @@ import templateUrl from './feed.component.html'
 class feedController {
   constructor ($log, $state, $homeService, $authenticate, $profileService) {
     this.$homeService = $homeService
-    this.$state = $state
     this.$profileService = $profileService
+    this.$state = $state
     $log.debug('feedController instantiated')
     this.$log = $log
-    if (!$authenticate.username) {
-      $log.debug('Authenticating User')
-      $authenticate.authenticate()
-    }
-    this.$homeService.viewHome($authenticate.username)
+    $homeService.refreshFeed($authenticate.username)
   }
 
   getFeed () {
@@ -21,6 +17,10 @@ class feedController {
 
   test () {
     this.$log.debug('TESTING LINKS')
+  }
+
+  feedUser (username) {
+    this.$profileService.viewProfile(username)
   }
 }
 
