@@ -16,7 +16,7 @@ export class ProfileService {
       url: 'http://localhost:8080/users/@' + username + '/tweets'
     }).then(
       (response) => {
-        this.$log.debug(response.data)
+        this.username = username
         this.arrtweets = response.data
         this.$stateService.state['profile']()
       },
