@@ -22,13 +22,13 @@ export class HomeService {
             tweet.content = tweet.content
               .split(' ')
               .map(word => {
-                    let temp = word.replace(/[^a-z0-9]/gmi, '')
-                    return (word.substring(0, 1) === '@')
+                let temp = word.replace(/[^a-z0-9]/gmi, '')
+                return (word.substring(0, 1) === '@')
                       ? '<a href="#" ng-click="$feed.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : (word.substring(0, 1) === '#')
                         ? '<a href="#" ng-click="$feed.search(' + "'" + temp + "'" + ')">' + word + '</a>'
                         : word
-                  })
+              })
               .join(' ')
 
             return tweet
