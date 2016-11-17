@@ -6,14 +6,19 @@ class feedController {
     this.$homeService = $homeService
     this.$profileService = $profileService
     this.$state = $state
-    this.$homeService.refreshFeed($authenticate.username)
     $log.debug('feedController instantiated')
+    this.$log = $log
+    $homeService.refreshFeed($authenticate.username)
   }
 
   getFeed () {
     return this.$homeService.feed
   }
-  
+
+  test () {
+    this.$log.debug('TESTING LINKS')
+  }
+
   feedUser (username) {
     this.$profileService.viewProfile(username)
   }

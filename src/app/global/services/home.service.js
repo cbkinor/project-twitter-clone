@@ -11,14 +11,30 @@ export class HomeService {
   }
 
   refreshFeed (username) {
-    this.$log.debug('We have feeds')
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/feed'
     }).then(
       (response) => {
         this.feed = response.data
-        this.$log.debug(response.data)
+          .map(tweet => {
+            if (tweet.content === null) tweet.content = ''
+            tweet.content = tweet.content
+              .split(' ')
+              .map(word => {
+                    let temp = word.replace(/[^a-z0-9]/gmi, '')
+                    this.$log.debug(word)
+                    return (word.substring(0, 1) === '@')
+                      ? '<a href="#" ng-click="$feed.$profileService.viewProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                      : (word.substring(0, 1) === '#')
+                        ? '<a href="#" ng-click="$feed.test()">' + word + '</a>'
+                        : word
+                  })
+              .join(' ')
+
+            return tweet
+          })
+        this.$log.debug(this.feed)
       },
       (error) => {
         this.$log.debug(error)
