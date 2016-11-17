@@ -1,11 +1,10 @@
 export class ProfileService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $stateService, $authenticate, $followservice) {
+  constructor ($log, $http, $stateService, $authenticate, $followservice) {
     this.$authenticate = $authenticate
     this.$log = $log
     this.$http = $http
-    this.$state = $state
     this.$stateService = $stateService
     this.$followservice = $followservice
     this.arrtweets = []
