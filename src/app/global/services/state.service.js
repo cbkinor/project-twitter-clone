@@ -37,10 +37,4 @@ export class StateService {
       }
     }
   }
-
-  search () {
-    this.$state.go('mainpage.search')
-    this.currentState = 'search'
-  }
-
 }
