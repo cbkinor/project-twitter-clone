@@ -1,12 +1,11 @@
 export class AuthenticateService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $cookies, $homeService, $stateService) {
+  constructor ($log, $http, $state, $cookies, $stateService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
     this.$cookies = $cookies
-    this.$homeService = $homeService
     this.profile = {
                       firstName: this.firstName,
                       lastName: this.lastName,

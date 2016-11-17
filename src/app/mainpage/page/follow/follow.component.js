@@ -2,13 +2,15 @@ import templateUrl from './follow.component.html'
 
 /* @ngInject */
 class followController {
-  constructor ($log, $stateService, $followservice, $authenticate, $profileService) {
+  constructor ($log, $stateService, $followservice, $authenticate, $profileService, $homeService) {
     this.$followservice = $followservice
     this.$authenticate = $authenticate
     this.$stateService = $stateService
     this.$profileService = $profileService
+    this.$homeService = $homeService
     this.initiatefollowers = $followservice.getfollower($authenticate.$cookies.get('username'))
     this.initiatefollowings = $followservice.getfollowing($authenticate.$cookies.get('username'))
+
     $log.debug('FollowController instantiated')
   }
 
