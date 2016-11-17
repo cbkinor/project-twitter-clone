@@ -1,12 +1,13 @@
 export class TweetService {
 
   /* @ngInject */
-  constructor ($http, $authenticate, $log, $homeService, $profileService) {
+  constructor ($http, $authenticate, $log, $homeService, $profileService, $mdDialog) {
     this.$log = $log
     this.$http = $http
     this.$authenticate = $authenticate
     this.$homeService = $homeService
     this.$profileService = $profileService
+    this.$mdDialog = $mdDialog
   }
 
   postTweet (content) {
@@ -24,6 +25,47 @@ export class TweetService {
       this.$profileService.refreshProfile(this.$profileService.username)
     })
   }
+  showTweetPrompt ($event, id) {
+    let confirm = this.$mdDialog.prompt()
+      .title('Post a tweet!')
+      .placeholder('Post content')
+      .initialValue('')
+      .targetEvent($event)
+      .ok('Post!')
+      .cancel('Close')
+
+    this.$mdDialog.show(confirm)
+      .then((result) => {
+        this.replyTweet(result, id)
+      }, () => {
+        console.log('tweet didn\'t have contents')
+      })
+  }
+  replyTweet (content, id) {
+    const tweet = {
+      'content': content,
+      'credentials': this.$authenticate.getCredentials()
+    }
+
+    this.$http({
+      method: 'POST',
+      url: 'http://localhost:8080/tweets/' + id + '/reply',
+      data: tweet
+    }).then((response) => {
+      this.$homeService.refreshFeed(this.$authenticate.username)
+      this.$profileService.refreshProfile(this.$profileService.username)
+    })
+  }
+  repostTweet (id) {
+    this.$http({
+      method: 'POST',
+      url: 'http://localhost:8080/tweets/' + id + '/repost',
+      data: this.$authenticate.getCredentials()
+    }).then((response) => {
+      this.$homeService.refreshFeed(this.$authenticate.username)
+      this.$profileService.refreshProfile(this.$profileService.username)
+    })
+  }
   likeTweet (item) {
     this.$http({
       method: 'POST',
@@ -36,7 +78,7 @@ export class TweetService {
           (response) => {
             item.liked = true
           },
-          (error) => {
+          () => {
             this.$log.debug('tweet not liked')
           }
         )
@@ -53,7 +95,7 @@ export class TweetService {
           (response) => {
             item.liked = false
           },
-          (error) => {
+          () => {
             this.$log.debug('tweet not unliked')
           }
         )
@@ -75,7 +117,7 @@ export class TweetService {
                 if (user.username === this.$authenticate.username) tweet.liked = true
               })
             },
-            (error) => {
+            () => {
               this.$log.debug('tweet had no likes')
             }
           )

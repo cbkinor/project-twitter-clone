@@ -11,7 +11,7 @@ class SearchController {
     this.$scope.$profileService = $profileService
     $log.debug('SearchController instantiated')
   }
-
+  
   userProfile (username) {
     this.$profileService.refreshProfile(username)
     this.$stateService.state['profile']
