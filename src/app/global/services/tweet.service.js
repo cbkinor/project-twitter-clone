@@ -1,10 +1,11 @@
 export class TweetService {
 
   /* @ngInject */
-  constructor ($http, $authenticate, $log) {
+  constructor ($http, $authenticate, $log, $homeService) {
+    this.$log = $log
     this.$http = $http
     this.$authenticate = $authenticate
-    this.$log = $log
+    this.$homeService = $homeService
   }
 
   postTweet (content) {
@@ -17,6 +18,8 @@ export class TweetService {
       method: 'POST',
       url: 'http://localhost:8080/tweets',
       data: tweet
+    }).then((response) => {
+      this.$homeService.refreshFeed(this.$authenticate.username)
     })
   }
   likeTweet (item) {

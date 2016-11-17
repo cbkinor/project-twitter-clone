@@ -60,9 +60,6 @@ class MenubarController {
           this.$tweetService.postTweet(result)
         }, () => {
           console.log('tweet didn\'t have contents')
-        }).then(() => {
-          this.$log.debug(this.$stateService.currentState)
-          this.$homeService.refreshFeed(this.$authenticate.username)
         })
     }
 

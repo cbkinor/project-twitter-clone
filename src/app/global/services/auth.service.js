@@ -122,10 +122,37 @@ export class AuthenticateService {
     )
   }
 
+  delete () {
+    this.$http({
+      headers: {
+        'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:3000/'
+      },
+      method: 'DELETE',
+      url: 'http://localhost:8080/users/@' + this.username,
+      data: this.getCredentials()
+    }).then(
+      (response) => {
+        this.clearUserInfo()
+        this.$stateService.state['login']()
+      },
+      (error) => {
+        this.$log.debug(error)
+      }
+    )
+  }
+
   getCredentials () {
     return {
       'username': this.username,
       'password': this.password
     }
+  }
+
+  clearUserInfo () {
+    this.username = undefined
+    this.password = undefined
+    this.profile = undefined
   }
 }
