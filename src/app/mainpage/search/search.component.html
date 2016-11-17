@@ -4,23 +4,23 @@
       <md-tab-label>Tweets with Hashtag</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.tweets.data && $search.$searchService.tweets.data.length > 0">No results found</md-list-item>
-          <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.tweets.data">
+          <md-list-item ng-hide="$search.$searchService.tweets && $search.$searchService.tweets.length > 0">No results found</md-list-item>
+          <md-list-item class="md-3-line" ng-repeat="tweet in $search.$searchService.tweets">
             <div class="md-list-item-text md-whiteframe-2dp" layout="column">
-              <h3 ng-click="null">>{{ item.author.username }}</h3>
-              <p>{{ item.content }}</p>
-              <p>{{ item.posted | date:'medium' }}</p>
+              <h3 ng-click="null">>{{ tweet.author.username }}</h3>
+              <p>{{ tweet.content }}</p>
+              <p>{{ tweet.posted | date:'medium' }}</p>
               <div ng-show='item.inReplyTo'>
                 <h3 ng-click="null">Reply From</h3>
               </div>
-              <div ng-show='item.repostOf'>
+              <div ng-show='tweet.repostOf'>
                 <h3 ng-click="null">Repost Of</h3>
-                <h3>>{{item.repostOf.author.username}} </h3>
-                <p>{{ item.repostOf.content }}</p>
-                <p>{{ item.repostOf.posted | date:'medium' }}</p>
+                <h3>>{{tweet.repostOf.author.username}} </h3>
+                <p>{{ tweet.repostOf.content }}</p>
+                <p>{{ tweet.repostOf.posted | date:'medium' }}</p>
               </div>
-              <md-button ng-click="$search.$tweetService.likeTweet(item)" ng-hide="item.liked">like</md-button>
-              <md-button ng-click="$search.$tweetService.unlikeTweet(item)" ng-show="item.liked">unlike</md-button>
+              <md-button ng-click="$search.$tweetService.likeTweet(tweet)" ng-hide="tweet.liked">like</md-button>
+              <md-button ng-click="$search.$tweetService.unlikeTweet(tweet)" ng-show="tweet.liked">unlike</md-button>
             </div>
             </br>
           </md-list-item>
@@ -31,8 +31,8 @@
       <md-tab-label>Users</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.users.data">No results found</md-list-item>
-          <md-list-item ng-show="$search.$searchService.users.data" ng-repeat="user in $search.$searchService.users.data"
+          <md-list-item ng-hide="$search.$searchService.users && $search.$searchService.users.length > 0">No results found</md-list-item>
+          <md-list-item ng-repeat="user in $search.$searchService.users"
             <md-button ng-click="$search.userProfile(user.username)">{{ user.username }}</md-button>
           </md-list-item>
         </md-list>
@@ -42,8 +42,8 @@
       <md-tab-label>Mentions</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.mentioned.data && $search.$searchService.mentioned.data.length > 0">No results found</md-list-item>
-          <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.mentioned.data">
+          <md-list-item ng-hide="$search.$searchService.mentioned && $search.$searchService.mentioned.length > 0">No results found</md-list-item>
+          <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.mentioned">
             <div class="md-list-item-text md-whiteframe-2dp" layout="column">
               <h3 ng-click="null">>{{ item.author.username }}</h3>
               <p>{{ item.content }}</p>
