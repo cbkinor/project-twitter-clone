@@ -2,9 +2,9 @@ import templateUrl from './tweet.component.html'
 
 /* @ngInject */
 class tweetController {
-  constructor ($log, $state, $profileService, $authenticate, $followservice, $homeService) {
+  constructor ($log, $state, $profileService, $authenticate, $followService, $homeService) {
     this.$profileService = $profileService
-    this.$followservice = $followservice
+    this.$followService = $followService
     this.$authenticate = $authenticate
     this.$homeService = $homeService
     this.$state = $state
@@ -33,12 +33,12 @@ class tweetController {
 
   checkfollower () {
     let shit = this.$authenticate.username
-    if (this.$followservice.arrfollower.length > 0 && this.$followservice.arrfollower.filter(function (follower) { return follower.username === shit }).length === 1) {
-      return this.$followservice.arrfollower.filter(function (follower) { return follower.username === shit })[0].username === shit
+    if (this.$followService.arrfollower.length > 0 && this.$followService.arrfollower.filter(function (follower) { return follower.username === shit }).length === 1) {
+      return this.$followService.arrfollower.filter(function (follower) { return follower.username === shit })[0].username === shit
     } else {
       return false
     }
-    // this.$log.debug(this.$followservice.arrfollower.includes(this.$profileService.getSingleUser(this.$authenticate.username)))
+    // this.$log.debug(this.$followService.arrfollower.includes(this.$profileService.getSingleUser(this.$authenticate.username)))
 }
 }
 

@@ -10,7 +10,7 @@ export default
     .module('twitter-page', [])
     .component('page', page)
     .component('follow', follow)
-    .service('$followservice', FollowService)
+    .service('$followService', FollowService)
     .component('home', feed)
     .component('profile', tweet)
     .config(configure)

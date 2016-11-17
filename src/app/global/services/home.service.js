@@ -23,7 +23,6 @@ export class HomeService {
               .split(' ')
               .map(word => {
                     let temp = word.replace(/[^a-z0-9]/gmi, '')
-                    this.$log.debug(word)
                     return (word.substring(0, 1) === '@')
                       ? '<a href="#" ng-click="$feed.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : (word.substring(0, 1) === '#')
