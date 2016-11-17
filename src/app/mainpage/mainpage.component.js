@@ -2,9 +2,8 @@ import templateUrl from './mainpage.component.html'
 
 /* @ngInject */
 class MainpageController {
-  constructor ($log, $state) {
+  constructor ($log) {
     $log.debug('mainpage instantiated')
-    $state.go('mainpage.page.home')
   }
 }
 
