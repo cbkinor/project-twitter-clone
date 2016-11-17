@@ -1,7 +1,8 @@
 export class TweetService {
 
   /* @ngInject */
-  constructor ($http, $authenticate, $homeService) {
+  constructor ($http, $authenticate, $log, $homeService) {
+    this.$log = $log
     this.$http = $http
     this.$authenticate = $authenticate
     this.$homeService = $homeService
@@ -20,5 +21,63 @@ export class TweetService {
     }).then((response) => {
       this.$homeService.refreshFeed(this.$authenticate.username)
     })
+  }
+  likeTweet (item) {
+    this.$http({
+      method: 'POST',
+      url: 'http://localhost:8080/tweets/' + item.id + '/like',
+      data: {
+        username: this.$authenticate.username,
+        password: this.$authenticate.password
+      }
+    }).then(
+          (response) => {
+            item.liked = true
+          },
+          (error) => {
+            this.$log.debug('tweet not liked')
+          }
+        )
+  }
+  unlikeTweet (item) {
+    this.$http({
+      method: 'POST',
+      url: 'http://localhost:8080/tweets/' + item.id + '/unlike',
+      data: {
+        username: this.$authenticate.username,
+        password: this.$authenticate.password
+      }
+    }).then(
+          (response) => {
+            item.liked = false
+          },
+          (error) => {
+            this.$log.debug('tweet not unliked')
+          }
+        )
+  }
+
+  checkAllTweetLikes (tweets) {
+    tweets.data.forEach(tweet => {
+      this.$http({
+        method: 'GET',
+        url: 'http://localhost:8080/tweets/' + tweet.id + '/likes',
+        data: {
+          username: this.$authenticate.username,
+          password: this.$authenticate.password
+        }
+      }).then(
+            (response) => {
+              tweet.liked = false
+              response.data.forEach(user => {
+                if (user.username === this.$authenticate.username) tweet.liked = true
+              })
+            },
+            (error) => {
+              this.$log.debug('tweet had no likes')
+            }
+          )
+    })
+    return tweets
   }
 }
