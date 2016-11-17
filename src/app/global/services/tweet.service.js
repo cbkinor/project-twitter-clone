@@ -78,6 +78,7 @@ export class TweetService {
     }).then(
           (response) => {
             item.liked = true
+            this.$log.debug(response)
           },
           (error) => {
             this.$log.debug('tweet not liked')
@@ -95,6 +96,7 @@ export class TweetService {
     }).then(
           (response) => {
             item.liked = false
+            this.$log.debug(response)
           },
           (error) => {
             this.$log.debug('tweet not unliked')

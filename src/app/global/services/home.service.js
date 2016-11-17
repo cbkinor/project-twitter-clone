@@ -1,12 +1,12 @@
 export class HomeService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $stateService, $followservice, $profileService) {
+  constructor ($log, $http, $state, $stateService, $followService, $profileService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
     this.$stateService = $stateService
-    this.$followservice = $followservice
+    this.$followService = $followService
     this.$profileService = $profileService
     this.feed = []
     this.$log.debug('HomeService instantiated')
@@ -26,7 +26,6 @@ export class HomeService {
               .split(' ')
               .map(word => {
                     let temp = word.replace(/[^a-z0-9]/gmi, '')
-                    this.$log.debug(word)
                     return (word.substring(0, 1) === '@')
                       ? '<a href="#" ng-click="$feed.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : (word.substring(0, 1) === '#')

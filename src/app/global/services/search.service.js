@@ -7,14 +7,13 @@ export class SearchService {
     this.$state = $state
     this.$cookies = $cookies
     this.$tweetService = $tweetService
+    this.tweets = undefined
+    this.users = undefined
+    this.hashtag = undefined
     this.searchText = ''
     $log.debug('SearchService created')
   }
   search () {
-    this.tweets = undefined
-    this.users = undefined
-    this.mentioned = undefined
-
     this.searchText = this.inputText
     this.$log.debug(this.searchText)
     this.$http({
@@ -23,6 +22,23 @@ export class SearchService {
     }).then(
       (response) => {
         this.mentioned = response.data
+        .map(tweet => {
+          if (tweet.content === null) tweet.content = ''
+          tweet.content = tweet.content
+            .split(' ')
+            .map(word => {
+                  let temp = word.replace(/[^a-z0-9]/gmi, '')
+                  this.$log.debug(word)
+                  return (word.substring(0, 1) === '@')
+                    ? '<a href="#" ng-click="$feed.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                    : (word.substring(0, 1) === '#')
+                      ? '<a href="#" ng-click="$feed.search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                      : word
+                })
+            .join(' ')
+
+          return tweet
+        })
       },
       (error) => {
         this.$log.debug('no mentions with this text')
@@ -45,6 +61,24 @@ export class SearchService {
     }).then(
       (response) => {
         this.tweets = this.$tweetService.checkAllTweetLikes(response.data)
+        this.tweets = this.tweets
+          .map(tweet => {
+            if (tweet.content === null) tweet.content = ''
+            tweet.content = tweet.content
+              .split(' ')
+              .map(word => {
+                    let temp = word.replace(/[^a-z0-9]/gmi, '')
+                    this.$log.debug(word)
+                    return (word.substring(0, 1) === '@')
+                      ? '<a href="#" ng-click="$feed.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                      : (word.substring(0, 1) === '#')
+                        ? '<a href="#" ng-click="$feed.search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                        : word
+                  })
+              .join(' ')
+
+            return tweet
+          })
       },
       (error) => {
         this.$log.debug('no tags with this text')
