@@ -1,10 +1,10 @@
 export class StateService {
 
   /* @ngInject */
-  constructor ($log, $state) {
-
+  constructor ($log, $state, $cookies) {
     this.$log = $log
     this.$state = $state
+    this.$cookies = $cookies
     this.$log.debug('StateService instantiated')
 
     this.state = {
@@ -12,7 +12,7 @@ export class StateService {
       'home': (refresh) => { this.loadState(refresh, 'mainpage.page.home', 'home', 'feed') },
       'profile': (refresh) => { this.loadState(refresh, 'mainpage.page.profile', 'profile', 'tweets') },
       'edit': (refresh) => { this.loadState(refresh, 'mainpage.edit', 'edit') },
-      'search': (refresh) => { this.loadState(refresh, 'mainpage.search', 'search') },
+      'search': (refresh) => { this.loadState(refresh, 'mainpage.search', 'search') }
     }
   }
 
@@ -20,5 +20,6 @@ export class StateService {
     this.$state.go(name, {}, {reload: refresh, inherit: false, notify: true})
     this.currentState = componentName
     this.currentTab = tabName
+    this.$cookies.put('currentState', this.currentState)
   }
 }

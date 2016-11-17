@@ -4,7 +4,7 @@
   <div class="md-list-item-text" layout="column">
     <md-divider></md-divider>
     <md-list-item ng-repeat="item in $tweet.gettweets()" ng-click="null">
-      <p>Posted: {{ item.posted | date:'HH:mm:ss' }}</p>
+      <p>Posted: {{ item.posted | date:'medium' }}</p>
       <p>{{item.content}}</p>
     </div>
   </md-list-item>

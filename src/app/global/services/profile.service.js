@@ -18,7 +18,21 @@ export class ProfileService {
       (response) => {
         this.username = username
         this.arrtweets = response.data
+        this.username = username
         this.$stateService.state['profile']()
+      },
+      (error) => {
+        this.$log.debug(error)
+      }
+    )
+    this.mentioned = undefined
+    this.$log.debug('')
+    this.$http({
+      method: 'GET',
+      url: 'http://localhost:8080/users/@' + username + '/mentions'
+    }).then(
+      (response) => {
+        this.mentioned = response
       },
       (error) => {
         this.$log.debug(error)

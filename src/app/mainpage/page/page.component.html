@@ -1,9 +1,9 @@
-<div class="pageWidth pageHeight" layout-padding layout-margin layout = "row">
+<div class="pageWidth pageHeight" layout-padding layout = "row">
 
-  <follow layout-align="center center" layout="column" flex="25" layout-fill class="md-padding"></follow>
+  <follow layout="column" flex="25" layout-fill></follow>
 
-  <md-content md-dynamic-height md-border-bottom layout-fill >
-    <md-tabs class="full-height">
+  <md-content layout-fill class="transparentBackground">
+    <md-tabs layout-fill class="whiteBackground">
       <md-tab id="tab1">
         <md-tab-label>{{$page.$stateService.currentTab}}</md-tab-label>
         <md-tab-body>
@@ -11,7 +11,29 @@
         </md-tab-body>
       </md-tab>
       <md-tab id="tab2">
-        <!-- INSERT MENTIONS HERE -->
+        <md-tab-label>Mentions</md-tab-label>
+        <md-tab-body>
+          <md-list flex="">
+            <md-list-item ng-hide="$page.$profileService.mentioned.data && $page.$profileService.mentioned.data.length > 0">No results found</md-list-item>
+            <md-list-item class="md-3-line" ng-repeat="item in $page.$profileService.mentioned.data">
+              <div class="md-list-item-text md-whiteframe-2dp" layout="column">
+                <h3 ng-click="null">>{{ item.author.username }}</h3>
+                <p>{{ item.content }}</p>
+                <p>{{ item.posted | date:'HH:mm:ss' }}</p>
+                <div ng-show='item.inReplyTo'>
+                  <h3 ng-click="null">Reply From</h3>
+                </div>
+                <div ng-show='item.repostOf'>
+                  <h3 ng-click="null">Repost Of</h3>
+                  <h3>>{{item.repostOf.author.username}} </h3>
+                  <p>{{ item.repostOf.content }}</p>
+                  <p>{{ item.repostOf.posted | date:'HH:mm:ss' }}</p>
+                </div>
+              </div>
+              </br>
+            </md-list-item>
+          </md-list>
+        </md-tab-body>
       </md-tab>
     </md-tabs>
   </md-content>

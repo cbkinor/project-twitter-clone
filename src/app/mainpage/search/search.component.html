@@ -9,7 +9,7 @@
             <div class="md-list-item-text md-whiteframe-2dp" layout="column">
               <h3 ng-click="null">>{{ item.author.username }}</h3>
               <p>{{ item.content }}</p>
-              <p>{{ item.posted | date:'HH:mm:ss' }}</p>
+              <p>{{ item.posted | date:'medium' }}</p>
               <div ng-show='item.inReplyTo'>
                 <h3 ng-click="null">Reply From</h3>
               </div>
@@ -17,7 +17,7 @@
                 <h3 ng-click="null">Repost Of</h3>
                 <h3>>{{item.repostOf.author.username}} </h3>
                 <p>{{ item.repostOf.content }}</p>
-                <p>{{ item.repostOf.posted | date:'HH:mm:ss' }}</p>
+                <p>{{ item.repostOf.posted | date:'medium' }}</p>
               </div>
             </div>
             </br>
