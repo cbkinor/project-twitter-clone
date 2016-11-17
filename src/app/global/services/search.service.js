@@ -58,8 +58,8 @@ export class SearchService {
     }).then(
           (response) => {
             this.$log.debug(response)
-            response.data.filter(function (user) { return user.username === this.$authenticate.username })
-            if (response.data.length() > 0) {
+            response.data.filter((user) => user.username === this.$authenticate.username)
+            if (response.data.length > 0) {
               item.liked = true
             } else {
               item.liked = false
