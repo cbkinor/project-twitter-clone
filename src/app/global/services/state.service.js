@@ -2,16 +2,9 @@ export class StateService {
 
   /* @ngInject */
   constructor ($log, $state) {
-
     this.$log = $log
     this.$state = $state
     this.$log.debug('StateService instantiated')
-
-    this.loadState = (name, componentName, tabName) => {
-      this.$state.go(name)
-      this.currentState = componentName
-      this.currentTab = tabName
-    }
 
     this.state = {
       'login': () => { this.loadState('login', 'login') },
@@ -22,7 +15,9 @@ export class StateService {
     }
   }
 
-  ngInjectMandatoryMethod () {
-    return
+  loadState (name, componentName, tabName) {
+    this.$state.go(name)
+    this.currentState = componentName
+    this.currentTab = tabName
   }
 }
