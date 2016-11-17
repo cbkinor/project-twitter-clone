@@ -12,7 +12,7 @@ export class StateService {
       'home': (refresh) => { this.loadState(refresh, 'mainpage.page.home', 'home', 'feed') },
       'profile': (refresh) => { this.loadState(refresh, 'mainpage.page.profile', 'profile', 'tweets') },
       'edit': (refresh) => { this.loadState(refresh, 'mainpage.edit', 'edit') },
-      'search': (refresh) => { this.loadState(refresh, 'mainpage.search') }
+      'search': (refresh) => { this.loadState(refresh, 'mainpage.search', 'search') },
     }
   }
 

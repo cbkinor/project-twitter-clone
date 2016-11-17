@@ -26,6 +26,7 @@ export class AuthenticateService {
   }
 
   login (initial) {
+    console.log("logging in")
     if (initial === undefined) initial = false
     if (!this.username || !this.password) {
       this.$stateService.state['login']()

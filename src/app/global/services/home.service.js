@@ -10,7 +10,7 @@ export class HomeService {
     this.$log.debug('HomeService instantiated')
   }
 
-  viewHome (username) {
+  refreshFeed (username) {
     this.$log.debug('We have feeds')
     this.$http({
       method: 'GET',
@@ -19,7 +19,6 @@ export class HomeService {
       (response) => {
         this.feed = response.data
         this.$log.debug(response.data)
-        this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)

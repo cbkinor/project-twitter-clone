@@ -16,8 +16,6 @@ export class TweetService {
       method: 'POST',
       url: 'http://localhost:8080/tweets',
       data: tweet
-    }).then((response) => {
-      console.log(response)
     })
   }
 }
