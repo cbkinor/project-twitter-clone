@@ -1,12 +1,12 @@
 export class ProfileService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $stateService, $authenticate) {
+  constructor ($log, $http, $stateService, $authenticate, $followservice) {
     this.$authenticate = $authenticate
     this.$log = $log
     this.$http = $http
-    this.$state = $state
     this.$stateService = $stateService
+    this.$followservice = $followservice
     this.arrtweets = []
     $log.debug('ProfileService created')
     $log.debug(this.$authenticate.getCredentials())
@@ -20,7 +20,6 @@ export class ProfileService {
       (response) => {
         this.username = username
         this.arrtweets = response.data
-        this.$stateService.state['profile']()
       },
       (error) => {
         this.$log.debug(error)
@@ -34,6 +33,7 @@ export class ProfileService {
     }).then(
       (response) => {
         this.mentioned = response
+        this.refreshFollow(username)
       },
       (error) => {
         this.$log.debug(error)
@@ -44,13 +44,17 @@ export class ProfileService {
   followProfile (username) {
     this.$http({
       method: 'POST',
-      url: 'http://localhost:8080/users/@' + this.username + '/follow',
+      url: 'http://localhost:8080/users/@' + username + '/follow',
       data: {
           username: this.$authenticate.username,
           password: this.$authenticate.password
           }
+    }).then( () => {
+      this.refreshFollow(username)
     })
+
   }
+
   unfollowProfile (username) {
     this.$http({
       method: 'POST',
@@ -59,6 +63,13 @@ export class ProfileService {
         username: this.$authenticate.username,
         password: this.$authenticate.password
       }
+    }).then( () => {
+      this.refreshFollow(username)
     })
+  }
+
+  refreshFollow (username) {
+    this.$followservice.getfollower(username)
+    this.$followservice.getfollowing(username)
   }
 }

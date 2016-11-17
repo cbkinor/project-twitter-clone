@@ -13,7 +13,7 @@ export class SearchService {
   search () {
     this.tweets = undefined
     this.users = undefined
-    this.hashtag = undefined
+    this.mentioned = undefined
 
     this.searchText = this.inputText
     this.$log.debug(this.searchText)
