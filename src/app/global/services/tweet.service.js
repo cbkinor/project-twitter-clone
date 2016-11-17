@@ -58,7 +58,7 @@ export class TweetService {
   }
 
   checkAllTweetLikes (tweets) {
-    tweets.data.forEach(tweet => {
+    tweets.forEach(tweet => {
       this.$http({
         method: 'GET',
         url: 'http://localhost:8080/tweets/' + tweet.id + '/likes',
