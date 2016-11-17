@@ -19,13 +19,13 @@ export class AuthenticateService {
     $log.debug('AuthenticateService created')
   }
 
-  authenticate () {
+  authenticate (state) {
     this.username = this.$cookies.get('username')
     this.password = this.$cookies.get('password')
-    this.login()
+    this.login(state)
   }
 
-  login (initial) {
+  login (state, initial) {
     this.$log.debug('logging in')
     if (initial === undefined) initial = false
     if (!this.username || !this.password) {
@@ -41,6 +41,7 @@ export class AuthenticateService {
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
         this.profile = response.data.profile
+        this.$stateService.state[state]()
       },
       (error) => {
         this.$log.debug(error)

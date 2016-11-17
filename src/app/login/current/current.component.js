@@ -9,9 +9,8 @@ class CurrentController {
   }
 
   login () {
-    this.$authenticate.login()
     if (this.$authenticate.username)
-      this.$stateService.state['home']()
+      this.$authenticate.login('home')
   }
 }
 

@@ -4,8 +4,13 @@ import templateUrl from './page.component.html'
 class PageController {
   constructor ($log, $authenticate, $stateService, $cookies) {
     $log.debug('page instantiated')
-    const currentstate = $cookies.get('currentState')
-    currentstate ? $stateService.state[currentstate] : $stateService.state['login']
+    
+    let currentState = $cookies.get('currentState')
+    !currentState
+      ? $authenticate.authenticate('login')
+      : (currentState === 'login')
+        ? $authenticate.authenticate('home')
+        : $authenticate.authenticate(currentState)
   }
 }
 
