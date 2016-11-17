@@ -14,7 +14,7 @@
   background-size: 100% 100%;
 }
 
-.login-tab {
+.loginTab {
   background-color: rgba(255, 255, 255, .5);
 }
 
@@ -89,12 +89,8 @@ i {
     border-color: rgb(255, 255, 255);
 }
 
-.SearchTabs {
-  width: 70vw
-}
-
-.search-tab {
-  width: 100%
+.searchTabs {
+  width: 70vw;
 }
 
 .listUsage md-divider {
