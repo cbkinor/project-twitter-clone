@@ -31,9 +31,9 @@
       <md-tab-label>Users</md-tab-label>
       <md-tab-body>
         <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.author.data">No results found</md-list-item>
-          <md-list-item>
-            <md-button ng-click="$search.userProfile($search.$searchService.author.data.username)">{{ $search.$searchService.author.data.username }}</md-button>
+          <md-list-item ng-hide="$search.$searchService.users.data">No results found</md-list-item>
+          <md-list-item ng-show="$search.$searchService.users.data">
+            <md-button ng-click="$search.userProfile($search.$searchService.users.data.username)">{{ $search.$searchService.users.data.username }}</md-button>
           </md-list-item>
         </md-list>
       </md-tab-body>

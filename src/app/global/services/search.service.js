@@ -15,7 +15,7 @@ export class SearchService {
     this.author = undefined
     this.hashtag = undefined
 
-    this.searchText = this.inputText;
+    this.searchText = this.inputText
     this.$log.debug(this.searchText)
     this.$http({
       method: 'GET',
@@ -34,7 +34,7 @@ export class SearchService {
     }).then(
       (response) => {
         this.$log.debug(response)
-        this.author = response
+        this.users = response
       },
       (error) => {
         this.$log.debug('no users with this name')
