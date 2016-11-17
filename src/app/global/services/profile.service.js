@@ -1,14 +1,13 @@
 export class ProfileService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $stateService, $authenticate, $followservice, $homeService) {
+  constructor ($log, $http, $state, $stateService, $authenticate, $followservice) {
     this.$authenticate = $authenticate
     this.$log = $log
     this.$http = $http
     this.$state = $state
     this.$stateService = $stateService
     this.$followservice = $followservice
-    this.$homeService = $homeService
     this.arrtweets = []
     $log.debug('ProfileService created')
     $log.debug(this.$authenticate.getCredentials())
@@ -35,13 +34,12 @@ export class ProfileService {
     }).then(
       (response) => {
         this.mentioned = response
+        this.refreshFollow(username)
       },
       (error) => {
         this.$log.debug(error)
       }
     )
-    this.$followservice.getfollower(this.username)
-    this.$followservice.getfollowing(this.username)
   }
 
   followProfile (username) {
@@ -52,9 +50,10 @@ export class ProfileService {
           username: this.$authenticate.username,
           password: this.$authenticate.password
           }
+    }).then( () => {
+      this.refreshFollow(username)
     })
-    this.$followservice.getfollower(this.username)
-    this.$followservice.getfollowing(this.username)
+
   }
 
   unfollowProfile (username) {
@@ -65,7 +64,12 @@ export class ProfileService {
         username: this.$authenticate.username,
         password: this.$authenticate.password
       }
+    }).then( () => {
+      this.refreshFollow(username)
     })
+  }
+
+  refreshFollow (username) {
     this.$followservice.getfollower(username)
     this.$followservice.getfollowing(username)
   }
