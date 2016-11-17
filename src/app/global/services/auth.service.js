@@ -25,9 +25,8 @@ export class AuthenticateService {
     this.login(state)
   }
 
-  login (state ,initial) {
+  login (state, initial) {
     this.$log.debug('logging in')
-    this.$log.debug(state)
     if (initial === undefined) initial = false
     if (!this.username || !this.password) {
       this.$stateService.state['login']()
