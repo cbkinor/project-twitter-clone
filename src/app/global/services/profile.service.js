@@ -1,12 +1,12 @@
 export class ProfileService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $stateService, $authenticate) {
+  constructor ($log, $http, $stateService, $authenticate, $followService) {
     this.$authenticate = $authenticate
     this.$log = $log
     this.$http = $http
-    this.$state = $state
     this.$stateService = $stateService
+    this.$followService = $followService
     this.arrtweets = []
     $log.debug('ProfileService created')
     $log.debug(this.$authenticate.getCredentials())
@@ -20,20 +20,19 @@ export class ProfileService {
       (response) => {
         this.username = username
         this.arrtweets = response.data
-        this.$stateService.state['profile']()
       },
       (error) => {
         this.$log.debug(error)
       }
     )
     this.mentioned = undefined
-    this.$log.debug('')
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/mentions'
     }).then(
       (response) => {
         this.mentioned = response
+        this.refreshFollow(username)
       },
       (error) => {
         this.$log.debug(error)
@@ -44,13 +43,17 @@ export class ProfileService {
   followProfile (username) {
     this.$http({
       method: 'POST',
-      url: 'http://localhost:8080/users/@' + this.username + '/follow',
+      url: 'http://localhost:8080/users/@' + username + '/follow',
       data: {
           username: this.$authenticate.username,
           password: this.$authenticate.password
           }
+    }).then( () => {
+      this.refreshFollow(username)
     })
+
   }
+
   unfollowProfile (username) {
     this.$http({
       method: 'POST',
@@ -59,6 +62,18 @@ export class ProfileService {
         username: this.$authenticate.username,
         password: this.$authenticate.password
       }
+    }).then( () => {
+      this.refreshFollow(username)
     })
+  }
+
+  refreshFollow (username) {
+    this.$followService.getfollower(username)
+    this.$followService.getfollowing(username)
+  }
+
+  goToProfile (name) {
+    this.refreshProfile(name)
+    this.$stateService.state['profile']()
   }
 }

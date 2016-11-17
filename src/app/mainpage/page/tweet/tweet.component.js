@@ -10,6 +10,7 @@ class tweetController {
     this.$state = $state
     $log.debug('TweetController instantiated')
     this.$log = $log
+    this.$profileService.refreshProfile()
   }
 
   getFeed () {

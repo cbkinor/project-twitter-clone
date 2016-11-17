@@ -1,16 +1,19 @@
 export class HomeService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $stateService) {
+  constructor ($log, $http, $state, $stateService, $followService, $profileService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
     this.$stateService = $stateService
+    this.$followService = $followService
+    this.$profileService = $profileService
     this.feed = []
     this.$log.debug('HomeService instantiated')
   }
 
   refreshFeed (username) {
+    this.$profileService.refreshFollow(username)
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/feed'
