@@ -11,8 +11,8 @@ export class SearchService {
     $log.debug('SearchService created')
   }
   search () {
-    this.mentioned = undefined
-    this.author = undefined
+    this.tweets = undefined
+    this.users = undefined
     this.hashtag = undefined
 
     this.searchText = this.inputText
@@ -22,7 +22,7 @@ export class SearchService {
       url: 'http://localhost:8080/users/@' + this.searchText + '/mentions'
     }).then(
       (response) => {
-        this.mentioned = response
+        this.mentioned = response.data
       },
       (error) => {
         this.$log.debug('no mentions with this text')
@@ -33,7 +33,7 @@ export class SearchService {
       url: 'http://localhost:8080/users/partial/@' + this.searchText
     }).then(
       (response) => {
-        this.users = response
+        this.users = response.data
       },
       (error) => {
         this.$log.debug('no users with this name')
@@ -44,7 +44,7 @@ export class SearchService {
       url: 'http://localhost:8080/tags/partial/' + this.searchText
     }).then(
       (response) => {
-        this.tweets = this.$tweetService.checkAllTweetLikes(response)
+        this.tweets = this.$tweetService.checkAllTweetLikes(response.data)
       },
       (error) => {
         this.$log.debug('no tags with this text')
