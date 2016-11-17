@@ -18,6 +18,7 @@ export class ProfileService {
       (response) => {
         this.$log.debug(response.data)
         this.arrtweets = response.data
+        this.username = username
         this.$stateService.state['profile']()
       },
       (error) => {

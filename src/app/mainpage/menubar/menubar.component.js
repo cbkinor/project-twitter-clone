@@ -19,7 +19,7 @@ class MenubarController {
     }
 
     this.home = () => {
-      this.$stateService.state['home']()
+      this.$stateService.state['home'](true)
     }
 
     this.editProfile = () => {
@@ -56,9 +56,10 @@ class MenubarController {
       $mdDialog.show(confirm)
         .then((result) => {
           this.$tweetService.postTweet(result)
-          this.$stateService
         }, () => {
           console.log('tweet didn\'t have contents')
+        }).then(() => {
+          this.$stateService.state[this.$stateService.currentState](true)
         })
     }
 
