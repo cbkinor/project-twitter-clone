@@ -2,7 +2,7 @@ import templateUrl from './menubar.component.html'
 
 /* @ngInject */
 class MenubarController {
-  constructor ($log, $state, $authenticate, $searchService, $mdDialog, $tweetService, $profileService, $stateService) {
+  constructor ($log, $state, $authenticate, $searchService, $mdDialog, $tweetService, $profileService, $stateService, $homeService) {
     $log.debug('menuBar instantiated')
 
     this.$log = $log
@@ -12,6 +12,7 @@ class MenubarController {
     this.$state = $state
     this.$tweetService = $tweetService
     this.$profileService = $profileService
+    this.$homeService = $homeService
 
     this.openMenu = function ($mdOpenMenu, ev) {
       this.originatorEv = ev
@@ -19,7 +20,8 @@ class MenubarController {
     }
 
     this.home = () => {
-      this.$stateService.state['home'](true)
+      this.$stateService.state['home']()
+      this.$homeService.refreshFeed(this.$authenticate.username)
     }
 
     this.editProfile = () => {
@@ -60,7 +62,7 @@ class MenubarController {
           console.log('tweet didn\'t have contents')
         }).then(() => {
           this.$log.debug(this.$stateService.currentState)
-          this.$stateService.state[this.$stateService.currentState](true)
+          this.$homeService.refreshFeed(this.$authenticate.username)
         })
     }
 
