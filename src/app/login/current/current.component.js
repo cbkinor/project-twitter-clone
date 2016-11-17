@@ -8,9 +8,8 @@ class CurrentController {
   }
 
   login () {
-    this.$authenticate.login()
+    this.$authenticate.login('home')
   }
-
 }
 
 export const current = {
