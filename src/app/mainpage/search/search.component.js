@@ -20,8 +20,6 @@ class SearchController {
   }
 
   goToProfile (name) {
-    this.$followService.getfollower(name)
-    this.$followService.getfollowing(name)
     this.$stateService.state['profile']()
     this.$profileService.refreshProfile(name)
   }
