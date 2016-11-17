@@ -28,7 +28,7 @@ export class AuthenticateService {
   login (initial) {
     if (initial === undefined) initial = false
     if (!this.username || !this.password) {
-      this.$stateService.login()
+      this.$stateService.state['login']()
       return
     }
     this.$http({
@@ -46,7 +46,7 @@ export class AuthenticateService {
         this.$log.debug(error)
         if (error.data.message === 'Username not found' && !initial) {
           this.$log.debug('Username not found')
-          this.$stateService.login()
+          this.$stateService.state['login']()
           this.incorrectUser = true
         }
       }
@@ -59,7 +59,7 @@ export class AuthenticateService {
     this.$cookies.remove('password')
     this.username = undefined
     this.password = undefined
-    this.$stateService.login()
+    this.$stateService.state['login']()
   }
 
   validateUsername () {

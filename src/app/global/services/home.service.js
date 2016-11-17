@@ -19,7 +19,7 @@ export class HomeService {
       (response) => {
         this.feed = response.data
         this.$log.debug(response.data)
-        this.$stateService.home()
+        this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)

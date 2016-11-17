@@ -6,28 +6,36 @@ export class StateService {
     this.$log = $log
     this.$state = $state
     this.$log.debug('StateService instantiated')
-  }
 
-  login () {
-    this.$state.go('login')
-    this.currentState = 'login'
-  }
+    this.state = {
 
-  home () {
-    this.$state.go('mainpage.page.home')
-    this.currentState = 'home'
-    this.currentTab = 'feed'
-  }
+      'login': () => {
+        this.$state.go('login')
+        this.currentState = 'login'
+      },
 
-  profile () {
-    this.$state.go('mainpage.page.profile')
-    this.currentState = 'profile'
-    this.currentTab = 'tweets'
-  }
+      'home': () => {
+        this.$state.go('mainpage.page.home')
+        this.currentState = 'home'
+        this.currentTab = 'feed'
+      },
 
-  edit () {
-    this.$state.go('mainpage.edit')
-    this.currentState = 'edit'
+      'profile': () => {
+        this.$state.go('mainpage.page.profile')
+        this.currentState = 'profile'
+        this.currentTab = 'tweets'
+      },
+
+      'edit': () => {
+        this.$state.go('mainpage.edit')
+        this.currentState = 'edit'
+      },
+
+      'search': () => {
+        this.$state.go('mainpage.search')
+        this.currentState = 'search'
+      }
+    }
   }
 
   search () {
