@@ -19,6 +19,9 @@
                 <p>{{ item.repostOf.content }}</p>
                 <p>{{ item.repostOf.posted | date:'HH:mm:ss' }}</p>
               </div>
+              <div ng-init="$search.$searchService.checkLikeTweet(item)"></div>
+              <md-button ng-click="$search.$searchService.likeTweet(item)" ng-hide="item.liked">like</md-button>
+              <md-button ng-click="$search.$searchService.unlikeTweet(item)" ng-show="item.liked">unlike</md-button>
             </div>
             </br>
           </md-list-item>
@@ -31,12 +34,12 @@
         <md-list flex="">
           <md-list-item ng-hide="$search.$searchService.author.data">No results found</md-list-item>
           <md-list-item>
-            <md-button ng-click="$search.userProfile($search.$searchService.author.data.username)">{{ $search.$searchService.author.data.username }}</h3>
+            <md-button ng-click="$search.userProfile($search.$searchService.author.data.username)">{{ $search.$searchService.author.data.username }}</md-button>
           </md-list-item>
         </md-list>
       </md-tab-body>
     </md-tab>
-    <md-tab id="tab1">
+    <md-tab id="tab3">
       <md-tab-label>Mentions</md-tab-label>
       <md-tab-body>
         <md-list flex="">
