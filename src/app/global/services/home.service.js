@@ -27,7 +27,7 @@ export class HomeService {
                     return (word.substring(0, 1) === '@')
                       ? '<a href="#" ng-click="$feed.$profileService.viewProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : (word.substring(0, 1) === '#')
-                        ? '<a href="#" ng-click="$feed.test()">' + word + '</a>'
+                        ? '<a href="#" ng-click="$feed.search(' + "'" + temp + "'" + ')">' + word + '</a>'
                         : word
                   })
               .join(' ')
