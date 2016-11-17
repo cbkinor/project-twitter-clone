@@ -37,4 +37,8 @@ export class StateService {
       }
     }
   }
+
+  ngInjectMandatoryMethod () {
+    return
+  }
 }
