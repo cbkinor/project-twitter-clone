@@ -30,10 +30,9 @@ export class SearchService {
     )
     this.$http({
       method: 'GET',
-      url: 'http://localhost:8080/users/@' + this.searchText
+      url: 'http://localhost:8080/users/partial/@' + this.searchText
     }).then(
       (response) => {
-        this.$log.debug(response)
         this.users = response
       },
       (error) => {
@@ -42,7 +41,7 @@ export class SearchService {
     )
     this.$http({
       method: 'GET',
-      url: 'http://localhost:8080/tags/' + this.searchText
+      url: 'http://localhost:8080/tags/partial/' + this.searchText
     }).then(
       (response) => {
         this.tweets = this.$tweetService.checkAllTweetLikes(response)
