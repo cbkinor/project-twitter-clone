@@ -99,3 +99,9 @@ i {
 html {
   overflow-y: scroll;
 }
+
+.full-height {
+    height: -moz-calc(100% - 64px);
+    height: -webkit-calc(100% - 64px);
+    height: calc(100% - 64px);
+}
