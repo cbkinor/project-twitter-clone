@@ -7,34 +7,18 @@ export class StateService {
     this.$state = $state
     this.$log.debug('StateService instantiated')
 
+    this.loadState = (name, componentName, tabName) => {
+      this.$state.go(name)
+      this.currentState = componentName
+      this.currentTab = tabName
+    }
+
     this.state = {
-
-      'login': () => {
-        this.$state.go('login')
-        this.currentState = 'login'
-      },
-
-      'home': () => {
-        this.$state.go('mainpage.page.home')
-        this.currentState = 'home'
-        this.currentTab = 'feed'
-      },
-
-      'profile': () => {
-        this.$state.go('mainpage.page.profile')
-        this.currentState = 'profile'
-        this.currentTab = 'tweets'
-      },
-
-      'edit': () => {
-        this.$state.go('mainpage.edit')
-        this.currentState = 'edit'
-      },
-
-      'search': () => {
-        this.$state.go('mainpage.search')
-        this.currentState = 'search'
-      }
+      'login': () => { this.loadState('login', 'login') },
+      'home': () => { this.loadState('mainpage.page.home', 'home', 'feed') },
+      'profile': () => { this.loadState('mainpage.page.profile', 'profile', 'tweets') },
+      'edit': () => { this.loadState('mainpage.edit', 'edit') },
+      'search': () => { this.loadState('mainpage.search') }
     }
   }
 
