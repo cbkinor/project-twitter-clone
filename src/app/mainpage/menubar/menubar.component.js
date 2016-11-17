@@ -20,8 +20,8 @@ class MenubarController {
     }
 
     this.home = () => {
-      this.$stateService.state['home']()
       this.$homeService.refreshFeed(this.$authenticate.username)
+      this.$stateService.state['home']()
     }
 
     this.editProfile = () => {
@@ -42,6 +42,7 @@ class MenubarController {
     }
 
     this.viewProfile = () => {
+      this.$profileService.refreshProfile(this.$authenticate.username)
       this.$stateService.state['profile']()
     }
 
