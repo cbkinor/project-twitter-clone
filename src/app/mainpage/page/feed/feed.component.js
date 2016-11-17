@@ -13,7 +13,7 @@ class feedController {
   getFeed () {
     return this.$homeService.feed
   }
-  
+
   feedUser (username) {
     this.$profileService.viewProfile(username)
   }

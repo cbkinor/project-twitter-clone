@@ -7,12 +7,12 @@
                 <h3 ng-click="$feed.feedUser(item.author.username)">{{ item.author.username }}</h3>
                 <p>{{ item.content }}</p>
                 <p>{{ item.posted * 1000 | date:'HH:mm:ss' }}</p>
-                <!-- <div ng-show='item.inReplyTo'>
-                  <h3 ng-click="null">Reply From {{ item.author.username }}</h3>
+                <div ng-show='item.inReplyTo'>
+                  <h3 ng-click="null">In Reply To: {{ item.inReplyTo.author.username }}</h3>
                 </div>
                 <div ng-show='item.repostOf'>
-                  <h3 ng-click="null">Repost Of {{ item.author.username }}</h3>
-                </div> -->
+                  <h3 ng-click="null">Repost Of: {{ item.repostOf.author.username }}</h3>
+                </div>
                 </br>
               </div>
             </md-list-item>
