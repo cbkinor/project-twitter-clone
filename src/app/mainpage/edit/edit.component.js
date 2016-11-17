@@ -11,6 +11,10 @@ class EditController {
   update () {
     this.$authenticate.update()
   }
+
+  delete () {
+    this.$authenticate.delete()
+  }
 }
 
 export const edit = {
