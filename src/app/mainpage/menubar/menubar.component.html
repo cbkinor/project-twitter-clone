@@ -46,8 +46,8 @@
     <md-button class="md-icon-button searchButton md-whiteframe-2dp" ng-click="$menubar.search()">
       <i layout="fill" class="material-icons">search</i>
     </md-button>
-    <form id="searchForm" autocomplete="off" ng-submit="$menubar.search()">
-      <md-input-container md-no-float class="search">
+    <form class="searchForm" autocomplete="off" ng-submit="$menubar.search()">
+      <md-input-container md-no-float class="searchContainer">
         <input class="searchInput md-whiteframe-6dp" placeholder=" Search Twitter" type="text" ng-model="$menubar.$searchService.searchText" >
       </md-input-container>
     </form>

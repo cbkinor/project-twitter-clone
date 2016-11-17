@@ -1,10 +1,11 @@
 export class ProfileService {
 
   /* @ngInject */
-  constructor ($log, $http, $state) {
+  constructor ($log, $http, $state, $stateService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
+    this.$stateService = $stateService
     this.arrtweets = []
     $log.debug('ProfileService created')
   }
@@ -17,7 +18,7 @@ export class ProfileService {
       (response) => {
         this.$log.debug(response.data)
         this.arrtweets = response.data
-        this.$state.go('mainpage.page.profile')
+        this.$stateService.state['profile']()
       },
       (error) => {
         this.$log.debug(error)

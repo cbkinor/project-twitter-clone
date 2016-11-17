@@ -2,11 +2,12 @@ import templateUrl from './menubar.component.html'
 
 /* @ngInject */
 class MenubarController {
-  constructor ($log, $state, $authenticate, $searchService, $mdDialog, $tweetService, $profileService) {
+  constructor ($log, $state, $authenticate, $searchService, $mdDialog, $tweetService, $profileService, $stateService) {
     $log.debug('menuBar instantiated')
 
     this.$log = $log
     this.$searchService = $searchService
+    this.$stateService = $stateService
     this.$authenticate = $authenticate
     this.$state = $state
     this.$tweetService = $tweetService
@@ -18,16 +19,16 @@ class MenubarController {
     }
 
     this.home = () => {
-      this.$state.go('mainpage.page.home')
+      this.$stateService.state['home']()
     }
 
     this.editProfile = () => {
-      this.$state.go('mainpage.edit')
+      this.$stateService.state['edit']()
     }
 
     this.search = () => {
       this.$searchService.search()
-      this.$state.go('mainpage.search')
+      this.$stateService.state['search']()
     }
 
     this.logout = () => {
@@ -55,13 +56,13 @@ class MenubarController {
       $mdDialog.show(confirm)
         .then((result) => {
           this.$tweetService.postTweet(result)
+          this.$stateService
         }, () => {
           console.log('tweet didn\'t have contents')
         })
     }
 
     this.getUsername = () => {
-      this.$log.debug(this.$authenticate.username)
       return this.$authenticate.username
     }
 
