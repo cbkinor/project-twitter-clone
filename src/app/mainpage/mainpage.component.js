@@ -4,11 +4,12 @@ import templateUrl from './mainpage.component.html'
 class MainpageController {
   constructor ($log, $stateService, $authenticate, $cookies) {
     $log.debug('mainpage instantiated')
-    if (!$authenticate.username) {
-      $log.debug('Authenticating User')
-      const state = $cookies.get('currentState')
-      $authenticate.authenticate(!state ? 'login' : state)
-    }
+    let currentState = $cookies.get('currentState')
+    !currentState
+      ? $authenticate.authenticate('login')
+      : (currentState === 'login')
+        ? $authenticate.authenticate('home')
+        : $authenticate.authenticate(currentState)
   }
 }
 
