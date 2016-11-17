@@ -29,7 +29,6 @@ export class TweetService {
     let confirm = this.$mdDialog.prompt()
       .title('Post a tweet!')
       .placeholder('Post content')
-      .ariaLabel('Dog name')
       .initialValue('')
       .targetEvent($event)
       .ok('Post!')
@@ -79,7 +78,7 @@ export class TweetService {
           (response) => {
             item.liked = true
           },
-          (error) => {
+          () => {
             this.$log.debug('tweet not liked')
           }
         )
@@ -96,7 +95,7 @@ export class TweetService {
           (response) => {
             item.liked = false
           },
-          (error) => {
+          () => {
             this.$log.debug('tweet not unliked')
           }
         )
@@ -118,7 +117,7 @@ export class TweetService {
                 if (user.username === this.$authenticate.username) tweet.liked = true
               })
             },
-            (error) => {
+            () => {
               this.$log.debug('tweet had no likes')
             }
           )
