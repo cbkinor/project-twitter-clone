@@ -2,13 +2,14 @@
   <md-toolbar class="toolbar" layout="row">
     <div class="md-toolbar-tools">
 
-      <md-button class="homeButton md-whiteframe-2dp" ng-click="$menubar.home()">
+      <md-button class="homeButton md-whiteframe-2dp md-icon-button" ng-click="$menubar.home()">
         <i class="material-icons" layout="fill" >home</i>
       </md-button>
 
       <md-menu>
-        <md-button class="md-icon-button md-whiteframe-2dp" ng-click="$menubar.openMenu($mdOpenMenu, $event)">
-          <i class="material-icons">person</i>
+        <md-button class="md-primary md-whiteframe-2dp" ng-click="$menubar.openMenu($mdOpenMenu, $event)">
+          <i class="material-icons profileButtonIcon">person</i>
+          <text class="profileButtonText">{{$menubar.getUsername()}}</text>
         </md-button>
       <md-menu-content width="4">
         <md-menu-item>
@@ -45,8 +46,8 @@
     <md-button class="md-icon-button searchButton md-whiteframe-2dp" ng-click="$menubar.search()">
       <i layout="fill" class="material-icons">search</i>
     </md-button>
-    <form id="searchForm" autocomplete="off" ng-submit="$menubar.search()">
-      <md-input-container md-no-float class="search">
+    <form class="searchForm" autocomplete="off" ng-submit="$menubar.search()">
+      <md-input-container md-no-float class="searchContainer">
         <input class="searchInput md-whiteframe-6dp" placeholder=" Search Twitter" type="text" ng-model="$menubar.$searchService.searchText" >
       </md-input-container>
     </form>

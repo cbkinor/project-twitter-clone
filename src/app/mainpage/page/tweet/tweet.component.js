@@ -5,6 +5,7 @@ class tweetController {
   constructor ($log, $state, $profileService) {
     this.$profileService = $profileService
     this.$state = $state
+
     $log.debug('TweetController instantiated')
   }
 

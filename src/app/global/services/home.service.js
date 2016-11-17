@@ -1,10 +1,11 @@
 export class HomeService {
 
   /* @ngInject */
-  constructor ($log, $http, $state) {
+  constructor ($log, $http, $state, $stateService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
+    this.$stateService = $stateService
     this.feed = []
     this.$log.debug('HomeService instantiated')
   }
@@ -18,7 +19,7 @@ export class HomeService {
       (response) => {
         this.feed = response.data
         this.$log.debug(response.data)
-        this.$state.go('mainpage.page.home')
+        this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)

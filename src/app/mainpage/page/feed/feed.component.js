@@ -10,12 +10,12 @@ class feedController {
       $log.debug('Authenticating User')
       $authenticate.authenticate()
     }
+    this.$homeService.viewHome($authenticate.username)
   }
 
   getFeed () {
     return this.$homeService.feed
   }
-
 }
 
 export const feed = {

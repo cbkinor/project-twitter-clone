@@ -1,3 +1,7 @@
+* {
+  font-family: Noto Sans;
+}
+
 .pageWidth {
   width: 90vw;
 }
@@ -5,16 +9,12 @@
   height: 80vh;
 }
 
-margin-top: 68px;
-.searchDial {
-  margin-top: 68px;
-}
-
 .ocean-background {
   background-image: url('./app/global/resources/ocean-background.png');
   background-size: 100% 100%;
 }
-.login-tab {
+
+.loginTab {
   background-color: rgba(255, 255, 255, .5);
 }
 
@@ -31,12 +31,31 @@ margin-top: 68px;
   display: flex;
 }
 
-.search {
+.searchContainer {
+  width: 20vw;
   margin-top: 40px;
 }
 
 md-dialog {
   width: 80vw;
+}
+
+.md-button {
+  text-transform: none;
+}
+
+.profileButtonIcon {
+  text-transform: none;
+  margin-top: 6px;
+  float: left;
+  color: rgba(255,255,255,0.87);
+}
+
+.profileButtonText {
+  margin-left: 8px;
+  margin-right: 8px;
+  float: right;
+  color: white;
 }
 
 .tweetButton:hover {
@@ -51,7 +70,12 @@ md-dialog {
     border-color: white
 }
 
+.searchInput {
+  width: 20%;
+}
+
 input[type=text].searchInput {
+
   background-color: rgb(255, 255, 255);
 }
 
@@ -65,14 +89,21 @@ i {
     border-color: rgb(255, 255, 255);
 }
 
-.SearchTabs {
-  width: 70vw
-}
-
-.search-tab {
-  width: 100%
+.searchTabs {
+  width: 70vw;
 }
 
 .listUsage md-divider {
   margin-top: 10px;
   margin-bottom: 0; }
+
+html {
+  overflow-y: scroll;
+}
+
+.full-height {
+    height: -moz-calc(100% - 64px);
+    height: -webkit-calc(100% - 64px);
+    height: calc(100% - 64px);
+  margin-bottom: 0;
+}

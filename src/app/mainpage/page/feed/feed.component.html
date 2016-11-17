@@ -1,26 +1,19 @@
-<md-content md-dynamic-height md-border-bottom layout-fill >
-  <md-tabs class="">
-      <md-tab id="tab1">
-        <md-tab-label>Feeds</md-tab-label>
-        <md-tab-body>
+
           <md-list flex="">
             <md-list-item ng-hide="$feed.getFeed()  && $feed.getFeed().length > 0">No results found</md-list-item>
             <md-list-item class="md-3-line" ng-repeat="item in $feed.getFeed()">
               <div class="md-list-item-text" layout="column">
-                <h3 ng-click="null">>{{ item.author.username }}</h3>
+                <md-divider></md-divider>
+                <h3 ng-click="null">{{ item.author.username }}</h3>
                 <p>{{ item.content }}</p>
-                <p>{{ item.posted }}</p>
+                <p>{{ item.posted * 1000 | date:'HH:mm:ss' }}</p>
                 <div ng-show='item.inReplyTo'>
-                  <h3 ng-click="null">Reply From</h3>
+                  <h3 ng-click="null">Reply From {{ item.author.username }}</h3>
                 </div>
                 <div ng-show='item.repostOf'>
-                  <h3 ng-click="null">Repost Of</h3>
+                  <h3 ng-click="null">Repost Of {{ item.author.username }}</h3>
                 </div>
                 </br>
               </div>
             </md-list-item>
           </md-list>
-        </md-tab-body>
-    </md-tab>
-  </md-tabs>
-</md-content>

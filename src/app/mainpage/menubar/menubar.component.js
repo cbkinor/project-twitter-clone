@@ -2,13 +2,16 @@ import templateUrl from './menubar.component.html'
 
 /* @ngInject */
 class MenubarController {
-  constructor ($log, $state, $authenticate, $searchService, $mdDialog, $tweetService) {
+  constructor ($log, $state, $authenticate, $searchService, $mdDialog, $tweetService, $profileService, $stateService) {
     $log.debug('menuBar instantiated')
 
+    this.$log = $log
     this.$searchService = $searchService
+    this.$stateService = $stateService
     this.$authenticate = $authenticate
     this.$state = $state
     this.$tweetService = $tweetService
+    this.$profileService = $profileService
 
     this.openMenu = function ($mdOpenMenu, ev) {
       this.originatorEv = ev
@@ -16,16 +19,16 @@ class MenubarController {
     }
 
     this.home = () => {
-      this.$state.go('mainpage.page.home')
+      this.$stateService.state['home'](true)
     }
 
     this.editProfile = () => {
-      this.$state.go('mainpage.edit')
+      this.$stateService.state['edit']()
     }
 
     this.search = () => {
       this.$searchService.search()
-      this.$state.go('mainpage.search')
+      this.$stateService.state['search']()
     }
 
     this.logout = () => {
@@ -36,16 +39,8 @@ class MenubarController {
       this.tweetElement = $event.target
     }
 
-    this.mouseOnTweet = ($event) => {
-      if ($event.target.id !== 'tweetIcon') {
-        $event.target.setAttribute('stroke', 'rgba(231,236,238,.5)')
-      }
-    }
-
-    this.mouseOffTweet = ($event) => {
-      if ($event.target.id !== 'tweetIcon') {
-        $event.target.setAttribute('stroke', 'white')
-      }
+    this.viewProfile = () => {
+      this.$profileService.viewProfile(this.$authenticate.username)
     }
 
     this.showTweetPrompt = ($event) => {
@@ -63,7 +58,25 @@ class MenubarController {
           this.$tweetService.postTweet(result)
         }, () => {
           console.log('tweet didn\'t have contents')
+        }).then(() => {
+          this.$stateService.state[this.$stateService.currentState](true)
         })
+    }
+
+    this.getUsername = () => {
+      return this.$authenticate.username
+    }
+
+    this.mouseOnTweet = ($event) => {
+      if ($event.target.id !== 'tweetIcon') {
+        $event.target.setAttribute('stroke', 'rgba(231,236,238,.5)')
+      }
+    }
+
+    this.mouseOffTweet = ($event) => {
+      if ($event.target.id !== 'tweetIcon') {
+        $event.target.setAttribute('stroke', 'white')
+      }
     }
   }
 }

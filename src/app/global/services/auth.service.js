@@ -1,7 +1,7 @@
 export class AuthenticateService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $cookies, $homeService) {
+  constructor ($log, $http, $state, $cookies, $homeService, $stateService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
@@ -15,6 +15,7 @@ export class AuthenticateService {
                     }
     this.incorrectUser = false
     this.invalidUsername = false
+    this.$stateService = $stateService
     $log.debug('AuthenticateService created')
   }
 
@@ -27,7 +28,7 @@ export class AuthenticateService {
   login (initial) {
     if (initial === undefined) initial = false
     if (!this.username || !this.password) {
-      this.$state.go('login')
+      this.$stateService.state['login']()
       return
     }
     this.$http({
@@ -39,13 +40,13 @@ export class AuthenticateService {
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
         this.profile = response.data.profile
-        this.$homeService.viewHome(this.username)
+        this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)
         if (error.data.message === 'Username not found' && !initial) {
           this.$log.debug('Username not found')
-          this.$state.go('login')
+          this.$stateService.state['login']()
           this.incorrectUser = true
         }
       }
@@ -58,7 +59,7 @@ export class AuthenticateService {
     this.$cookies.remove('password')
     this.username = undefined
     this.password = undefined
-    this.$state.go('login')
+    this.$stateService.state['login']()
   }
 
   validateUsername () {
@@ -93,7 +94,7 @@ export class AuthenticateService {
         this.profile = response.data.profile
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
-        this.$homeService.viewHome(this.username)
+        this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)
@@ -112,7 +113,7 @@ export class AuthenticateService {
     }).then(
       (response) => {
         this.$log.debug(response)
-        this.$homeService.viewHome(this.username)
+        this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)

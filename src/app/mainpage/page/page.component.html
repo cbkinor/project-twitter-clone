@@ -2,5 +2,17 @@
 
   <follow layout-align="center center" layout="column" flex="25" layout-fill class="md-padding"></follow>
 
-  <ui-view layout-align="center center" flex="55"layout-fill class="md-padding"></ui-view>
+  <md-content md-dynamic-height md-border-bottom layout-fill >
+    <md-tabs class="full-height">
+      <md-tab id="tab1">
+        <md-tab-label>{{$page.$stateService.currentTab}}</md-tab-label>
+        <md-tab-body>
+          <ui-view></ui-view>
+        </md-tab-body>
+      </md-tab>
+      <md-tab id="tab2">
+        <!-- INSERT MENTIONS HERE -->
+      </md-tab>
+    </md-tabs>
+  </md-content>
 </div>
