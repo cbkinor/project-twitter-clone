@@ -10,7 +10,7 @@ export class ProfileService {
     $log.debug('ProfileService created')
   }
 
-  viewProfile (username) {
+  refreshProfile (username) {
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/tweets'
@@ -19,7 +19,6 @@ export class ProfileService {
         this.username = username
         this.arrtweets = response.data
         this.username = username
-        this.$stateService.state['profile']()
       },
       (error) => {
         this.$log.debug(error)
