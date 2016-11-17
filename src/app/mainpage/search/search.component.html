@@ -14,16 +14,12 @@
                 <h3>In Reply To: <a href ng-click="$search.goToProfile(tweet.inReplyTo.author.username)">{{ tweet.inReplyTo.author.username }}</a>: <a href ng-click="null">{{ tweet.inReplyTo.content }}</a></h3>
               </div>
               <div ng-show='tweet.repostOf'>
-                <h3 ng-click="$search.goToProfile(tweet.repostOf.author.username)">Repost Of: <a href="">{{ tweet.repostOf.id }}</a></h3>
+              <h3>Repost Of: <a href ng-click="$search.goToProfile(tweet.inReplyTo.author.username)">{{ tweet.inReplyTo.author.username }}</a>: <a href ng-click="null">{{ tweet.inReplyTo.content }}</a></h3>
               </div>
-          <!--    <div ng-show='tweet.repostOf'>
-                <h3 ng-click="null">Repost Of</h3>
-                <h3>>{{tweet.repostOf.author.username}} </h3>
-                <p>{{ tweet.repostOf.content }}</p>
-                <p>{{ tweet.repostOf.posted | date:'medium' }}</p>
-              </div> -->
               <md-button ng-click="$search.$tweetService.likeTweet(tweet)" ng-hide="tweet.liked">like</md-button>
               <md-button ng-click="$search.$tweetService.unlikeTweet(tweet)" ng-show="tweet.liked">unlike</md-button>
+              <md-button ng-click="$search.$tweetService.repostTweet(tweet.id)">repost</md-button>
+              <md-button ng-click="$search.$tweetService.showTweetPrompt($event, tweet.id)">reply</md-button>
             </div>
             </br>
           </md-list-item>
