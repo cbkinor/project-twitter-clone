@@ -8,7 +8,7 @@ export const profile = {
   name: 'mainpage.page.profile',
   url: '/profile/:currentProfile',
   params: {
-    currentProfile: ''
+    currentProfile: 'currentProfileName'
   },
   component: 'profile'
 }

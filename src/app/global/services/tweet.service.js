@@ -1,7 +1,7 @@
 export class TweetService {
 
   /* @ngInject */
-  constructor ($http, $authenticateService, $log, $homeService, $profileService, $mdDialog, $stateService) {
+  constructor ($http, $authenticateService, $log, $homeService, $profileService, $mdDialog, $searchService, $stateService) {
     this.$log = $log
     this.$http = $http
     this.$authenticateService = $authenticateService
@@ -9,6 +9,7 @@ export class TweetService {
     this.$profileService = $profileService
     this.$stateService = $stateService
     this.$mdDialog = $mdDialog
+    this.$searchService = $searchService
   }
 
   postTweet (content) {
@@ -20,6 +21,21 @@ export class TweetService {
       method: 'POST',
       url: 'http://localhost:8080/tweets',
       data: tweet
+    }).then((response) => {
+      this.refreshStateContents()
+    })
+  }
+
+  deleteTweet (tweet) {
+    this.$http({
+      headers: {
+        'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:3000/'
+      },
+      method: 'DELETE',
+      url: 'http://localhost:8080/tweets/' + tweet.id,
+      data: this.$authenticateService.getCredentials()
     }).then((response) => {
       this.refreshStateContents()
     })
@@ -109,6 +125,8 @@ export class TweetService {
       this.$profileService.refreshProfile(this.$profileService.username)
     } else if (this.$stateService.currentState === 'home') {
       this.$homeService.refreshFeed(this.$authenticateService.username)
+    } else if (this.$stateService.currentState === 'search') {
+      this.$searchService.search()
     }
   }
 }

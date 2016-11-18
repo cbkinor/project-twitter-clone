@@ -43,6 +43,7 @@
                   <md-button ng-click="$search.$tweetService.unlikeTweet(tweet)" ng-show="tweet.liked" class="unlike">Unlike</md-button>
                   <md-button ng-click="$search.$tweetService.repostTweet(tweet.id)" class="repost">repost</md-button>
                   <md-button ng-click="$search.$tweetService.showTweetPrompt($event, tweet.id)" class="reply">reply</md-button>
+                  <md-button ng-click="$search.$tweetService.deleteTweet(tweet)" ng-show="tweet.author.username == $search.$authenticateService.username" class="unlike">Delete</md-button>
                 </div>
                 <p compile="tweet.content" style="font-size:20px; color:black"></p>
                 <div ng-show='tweet.inReplyTo'>
@@ -72,6 +73,7 @@
                   <md-button ng-click="$search.$tweetService.unlikeTweet(tweet)" ng-show="tweet.liked" class="unlike">Unlike</md-button>
                   <md-button ng-click="$search.$tweetService.repostTweet(tweet.id)" class="repost">repost</md-button>
                   <md-button ng-click="$search.$tweetService.showTweetPrompt($event, tweet.id)" class="reply">reply</md-button>
+                  <md-button ng-click="$search.$tweetService.deleteTweet(tweet)" ng-show="tweet.author.username == $search.$authenticateService.username" class="unlike">Delete</md-button>
                 </div>
                 <p compile="tweet.content" style="font-size:20px; color:black"></p>
                 <div ng-show='tweet.inReplyTo'>

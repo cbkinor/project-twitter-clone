@@ -3,7 +3,7 @@ import templateUrl from './tweet.component.html'
 /* @ngInject */
 class tweetController {
   constructor ($log, $state, $profileService, $authenticateService, $followService, $homeService, $scope, $stateService, $searchService, $tweetService, $stateParams) {
-    $scope.username = $stateParams.username
+    $scope.username = $stateParams.currentProfile || ''
     this.$profileService = $profileService
     this.$followService = $followService
     this.$authenticateService = $authenticateService
@@ -16,8 +16,9 @@ class tweetController {
     this.$stateService = $stateService
     this.$searchService = $searchService
     $log.debug('TweetController instantiated')
+    $authenticateService.authenticate('profile')
     this.$log = $log
-    this.$profileService.refreshProfile($stateParams.username)
+    this.$profileService.refreshProfile($scope.username)
   }
 
   getFeed () {

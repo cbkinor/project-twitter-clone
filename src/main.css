@@ -11,7 +11,7 @@
 }
 
 .pageHeight {
-  height: 80vh;
+  height: 70vh;
 }
 
 .tweetListItem {
@@ -66,7 +66,7 @@
 }
 
 .transparentBackground {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .whiteBackground {
@@ -89,6 +89,10 @@
 .searchContainer {
   width: 20vw;
   margin-top: 40px;
+}
+
+.searchFollow {
+  margin-bottom: 0px;
 }
 
 md-dialog {
@@ -168,5 +172,5 @@ html {
 }
 
 .followButton {
-   min-width: 13.5vw;
+   min-width: 15vw;
 }

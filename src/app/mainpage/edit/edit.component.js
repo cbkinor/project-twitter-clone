@@ -5,6 +5,7 @@ class EditController {
   constructor ($log, $authenticateService) {
     this.$authenticateService = $authenticateService
     $log.debug('EditController instantiated')
+    $authenticateService.authenticate('edit')
 
   }
 
