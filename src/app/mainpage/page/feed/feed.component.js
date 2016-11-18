@@ -12,6 +12,7 @@ class feedController {
     this.$stateService = $stateService
     this.$followService = $followService
     this.$tweetService = $tweetService
+    this.$authenticateService = $authenticateService
     this.$state = $state
     this.$scope.$profileService = this.$profileService
     this.$scope.goToProfile = this.goToProfile
