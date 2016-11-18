@@ -6,6 +6,9 @@ export const home = {
 
 export const profile = {
   name: 'mainpage.page.profile',
-  url: '/profile',
+  url: '/profile/:currentProfile',
+  params: {
+    currentProfile: ''
+  },
   component: 'profile'
 }

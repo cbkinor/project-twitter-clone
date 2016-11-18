@@ -20,11 +20,11 @@ class SearchController {
 
   userProfile (username) {
     this.$profileService.refreshProfile(username)
-    this.$stateService.state['profile']
+    this.$stateService.state['profile'](username)
   }
 
   goToProfile = (name) => {
-    this.$stateService.state['profile']()
+    this.$stateService.state['profile'](name)
     this.$profileService.refreshProfile(name)
   }
 

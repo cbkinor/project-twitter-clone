@@ -1,18 +1,20 @@
 export class ProfileService {
 
   /* @ngInject */
-  constructor ($log, $http, $stateService, $authenticateService, $followService) {
+  constructor ($log, $http, $stateService, $authenticateService, $followService, $searchService) {
     this.$authenticateService = $authenticateService
     this.$log = $log
     this.$http = $http
     this.$stateService = $stateService
     this.$followService = $followService
+    this.$searchService = $searchService
     this.arrtweets = []
     $log.debug('ProfileService created')
     $log.debug(this.$authenticateService.getCredentials())
   }
 
   refreshProfile (username) {
+    this.$searchService.getMentions(username)
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/tweets'
@@ -42,10 +44,6 @@ export class ProfileService {
         this.$log.debug(error)
       }
     )
-    this.mentioned = undefined
-    this.$log.debug("================================")
-    this.$log.debug(username)
-    this.$log.debug("================================")
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/mentions'
@@ -58,7 +56,6 @@ export class ProfileService {
               .split(' ')
               .map(word => {
                     let temp = word.replace(/[^a-z0-9]/gmi, '')
-                    this.$log.debug(word)
                     return (word.substring(0, 1) === '@')
                       ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : (word.substring(0, 1) === '#')
@@ -110,9 +107,8 @@ export class ProfileService {
   }
 
   goToProfile = (name) => {
-    this.$stateService.state['profile']()
+    this.$stateService.state['profile'](name)
     this.refreshProfile(name)
-    this.$log.debug('CALLED')
   }
 
   checkAllTweetLikes (tweets) {
