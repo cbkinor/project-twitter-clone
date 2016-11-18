@@ -91,6 +91,11 @@
   margin-top: 40px;
 }
 
+.searchFollow {
+  width: 17.5vw;
+  margin-top: 0px;
+}
+
 md-dialog {
   width: 80vw;
 }
@@ -168,5 +173,5 @@ html {
 }
 
 .followButton {
-   min-width: 13.5vw;
+   min-width: 15vw;
 }
