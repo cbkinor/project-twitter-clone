@@ -12,10 +12,10 @@ class SearchController {
     this.$profileService = $profileService
     this.$stateService = $stateService
     this.$followService = $followService
+    this.$authenticateService = $authenticateService
     this.$scope.$profileService = $profileService
     $log.debug('SearchController instantiated')
     $authenticateService.authenticate('search')
-
   }
 
   userProfile (username) {
