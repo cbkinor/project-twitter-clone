@@ -1,7 +1,8 @@
 export const mainpage = {
   name: 'mainpage',
   url: '/main',
-  component: 'mainpage'
+  component: 'mainpage',
+  abstract: true
 }
 
 export const edit = {
@@ -13,7 +14,8 @@ export const edit = {
 export const page = {
   name: 'mainpage.page',
   url: '/page',
-  component: 'page'
+  component: 'page',
+  abstract: true
 }
 
 export const search = {

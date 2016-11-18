@@ -40,7 +40,8 @@ export class AuthenticateService {
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
         this.profile = response.data.profile
-        this.$stateService.state[state]()
+        if(initial)
+          this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)
