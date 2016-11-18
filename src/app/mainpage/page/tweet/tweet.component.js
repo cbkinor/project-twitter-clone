@@ -16,7 +16,6 @@ class tweetController {
     $scope.search = this.search
     this.$stateService = $stateService
     this.$searchService = $searchService
-    $log.debug($scope.username)
     $log.debug('TweetController instantiated')
     $authenticateService.authenticate('profile')
     this.$log = $log
