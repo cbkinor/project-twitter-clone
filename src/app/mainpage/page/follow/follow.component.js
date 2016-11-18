@@ -52,7 +52,7 @@ class followController {
     this.followTabBoolean = false
   }
 
-  goToProfileFeed (username) {
+  goToProfileFollow (username) {
     this.$followService.getFollower(username)
     this.$followService.getFollowing(username)
     this.$profileService.refreshProfile(username)
