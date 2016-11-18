@@ -25,10 +25,11 @@
     <div class="editButtonContainer">
       <md-button class="md-raised md-primary" type="submit" ng-click="$edit.update()" layout-fill>Update</md-button>
     </div>
+
     <md-divider md-inset ng-if="!$last"></md-divider>
     <div class="editButtonContainer">
-      <md-button class="md-raised md-warn" type="submit" ng-click="$edit.delete()" layout-fill>Delete Account</md-button>
+      <md-button class="md-primary md-raised md-warn" type="submit" ng-click="$edit.showConfirm($event)" layout-fill>Delete Account
+      </md-button>
     </div>
-
   </md-card-actions>
 </md-card>
