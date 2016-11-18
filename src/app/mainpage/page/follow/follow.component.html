@@ -1,19 +1,24 @@
-<md-content layout-fill>
-  <md-tabs>
+
+<md-content layout-fill class="transparentBackground">
+  <md-tabs layout-fill class="loginTab">
     <md-tab label="Follower">
       <md-tab-body>
-        <md-list>
-          <md-list-item ng-repeat="item in $follow.getfollower()">
-            <md-button ng-click="$follow.google(item.username)">{{item.username}}</md-button>
+        <md-list flex>
+          <md-list-item class="tweetListItem" ng-repeat="item in $follow.getfollow()">
+            <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
+              <md-button ng-click="$follow.google(item.username)">{{item.username}}</md-button>
+            </div>
           </md-list-item>
         </md-list>
       </md-tab-body>
     </md-tab>
     <md-tab label="Following">
       <md-tab-body>
-        <md-list>
-          <md-list-item ng-repeat="item in $follow.getfollowing()">
-            <md-button ng-click="$follow.google(item.username)">{{item.username}}</md-button>
+        <md-list flex>
+          <md-list-item  class="tweetListItem" ng-repeat="item in $follow.getfollowing()">
+            <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
+              <md-button class="followButton" ng-click="$follow.google(item.username)">{{item.username}}</md-button>
+            </div>
           </md-list-item>
         </md-list>
       </md-tab-body>

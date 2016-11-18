@@ -161,3 +161,7 @@ html {
 .searchPageWidth {
   width: 60vw;
 }
+
+.followButton {
+   min-width: 13.5vw;
+}
