@@ -1,0 +1,17 @@
+
+    <md-list flex="">
+      <md-list-item class="md-3-line" ng-repeat="item in results" ng-click="null">
+        <div class="md-list-item-text" layout="column">
+          <h2 ng-click="null">Tweet</h2>
+            <h3 ng-click="null">Author: {{ item.author.username }}</h3>
+            <p>Content: {{ item.content }}</p>
+            <p>Posted: {{ item.posted }}</p>
+            <div ng-show='item.inReplyTo'>
+              <h3 ng-click="null">Reply From</h3>
+            </div>
+            <div ng-show='item.repostOf'>
+              <h3 ng-click="null">Repost Of</h3>
+            </div>
+          </div>
+      </md-list-item>
+    </md-list>

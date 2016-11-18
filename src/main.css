@@ -1,0 +1,163 @@
+* {
+  font-family: Noto Sans;
+}
+
+.noPadding {
+  padding: 0;
+}
+
+.pageWidth {
+  width: 90vw;
+}
+.pageHeight {
+  height: 80vh;
+}
+
+.tweetListItem {
+  padding: 5px;
+}
+
+.tweetHead {
+  display: flex;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+}
+
+.repost {
+  background-color: rgba(0, 0, 255, 0.5);
+  font-weight: bolder;
+}
+
+.reply {
+  background-color: rgba(0, 0, 255, 0.5);
+  font-weight: bolder;
+}
+
+.like {
+  background-color: rgba(0, 255, 0, 0.5);
+  font-weight: bolder;
+}
+
+.unlike {
+  background-color: rgba(255, 0, 0, 0.5);
+  font-weight: bolder;
+}
+
+.tweetHead.md-button {
+  flex: 1
+}
+
+.ocean-background {
+  background-image: url('./app/global/resources/ocean-background.png');
+  background-size: 100% 100%;
+}
+
+.loginTab {
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.transparentBackground {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.whiteBackground {
+  background-color: white;
+}
+
+.fullWidth {
+  width: 100vw;
+}
+
+.error {
+  color: red;
+  font-style: italic;
+}
+
+.menubarContainer {
+  display: flex;
+}
+
+.searchContainer {
+  width: 20vw;
+  margin-top: 40px;
+}
+
+md-dialog {
+  width: 80vw;
+}
+
+.md-button {
+  text-transform: none;
+}
+
+.profileButtonIcon {
+  text-transform: none;
+  margin-top: 6px;
+  float: left;
+  color: rgba(255,255,255,0.87);
+}
+
+.profileButtonText {
+  margin-left: 8px;
+  margin-right: 8px;
+  float: right;
+  color: white;
+}
+
+.tweetButton:hover {
+  cursor: pointer;
+}
+
+.tweetIcon {
+  font-size: 48px;
+}
+
+.search:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: white
+}
+
+.searchInput {
+  width: 20%;
+}
+
+input[type=text].searchInput {
+
+  background-color: rgb(255, 255, 255);
+}
+
+i {
+  align-items: center;
+  justify-content: center;
+}
+
+.tweetButton:hover {
+    cursor: hand;
+    border-color: rgb(255, 255, 255);
+}
+
+.searchTabs {
+  width: 70vw;
+  padding: 1vw;
+}
+
+.listUsage md-divider {
+  margin-top: 10px;
+  margin-bottom: 0; }
+
+html {
+  overflow-y: scroll;
+}
+
+.full-height {
+    height: -moz-calc(100% - 64px);
+    height: -webkit-calc(100% - 64px);
+    height: calc(100% - 64px);
+  margin-bottom: 0;
+}
+.searchPageWidth {
+  width: 60vw;
+}

@@ -1,0 +1,22 @@
+<md-content layout-fill>
+  <md-tabs>
+    <md-tab label="Follower">
+      <md-tab-body>
+        <md-list>
+          <md-list-item ng-repeat="item in $follow.getfollower()">
+            <md-button ng-click="$follow.google(item.username)">{{item.username}}</md-button>
+          </md-list-item>
+        </md-list>
+      </md-tab-body>
+    </md-tab>
+    <md-tab label="Following">
+      <md-tab-body>
+        <md-list>
+          <md-list-item ng-repeat="item in $follow.getfollowing()">
+            <md-button ng-click="$follow.google(item.username)">{{item.username}}</md-button>
+          </md-list-item>
+        </md-list>
+      </md-tab-body>
+    </md-tab>
+  </md-tabs>
+</md-content>
