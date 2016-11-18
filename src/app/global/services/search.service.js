@@ -46,6 +46,10 @@ export class SearchService {
   }
 
   search () {
+    this.tweets = undefined
+    this.users = undefined
+    this.hashtags = undefined
+    this.mentioned = undefined
     this.searchText = this.inputText
     this.$http({
       method: 'GET',
