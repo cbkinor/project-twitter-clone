@@ -21,8 +21,8 @@ class MenubarController {
     }
 
     this.home = () => {
-      this.$followService.getfollower($authenticateService.username)
-      this.$followService.getfollowing($authenticateService.username)
+      this.$followService.getFollower($authenticateService.username)
+      this.$followService.getFollowing($authenticateService.username)
       this.$homeService.refreshFeed(this.$authenticateService.username)
       this.$stateService.state['home']()
     }
