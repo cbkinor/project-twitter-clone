@@ -123,3 +123,6 @@ html {
     height: calc(100% - 64px);
   margin-bottom: 0;
 }
+.searchPageWidth {
+  width: 60vw;
+}
