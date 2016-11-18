@@ -3,7 +3,7 @@ import templateUrl from './feed.component.html'
 /* @ngInject */
 class feedController {
 
-  constructor ($scope, $log, $state, $homeService, $authenticate, $profileService, $searchService, $stateService, $followService) {
+  constructor ($scope, $log, $state, $homeService, $authenticate, $profileService, $searchService, $stateService, $followService, $tweetService) {
     this.$log = $log
     this.$scope = $scope
     this.$homeService = $homeService
@@ -11,6 +11,7 @@ class feedController {
     this.$searchService = $searchService
     this.$stateService = $stateService
     this.$followService = $followService
+    this.$tweetService = $tweetService
     this.$state = $state
     this.$scope.$profileService = this.$profileService
     this.$scope.goToProfile = this.goToProfile
