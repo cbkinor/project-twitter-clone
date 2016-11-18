@@ -5,6 +5,8 @@ class SearchController {
 
   constructor ($scope, $log, $searchService, $profileService, $tweetService, $stateService, $followService) {
     this.$scope = $scope
+    $scope.goToProfile = this.goToProfile
+    $scope.search = this.search
     this.$searchService = $searchService
     this.$tweetService = $tweetService
     this.$profileService = $profileService
@@ -19,16 +21,16 @@ class SearchController {
     this.$stateService.state['profile']
   }
 
-  goToProfile (name) {
+  goToProfile = (name) => {
     this.$stateService.state['profile']()
     this.$profileService.refreshProfile(name)
   }
 
-  getTweets() {
+  getTweets () {
     return this.$searchService.tweets
   }
 
-  search (searchText) {
+  search = (searchText) => {
     this.$searchService.inputText = searchText
     this.$searchService.search()
     this.$stateService.state['search']()

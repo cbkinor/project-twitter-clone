@@ -20,6 +20,22 @@ export class ProfileService {
       (response) => {
         this.username = username
         this.arrtweets = response.data
+          .map(tweet => {
+            if (tweet.content === null) tweet.content = ''
+            tweet.content = tweet.content
+              .split(' ')
+              .map(word => {
+                let temp = word.replace(/[^a-z0-9]/gmi, '')
+                return (word.substring(0, 1) === '@')
+                      ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                      : (word.substring(0, 1) === '#')
+                        ? '<a href="#" ng-click="search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                        : word
+              })
+              .join(' ')
+
+            return tweet
+          })
       },
       (error) => {
         this.$log.debug(error)
@@ -72,8 +88,8 @@ export class ProfileService {
     this.$followService.getfollowing(username)
   }
 
-  goToProfile (name) {
-    this.refreshProfile(name)
+  goToProfile = (name) => {
     this.$stateService.state['profile']()
+    this.refreshProfile(name)
   }
 }

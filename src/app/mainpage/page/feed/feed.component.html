@@ -1,19 +1,24 @@
-
-          <md-list flex="">
-            <md-list-item ng-hide="$feed.getFeed()  && $feed.getFeed().length > 0">No results found</md-list-item>
-            <md-list-item class="md-3-line" ng-repeat="item in $feed.getFeed()">
-              <div class="md-list-item-text" layout="column">
-                <md-divider></md-divider>
-                <h3 ng-click="$profileService.goToProfile(item.author.username)"><a href="">{{ item.author.username }}</a></h3>
-                <p compile="item.content"></p>
-                <p>{{ item.posted | date:'medium' }}</p>
-                <div ng-show='item.inReplyTo'>
-                  <h3 ng-click="$profileService.goToProfile(item.inReplyTo.author.username)">In Reply To: <a href="">{{ item.inReplyTo.author.username }}</a></h3>
-                </div>
-                <div ng-show='item.repostOf'>
-                  <h3 ng-click="$profileService.goToProfile(item.repostOf.author.username)">Repost Of: <a href="">{{ item.repostOf.author.username }}</a></h3>
-                </div>
-                </br>
-              </div>
-            </md-list-item>
-          </md-list>
+<md-list flex="">
+  <md-list-item ng-hide="$feed.getFeed()  && $feed.getFeed().length > 0">No results found</md-list-item>
+  <md-list-item class="md-3-line tweetListItem" ng-repeat="tweet in $feed.getFeed()">
+    <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
+      <div class="tweetHead">
+        <div class="author">
+          <h2>Author: <a href="" ng-click="$profileService.goToProfile(item.author.username)">{{ tweet.author.username }}</a></h2>
+          <p>Posted: {{ tweet.posted | date:'medium' }}</p>
+        </div>
+        <md-button ng-click="$feed.$tweetService.likeTweet(tweet)" ng-hide="tweet.liked" class="like">Like</md-button>
+        <md-button ng-click="$feed.$tweetService.unlikeTweet(tweet)" ng-show="tweet.liked" class="unlike">Unlike</md-button>
+        <md-button ng-click="$feed.$tweetService.repostTweet(tweet.id)" class="repost">repost</md-button>
+        <md-button ng-click="$feed.$tweetService.showTweetPrompt($event, tweet.id)" class="reply">reply</md-button>
+      </div>
+      <p compile="tweet.content" style="font-size:20px; color:black"></p>
+      <div ng-show='tweet.inReplyTo'>
+        <h3>In Reply To: <a href ng-click="$profileService.goToProfile(tweet.inReplyTo.author.username)">{{ tweet.inReplyTo.author.username }}</a>: <a href ng-click="null">{{ tweet.inReplyTo.content }}</a></h3>
+      </div>
+      <div ng-show='tweet.repostOf'>
+        <h3>Repost Of: <a href ng-click="$profileService.goToProfile(tweet.repostOf.author.username)">{{ tweet.repostOf.author.username }}</a>: <a href ng-click="null">{{ tweet.repostOf.content }}</a></h3>
+      </div>
+    </div>
+  </md-list-item>
+</md-list>

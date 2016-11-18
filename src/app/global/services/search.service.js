@@ -13,6 +13,7 @@ export class SearchService {
     this.searchText = ''
     $log.debug('SearchService created')
   }
+
   search () {
     this.searchText = this.inputText
     this.$log.debug(this.searchText)
@@ -30,9 +31,9 @@ export class SearchService {
                   let temp = word.replace(/[^a-z0-9]/gmi, '')
                   this.$log.debug(word)
                   return (word.substring(0, 1) === '@')
-                    ? '<a href="#" ng-click="$search.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                    ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                     : (word.substring(0, 1) === '#')
-                      ? '<a href="#" ng-click="$search.search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                      ? '<a href="#" ng-click="search(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : word
                 })
             .join(' ')
@@ -69,9 +70,9 @@ export class SearchService {
               .map(word => {
                     let temp = word.replace(/[^a-z0-9]/gmi, '')
                     return (word.substring(0, 1) === '@')
-                      ? '<a href="#" ng-click="$search.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                      ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : (word.substring(0, 1) === '#')
-                        ? '<a href="#" ng-click="$search.search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                        ? '<a href="#" ng-click="search(' + "'" + temp + "'" + ')">' + word + '</a>'
                         : word
                   })
               .join(' ')

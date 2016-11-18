@@ -13,6 +13,8 @@ class feedController {
     this.$followService = $followService
     this.$state = $state
     this.$scope.$profileService = this.$profileService
+    this.$scope.goToProfile = this.goToProfile
+    this.$scope.search = this.search
     $log.debug('feedController instantiated')
     $homeService.refreshFeed($authenticate.username)
   }
@@ -21,12 +23,12 @@ class feedController {
     return this.$homeService.feed
   }
 
-  goToProfile (name) {
+  goToProfile = (name) => {
     this.$stateService.state['profile']()
     this.$profileService.refreshProfile(name)
   }
 
-  search (searchText) {
+  search = (searchText) => {
     this.$searchService.inputText = searchText
     this.$searchService.search()
     this.$stateService.state['search']()
