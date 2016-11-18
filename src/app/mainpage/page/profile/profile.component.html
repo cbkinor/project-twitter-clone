@@ -1,10 +1,12 @@
 
-<h3>
-  User : {{$profile.$profileService.username}}
-    <md-button ng-click="$profile.followuser($profile.$profileService.username)" ng-hide="$profile.checkfollower() || $profile.$profileService.username===$profile.$authenticateService.username">
+<h3 class="md-display-1">
+  {{$profile.$profileService.username}}
+    <md-button class="followButtonProfile" ng-click="$profile.followuser($profile.$profileService.username)" ng-hide="$profile.checkfollower() || $profile.$profileService.username===$profile.$authenticateService.username">
+      <i class="material-icons profileButtonIcon">person</i>
       Follow
     </md-button>
-    <md-button ng-click="$profile.unfollowuser($profile.$profileService.username)" ng-hide="!$profile.checkfollower() || $profile.$profileService.username===$profile.$authenticateService.username">
+    <md-button class="followButtonProfile" ng-click="$profile.unfollowuser($profile.$profileService.username)" ng-hide="!$profile.checkfollower() || $profile.$profileService.username===$profile.$authenticateService.username">
+      <i class="material-icons profileButtonIcon">person</i>
       Unfollow
     </md-button>
 </h3>
