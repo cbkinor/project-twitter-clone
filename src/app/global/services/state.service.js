@@ -16,10 +16,11 @@ export class StateService {
     }
   }
 
-  loadState (refresh, name, componentName, tabName, currentProfileName = '') {
+  loadState (refresh, name, componentName, tabName, currentProfileName) {
     this.$state.go(name, {currentProfile: currentProfileName}, {reload: refresh, inherit: false, notify: true})
     this.currentState = componentName
     this.currentTab = tabName
+    this.currentProfileName = currentProfileName
     this.$cookies.put('currentState', this.currentState)
   }
 }

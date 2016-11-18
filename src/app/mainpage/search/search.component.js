@@ -15,7 +15,7 @@ class SearchController {
     this.$authenticateService = $authenticateService
     this.$scope.$profileService = $profileService
     $log.debug('SearchController instantiated')
-    this.$log = $log
+    $authenticateService.authenticate('search')
   }
 
   userProfile (username) {

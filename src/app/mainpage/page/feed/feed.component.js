@@ -18,6 +18,7 @@ class feedController {
     this.$scope.goToProfile = this.goToProfile
     this.$scope.search = this.search
     $log.debug('feedController instantiated')
+    $authenticateService.authenticate('home')
     $homeService.refreshFeed($authenticateService.username)
   }
 
