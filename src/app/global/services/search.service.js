@@ -1,12 +1,11 @@
 export class SearchService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $cookies, $tweetService, $authenticateService) {
+  constructor ($log, $http, $state, $cookies, $authenticateService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
     this.$cookies = $cookies
-    this.$tweetService = $tweetService
     this.$authenticateService = $authenticateService
     this.tweets = undefined
     this.users = undefined
