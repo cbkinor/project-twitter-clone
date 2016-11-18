@@ -28,7 +28,6 @@ export class SearchService {
             .split(' ')
             .map(word => {
               let temp = word.replace(/[^a-z0-9]/gmi, '')
-              this.$log.debug(word)
               return (word.substring(0, 1) === '@')
                 ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                 : (word.substring(0, 1) === '#')
@@ -48,7 +47,6 @@ export class SearchService {
 
   search () {
     this.searchText = this.inputText
-    this.$log.debug(this.searchText)
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/partial/@' + this.searchText + '/mentions'
@@ -62,7 +60,6 @@ export class SearchService {
             .split(' ')
             .map(word => {
               let temp = word.replace(/[^a-z0-9]/gmi, '')
-              this.$log.debug(word)
               return (word.substring(0, 1) === '@')
                 ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                 : (word.substring(0, 1) === '#')
@@ -146,8 +143,8 @@ export class SearchService {
                 if (user.username === this.$authenticateService.username) tweet.liked = true
               })
             },
-            () => {
-              this.$log.debug('tweet had no likes')
+            (error) => {
+              this.$log.debug(error)
             }
           )
     })

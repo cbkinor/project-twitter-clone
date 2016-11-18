@@ -3,7 +3,8 @@ import templateUrl from './feed.component.html'
 /* @ngInject */
 class feedController {
 
-  constructor ($scope, $log, $state, $homeService, $authenticateService, $profileService, $searchService, $stateService, $followService, $tweetService) {
+  constructor ($scope, $log, $state, $homeService, $authenticateService, $profileService, $searchService, $stateService, $cookies, $followService, $tweetService) {
+    $cookies.put('currentState', 'home')
     this.$log = $log
     this.$scope = $scope
     this.$homeService = $homeService

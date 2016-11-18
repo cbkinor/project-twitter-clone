@@ -40,7 +40,6 @@ export class HomeService {
 
             return tweet
           })
-        this.$log.debug(this.feed)
       },
       (error) => {
         this.$log.debug(error)
@@ -64,8 +63,8 @@ export class HomeService {
                 if (user.username === this.$authenticateService.username) tweet.liked = true
               })
             },
-            () => {
-              this.$log.debug('tweet had no likes')
+            (error) => {
+              this.$log.debug(error)
             }
           )
     })
