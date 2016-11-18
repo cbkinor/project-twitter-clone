@@ -1,7 +1,7 @@
-import templateUrl from './tweet.component.html'
+import templateUrl from './profile.component.html'
 
 /* @ngInject */
-class tweetController {
+class ProfileController {
   constructor ($log, $state, $cookies, $profileService, $authenticateService, $followService, $homeService, $scope, $stateService, $searchService, $tweetService, $stateParams) {
     $cookies.put('currentState', 'profile')
     $scope.username = $stateParams.currentProfile || ''
@@ -62,8 +62,8 @@ class tweetController {
   }
 }
 
-export const tweet = {
+export const profile = {
   templateUrl,
-  controller: tweetController,
-  controllerAs: '$tweet'
+  controller: ProfileController,
+  controllerAs: '$profile'
 }
