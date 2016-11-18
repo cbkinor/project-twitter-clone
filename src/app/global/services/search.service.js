@@ -41,7 +41,7 @@ export class SearchService {
         })
       },
       (error) => {
-        this.$log.debug('no mentions with this text')
+        this.$log.debug(error)
       }
     )
     this.$http({
@@ -52,7 +52,7 @@ export class SearchService {
         this.users = response.data
       },
       (error) => {
-        this.$log.debug('no users with this name')
+        this.$log.debug(error)
       }
     )
     this.$http({
@@ -68,7 +68,6 @@ export class SearchService {
               .split(' ')
               .map(word => {
                     let temp = word.replace(/[^a-z0-9]/gmi, '')
-                    this.$log.debug(word)
                     return (word.substring(0, 1) === '@')
                       ? '<a href="#" ng-click="$search.goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : (word.substring(0, 1) === '#')
@@ -81,7 +80,7 @@ export class SearchService {
           })
       },
       (error) => {
-        this.$log.debug('no tags with this text')
+        this.$log.debug(error)
       }
     )
   }

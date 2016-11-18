@@ -13,13 +13,47 @@
   height: 80vh;
 }
 
-.ocean-background {
-  background-image: url('./app/global/resources/ocean-background.png');
-  background-size: 150% 150%;
+.tweetListItem {
+  padding: 5px;
 }
 
-.tweetContent {
-  font-size: 52;
+.tweetHead {
+  display: flex;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+}
+
+.repost {
+  background-color: rgba(0, 0, 255, 0.5);
+  font-weight: bolder;
+}
+
+.reply {
+  background-color: rgba(0, 0, 255, 0.5);
+  font-weight: bolder;
+}
+
+.like {
+  background-color: rgba(0, 255, 0, 0.5);
+  font-weight: bolder;
+}
+
+.unlike {
+  background-color: rgba(255, 0, 0, 0.5);
+  font-weight: bolder;
+}
+
+.tweetHead.md-button {
+  flex: 1
+}
+
+.ocean-background {
+  background-image: url('./app/global/resources/ocean-background.png');
+  background-size: 100% 100%;
 }
 
 .loginTab {
@@ -107,6 +141,7 @@ i {
 
 .searchTabs {
   width: 70vw;
+  padding: 1vw;
 }
 
 .listUsage md-divider {
