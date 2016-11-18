@@ -27,7 +27,7 @@ class followController {
     this.$followService.getfollower(username)
     this.$followService.getfollowing(username)
     this.$profileService.refreshProfile(username)
-    this.$stateService.state['profile']()
+    this.$stateService.state['profile'](username)
   }
 }
 

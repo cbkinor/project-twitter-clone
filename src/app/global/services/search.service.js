@@ -17,7 +17,7 @@ export class SearchService {
   getMentions (username) {
     this.$http({
       method: 'GET',
-      url: 'http://localhost:8080/users/@' + this.searchText + '/mentions'
+      url: 'http://localhost:8080/users/@' + username + '/mentions'
     }).then(
       (response) => {
         this.mentioned = this.checkAllTweetLikes(response.data)
