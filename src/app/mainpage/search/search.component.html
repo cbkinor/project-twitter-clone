@@ -36,7 +36,7 @@
           <md-list flex="">
             <md-list-item ng-hide="$search.$searchService.users && $search.$searchService.users.length > 0">No results found</md-list-item>
             <md-list-item ng-repeat="user in $search.$searchService.users" class="whiteBackground">
-              <md-button ng-click="$search.userProfile(user.username)">{{ user.username }}</md-button>
+              <md-button ng-click="$search.goToProfile(user.username)">{{ user.username }}</md-button>
             </md-list-item>
           </md-list>
         </md-tab-body>
