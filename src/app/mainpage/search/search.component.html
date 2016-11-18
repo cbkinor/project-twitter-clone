@@ -1,70 +1,68 @@
-<md-content layout-align="center center" layout="column" class="searchTabs">
-  <md-tabs md-dynamic-height md-border-bottom class="loginTab" layout-fill>
-    <md-tab id="tab1">
-      <md-tab-label>Tweets with Hashtag</md-tab-label>
-      <md-tab-body>
-        <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.tweets && $search.$searchService.tweets.length > 0">No results found</md-list-item>
-          <md-list-item class="md-3-line tweetListItem" ng-repeat="tweet in $search.getTweets()">
-            <div class="md-list-item-text md-whiteframe-3dp tweetListItem" layout="column">
-              <div class="tweetHead">
-                <div class="author">
-                  <h2>Author: <a href="" ng-click="$search.goToProfile(tweet.author.username)">{{ tweet.author.username }}</a></h2>
-                  <p>Posted: {{ tweet.posted | date:'medium' }}</p>
+<div class="searchPageWidth pageHeight" layout-padding layout = "row">
+  <md-content layout-fill class="transparentBackground">
+    <md-tabs layout-fill class="whiteBackground">
+      <md-tab id="tab1">
+        <md-tab-label>Tweets with Hashtag</md-tab-label>
+        <md-tab-body>
+          <md-list flex="">
+            <md-list-item ng-hide="$search.$searchService.tweets && $search.$searchService.tweets.length > 0">No results found</md-list-item>
+            <md-list-item class="md-3-line tweetListItem" ng-repeat="tweet in $search.getTweets()">
+              <div class="md-list-item-text md-whiteframe-3dp tweetListItem" layout="column">
+                <div class="tweetHead">
+                  <div class="author">
+                    <h2>Author: <a href="" ng-click="$search.goToProfile(tweet.author.username)">{{ tweet.author.username }}</a></h2>
+                    <p>Posted: {{ tweet.posted | date:'medium' }}</p>
+                  </div>
+                  <md-button ng-click="$search.$tweetService.likeTweet(tweet)" ng-hide="tweet.liked" class="like">Like</md-button>
+                  <md-button ng-click="$search.$tweetService.unlikeTweet(tweet)" ng-show="tweet.liked" class="unlike">Unlike</md-button>
+                  <md-button ng-click="$search.$tweetService.repostTweet(tweet.id)" class="repost">repost</md-button>
+                  <md-button ng-click="$search.$tweetService.showTweetPrompt($event, tweet.id)" class="reply">reply</md-button>
                 </div>
-                <md-button ng-click="$search.$tweetService.likeTweet(tweet)" ng-hide="tweet.liked" class="like">Like</md-button>
-                <md-button ng-click="$search.$tweetService.unlikeTweet(tweet)" ng-show="tweet.liked" class="unlike">Unlike</md-button>
-                <md-button ng-click="$search.$tweetService.repostTweet(tweet.id)" class="repost">repost</md-button>
-                <md-button ng-click="$search.$tweetService.showTweetPrompt($event, tweet.id)" class="reply">reply</md-button>
+                <p compile="tweet.content" style="font-size:20px; color:black"></p>
+                <div ng-show='tweet.inReplyTo'>
+                  <h3>In Reply To: <a href ng-click="$search.goToProfile(tweet.inReplyTo.author.username)">{{ tweet.inReplyTo.author.username }}</a>: <a href ng-click="null">{{ tweet.inReplyTo.content }}</a></h3>
+                </div>
               </div>
-              <p compile="tweet.content" style="font-size:20px; color:black"></p>
-              <div ng-show='tweet.inReplyTo'>
-                <h3>In Reply To: <a href ng-click="$search.goToProfile(tweet.inReplyTo.author.username)">{{ tweet.inReplyTo.author.username }}</a>: <a href ng-click="null">{{ tweet.inReplyTo.content }}</a></h3>
+            </md-list-item>
+          </md-list>
+        </md-tab-body>
+      </md-tab>
+      <md-tab id="tab2">
+        <md-tab-label>Users</md-tab-label>
+        <md-tab-body>
+          <md-list flex="">
+            <md-list-item ng-hide="$search.$searchService.users && $search.$searchService.users.length > 0">No results found</md-list-item>
+            <md-list-item ng-repeat="user in $search.$searchService.users"
+              <md-button ng-click="$search.userProfile(user.username)">{{ user.username }}</md-button>
+            </md-list-item>
+          </md-list>
+        </md-tab-body>
+      </md-tab>
+      <md-tab id="tab3">
+        <md-tab-label>Mentions</md-tab-label>
+        <md-tab-body>
+          <md-list flex="">
+            <md-list-item ng-hide="$search.$searchService.mentioned && $search.$searchService.mentioned.length > 0">No results found</md-list-item>
+            <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.mentioned">
+              <div class="md-list-item-text md-whiteframe-2dp" layout="column">
+                <h3 ng-click="null">>{{ item.author.username }}</h3>
+                <p>{{ item.content }}</p>
+                <p>{{ item.posted | date:'HH:mm:ss' }}</p>
+                <div ng-show='item.inReplyTo'>
+                  <h3 ng-click="null">Reply From</h3>
+                </div>
+                <div ng-show='item.repostOf'>
+                  <h3 ng-click="null">Repost Of</h3>
+                  <h3>>{{item.repostOf.author.username}} </h3>
+                  <p>{{ item.repostOf.content }}</p>
+                  <p>{{ item.repostOf.posted | date:'HH:mm:ss' }}</p>
+                </div>
               </div>
-              <div ng-show='tweet.repostOf'>
-              <h3>Repost Of: <a href ng-click="$search.goToProfile(tweet.inReplyTo.author.username)">{{ tweet.inReplyTo.author.username }}</a>: <a href ng-click="null">{{ tweet.inReplyTo.content }}</a></h3>
-              </div>
-            </div>
-            <md-divider ng-if="!$last"></md-divider>
-          </md-list-item>
-        </md-list>
-      </md-tab-body>
-    </md-tab>
-    <md-tab id="tab2">
-      <md-tab-label>Users</md-tab-label>
-      <md-tab-body>
-        <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.users && $search.$searchService.users.length > 0">No results found</md-list-item>
-          <md-list-item ng-repeat="user in $search.$searchService.users">
-            <md-button ng-click="$profileService.goToProfile(user.username)">{{ user.username }}</md-button>
-          </md-list-item>
-        </md-list>
-      </md-tab-body>
-    </md-tab>
-    <md-tab id="tab3">
-      <md-tab-label>Mentions</md-tab-label>
-      <md-tab-body>
-        <md-list flex="">
-          <md-list-item ng-hide="$search.$searchService.mentioned && $search.$searchService.mentioned.length > 0">No results found</md-list-item>
-          <md-list-item class="md-3-line" ng-repeat="item in $search.$searchService.mentioned">
-            <div class="md-list-item-text md-whiteframe-2dp" layout="column">
-              <h3 ng-click="null">>{{ item.author.username }}</h3>
-              <p>{{ item.content }}</p>
-              <p>{{ item.posted | date:'HH:mm:ss' }}</p>
-              <div ng-show='item.inReplyTo'>
-                <h3 ng-click="null">Reply From</h3>
-              </div>
-              <div ng-show='item.repostOf'>
-                <h3 ng-click="null">Repost Of</h3>
-                <h3>>{{item.repostOf.author.username}} </h3>
-                <p>{{ item.repostOf.content }}</p>
-                <p>{{ item.repostOf.posted | date:'HH:mm:ss' }}</p>
-              </div>
-            </div>
-            </br>
-          </md-list-item>
-        </md-list>
-      </md-tab-body>
-    </md-tab>
-  </md-tabs>
-</md-content>
+              </br>
+            </md-list-item>
+          </md-list>
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+</div>
