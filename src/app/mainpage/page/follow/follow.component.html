@@ -1,16 +1,10 @@
 
 <md-content layout-fill class="transparentBackground">
-  <form class="searchForm" autocomplete="off" ng-submit = "$follow.getTargetFollows()">
-    <md-input-container md-no-float class="searchContainer">
-      <input class="searchInput md-whiteframe-6dp" placeholder=" Search Following/Following" type="text" ng-model="$follow.inputText">
-    </md-input-container>
-  </form>
-  <md-tabs layout-fill class="loginTab" ng-click="$follow.setFollowerTabTrue()">
+  <md-tabs layout-fill class="loginTab">
     <md-tab label="Follower">
       <md-tab-body>
         <md-list flex>
-          <md-list-item ng-hide="$follow.getfollower().length > 0">Nobody follows you</md-list-item>
-          <md-list-item class="tweetListItem" ng-repeat="item in $follow.getTargetFollows()">
+          <md-list-item class="tweetListItem" ng-repeat="item in $follow.getfollow()">
             <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
               <md-button ng-click="$follow.google(item.username)">{{item.username}}</md-button>
             </div>
@@ -18,11 +12,10 @@
         </md-list>
       </md-tab-body>
     </md-tab>
-    <md-tab label="Following" ng-click="$follow.setFollowingTabFalse()">
+    <md-tab label="Following">
       <md-tab-body>
         <md-list flex>
-          <md-list-item ng-hide="$follow.getfollowing().length > 0">You follow nobody</md-list-item>
-          <md-list-item class="tweetListItem" ng-repeat="item in $follow.getTargetFollows()">
+          <md-list-item  class="tweetListItem" ng-repeat="item in $follow.getfollowing()">
             <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
               <md-button class="followButton" ng-click="$follow.google(item.username)">{{item.username}}</md-button>
             </div>
