@@ -47,14 +47,12 @@ class followController {
 
   setFollowerTabTrue () {
     this.followTabBoolean = true
-    this.$log.debug(this.follow)
   }
   setFollowingTabFalse () {
     this.followTabBoolean = false
-    this.$log.debug(this.follow)
   }
 
-  google (username) {
+  goToProfileFollow (username) {
     console.log(username)
     this.$followService.getfollower(username)
     this.$followService.getfollowing(username)

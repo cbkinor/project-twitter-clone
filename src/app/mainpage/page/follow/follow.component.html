@@ -1,12 +1,20 @@
-
+<md-toolbar layout="row" class="followButton" flex>
+  <form class="searchForm" autocomplete="off" ng-submit = "$follow.getTargetFollows()">
+    <md-input-container md-no-float class="searchContainer">
+      <input class="searchInput md-whiteframe-6dp" placeholder=" Search Follower/ing" type="text" ng-model="$follow.inputText">
+    </md-input-container>
+  </form>
+</md-toolbar>
 <md-content layout-fill class="transparentBackground">
-  <md-tabs layout-fill class="loginTab">
-    <md-tab label="Follower">
+
+
+  <md-tabs layout-fill class="loginTab" >
+    <md-tab label="Follower" ng-click="$follow.setFollowerTabTrue()">
       <md-tab-body>
         <md-list flex>
           <md-list-item class="tweetListItem" ng-repeat="item in $follow.getfollow()">
             <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
-              <md-button ng-click="$follow.google(item.username)">{{item.username}}</md-button>
+              <md-button class ="followButton" ng-click="$follow.goToProfileFollow(item.username)">{{item.username}}</md-button>
             </div>
           </md-list-item>
         </md-list>
@@ -17,7 +25,7 @@
         <md-list flex>
           <md-list-item  class="tweetListItem" ng-repeat="item in $follow.getfollowing()">
             <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
-              <md-button class="followButton" ng-click="$follow.google(item.username)">{{item.username}}</md-button>
+              <md-button class="followButton" ng-click="$follow.goToProfileFollow(item.username)">{{item.username}}</md-button>
             </div>
           </md-list-item>
         </md-list>
