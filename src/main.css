@@ -175,3 +175,7 @@ html {
   background: linear-gradient(-90deg, white, turquoise);
   min-width: 15vw;
 }
+.followButtonProfile {
+  background: linear-gradient(-90deg, white, turquoise);
+  width: 100px;
+}
