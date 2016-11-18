@@ -1,12 +1,13 @@
 export class TweetService {
 
   /* @ngInject */
-  constructor ($http, $authenticateService, $log, $homeService, $profileService, $mdDialog) {
+  constructor ($http, $authenticateService, $log, $homeService, $profileService, $mdDialog, $stateService) {
     this.$log = $log
     this.$http = $http
     this.$authenticateService = $authenticateService
     this.$homeService = $homeService
     this.$profileService = $profileService
+    this.$stateService = $stateService
     this.$mdDialog = $mdDialog
   }
 
@@ -20,8 +21,7 @@ export class TweetService {
       url: 'http://localhost:8080/tweets',
       data: tweet
     }).then((response) => {
-      this.$homeService.refreshFeed(this.$authenticateService.username)
-      this.$profileService.refreshProfile(this.$profileService.username)
+      this.refreshStateContents()
     })
   }
 
@@ -38,7 +38,6 @@ export class TweetService {
       .then((result) => {
         this.replyTweet(result, id)
       }, () => {
-        console.log('tweet didn\'t have contents')
       })
   }
 
@@ -53,8 +52,7 @@ export class TweetService {
       url: 'http://localhost:8080/tweets/' + id + '/reply',
       data: tweet
     }).then((response) => {
-      this.$homeService.refreshFeed(this.$authenticateService.username)
-      this.$profileService.refreshProfile(this.$profileService.username)
+      this.refreshStateContents()
     })
   }
 
@@ -64,8 +62,7 @@ export class TweetService {
       url: 'http://localhost:8080/tweets/' + id + '/repost',
       data: this.$authenticateService.getCredentials()
     }).then((response) => {
-      this.$homeService.refreshFeed(this.$authenticateService.username)
-      this.$profileService.refreshProfile(this.$profileService.username)
+      this.refreshStateContents()
     })
   }
 
@@ -107,4 +104,11 @@ export class TweetService {
         )
   }
 
+  refreshStateContents () {
+    if (this.$stateService.currentState === 'profile') {
+      this.$profileService.refreshProfile(this.$profileService.username)
+    } else if (this.$stateService.currentState === 'home') {
+      this.$homeService.refreshFeed(this.$authenticateService.username)
+    }
+  }
 }

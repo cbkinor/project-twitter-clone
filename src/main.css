@@ -9,11 +9,16 @@
 .pageWidth {
   width: 90vw;
 }
+
 .pageHeight {
   height: 80vh;
 }
 
 .tweetListItem {
+  padding: 5px;
+}
+
+.listItem {
   padding: 5px;
 }
 
@@ -160,4 +165,8 @@ html {
 }
 .searchPageWidth {
   width: 60vw;
+}
+
+.followButton {
+   min-width: 13.5vw;
 }
