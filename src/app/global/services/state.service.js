@@ -6,6 +6,8 @@ export class StateService {
     this.$state = $state
     this.$cookies = $cookies
     this.$log.debug('StateService instantiated')
+    this.currentState = $state.current.component
+    this.currentTab = this.currentState === 'home' ? 'feed' : 'tweets'
 
     this.state = {
       'login': (refresh) => { this.loadState(refresh, 'login', 'login') },

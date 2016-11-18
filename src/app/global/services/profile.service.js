@@ -10,7 +10,6 @@ export class ProfileService {
     this.$searchService = $searchService
     this.arrtweets = []
     $log.debug('ProfileService created')
-    $log.debug(this.$authenticateService.getCredentials())
   }
 
   refreshProfile (username) {
@@ -127,8 +126,8 @@ export class ProfileService {
                 if (user.username === this.$authenticateService.username) tweet.liked = true
               })
             },
-            () => {
-              this.$log.debug('tweet had no likes')
+            (error) => {
+              this.$log.debug(error)
             }
           )
     })

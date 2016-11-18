@@ -3,6 +3,7 @@ import templateUrl from './login.component.html'
 /* @ngInject */
 class LoginController {
   constructor ($log, $authenticateService, $cookies, $stateService) {
+    $cookies.put('currentState', 'login')
     this.$authenticateService = $authenticateService
     this.$authenticateService.incorrectUser = undefined
     $authenticateService.username = $cookies.get('username')
