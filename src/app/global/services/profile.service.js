@@ -1,18 +1,20 @@
 export class ProfileService {
 
   /* @ngInject */
-  constructor ($log, $http, $stateService, $authenticateService, $followService) {
+  constructor ($log, $http, $stateService, $authenticateService, $followService, $searchService) {
     this.$authenticateService = $authenticateService
     this.$log = $log
     this.$http = $http
     this.$stateService = $stateService
     this.$followService = $followService
+    this.$searchService = $searchService
     this.arrtweets = []
     $log.debug('ProfileService created')
     $log.debug(this.$authenticateService.getCredentials())
   }
 
   refreshProfile (username) {
+    this.$searchService.getMentions(username)
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/tweets'
@@ -105,9 +107,8 @@ export class ProfileService {
   }
 
   goToProfile = (name) => {
-    this.$stateService.state['profile']()
+    this.$stateService.state['profile'](name)
     this.refreshProfile(name)
-    this.$log.debug('CALLED')
   }
 
   checkAllTweetLikes (tweets) {

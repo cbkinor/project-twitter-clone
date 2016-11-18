@@ -25,7 +25,7 @@ class feedController {
   }
 
   goToProfile = (name) => {
-    this.$stateService.state['profile']()
+    this.$stateService.state['profile'](name)
     this.$profileService.refreshProfile(name)
   }
 

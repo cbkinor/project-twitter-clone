@@ -46,7 +46,7 @@ class MenubarController {
 
     this.viewProfile = () => {
       this.$profileService.refreshProfile(this.$authenticateService.username)
-      this.$stateService.state['profile']()
+      this.$stateService.state['profile'](this.$authenticateService.username)
     }
 
     this.showTweetPrompt = ($event) => {
