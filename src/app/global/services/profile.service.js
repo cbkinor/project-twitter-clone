@@ -42,10 +42,6 @@ export class ProfileService {
         this.$log.debug(error)
       }
     )
-    this.mentioned = undefined
-    this.$log.debug("================================")
-    this.$log.debug(username)
-    this.$log.debug("================================")
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/mentions'
@@ -58,7 +54,6 @@ export class ProfileService {
               .split(' ')
               .map(word => {
                     let temp = word.replace(/[^a-z0-9]/gmi, '')
-                    this.$log.debug(word)
                     return (word.substring(0, 1) === '@')
                       ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                       : (word.substring(0, 1) === '#')
