@@ -9,7 +9,8 @@ export class SearchService {
     this.$authenticateService = $authenticateService
     this.tweets = undefined
     this.users = undefined
-    this.hashtag = undefined
+    this.hashtags = undefined
+    this.mentioned = undefined
     this.searchText = ''
     $log.debug('SearchService created')
   }
@@ -84,6 +85,17 @@ export class SearchService {
     }).then(
       (response) => {
         this.users = response.data
+      },
+      (error) => {
+        this.$log.debug(error)
+      }
+    )
+    this.$http({
+      method: 'GET',
+      url: 'http://localhost:8080/tags/partialtag/' + this.searchText
+    }).then(
+      (response) => {
+        this.hashtags = response.data
       },
       (error) => {
         this.$log.debug(error)
