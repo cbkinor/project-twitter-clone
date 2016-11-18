@@ -1,7 +1,7 @@
-import templateUrl from './feed.component.html'
+import templateUrl from './home.component.html'
 
 /* @ngInject */
-class feedController {
+class HomeController {
 
   constructor ($scope, $log, $state, $homeService, $authenticateService, $profileService, $searchService, $stateService, $cookies, $followService, $tweetService) {
     $cookies.put('currentState', 'home')
@@ -39,8 +39,8 @@ class feedController {
   }
 }
 
-export const feed = {
+export const home = {
   templateUrl,
-  controller: feedController,
-  controllerAs: '$feed'
+  controller: HomeController,
+  controllerAs: '$home'
 }
