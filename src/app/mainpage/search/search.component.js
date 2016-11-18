@@ -3,7 +3,7 @@ import templateUrl from './search.component.html'
 /* @ngInject */
 class SearchController {
 
-  constructor ($scope, $log, $searchService, $profileService, $tweetService, $stateService, $followService) {
+  constructor ($scope, $log, $searchService, $profileService, $tweetService, $stateService, $followService, $authenticateService) {
     this.$scope = $scope
     $scope.goToProfile = this.goToProfile
     $scope.search = this.search
@@ -12,8 +12,10 @@ class SearchController {
     this.$profileService = $profileService
     this.$stateService = $stateService
     this.$followService = $followService
+    this.$authenticateService = $authenticateService
     this.$scope.$profileService = $profileService
     $log.debug('SearchController instantiated')
+    this.$log = $log
   }
 
   userProfile (username) {

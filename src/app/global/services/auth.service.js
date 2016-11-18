@@ -143,6 +143,10 @@ export class AuthenticateService {
   }
 
   getCredentials () {
+    this.$log.debug({
+      'username': this.username,
+      'password': this.password
+    })
     return {
       'username': this.username,
       'password': this.password
