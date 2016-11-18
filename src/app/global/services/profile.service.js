@@ -1,15 +1,15 @@
 export class ProfileService {
 
   /* @ngInject */
-  constructor ($log, $http, $stateService, $authenticate, $followService) {
-    this.$authenticate = $authenticate
+  constructor ($log, $http, $stateService, $authenticateService, $followService) {
+    this.$authenticateService = $authenticateService
     this.$log = $log
     this.$http = $http
     this.$stateService = $stateService
     this.$followService = $followService
     this.arrtweets = []
     $log.debug('ProfileService created')
-    $log.debug(this.$authenticate.getCredentials())
+    $log.debug(this.$authenticateService.getCredentials())
   }
 
   refreshProfile (username) {
@@ -19,7 +19,8 @@ export class ProfileService {
     }).then(
       (response) => {
         this.username = username
-        this.arrtweets = response.data
+        this.arrtweets = this.checkAllTweetLikes(response.data)
+        this.arrtweets = this.arrtweets
           .map(tweet => {
             if (tweet.content === null) tweet.content = ''
             tweet.content = tweet.content
@@ -81,8 +82,8 @@ export class ProfileService {
       method: 'POST',
       url: 'http://localhost:8080/users/@' + username + '/follow',
       data: {
-          username: this.$authenticate.username,
-          password: this.$authenticate.password
+          username: this.$authenticateService.username,
+          password: this.$authenticateService.password
           }
     }).then( () => {
       this.refreshFollow(username)
@@ -95,8 +96,8 @@ export class ProfileService {
       method: 'POST',
       url: 'http://localhost:8080/users/@' + username + '/unfollow',
       data: {
-        username: this.$authenticate.username,
-        password: this.$authenticate.password
+        username: this.$authenticateService.username,
+        password: this.$authenticateService.password
       }
     }).then( () => {
       this.refreshFollow(username)
@@ -112,5 +113,29 @@ export class ProfileService {
     this.$stateService.state['profile']()
     this.refreshProfile(name)
     this.$log.debug('CALLED')
+  }
+
+  checkAllTweetLikes (tweets) {
+    tweets.forEach(tweet => {
+      this.$http({
+        method: 'GET',
+        url: 'http://localhost:8080/tweets/' + tweet.id + '/likes',
+        data: {
+          username: this.$authenticateService.username,
+          password: this.$authenticateService.password
+        }
+      }).then(
+            (response) => {
+              tweet.liked = false
+              response.data.forEach(user => {
+                if (user.username === this.$authenticateService.username) tweet.liked = true
+              })
+            },
+            () => {
+              this.$log.debug('tweet had no likes')
+            }
+          )
+    })
+    return tweets
   }
 }

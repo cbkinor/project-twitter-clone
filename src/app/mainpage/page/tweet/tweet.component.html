@@ -1,10 +1,10 @@
 
 <h3>
   User : {{$tweet.$profileService.username}}
-    <md-button ng-click="$tweet.followuser($tweet.$profileService.username)" ng-hide="$tweet.checkfollower() || $tweet.$profileService.username===$tweet.$authenticate.username">
+    <md-button ng-click="$tweet.followuser($tweet.$profileService.username)" ng-hide="$tweet.checkfollower() || $tweet.$profileService.username===$tweet.$authenticateService.username">
       Follow
     </md-button>
-    <md-button ng-click="$tweet.unfollowuser($tweet.$profileService.username)" ng-hide="!$tweet.checkfollower() || $tweet.$profileService.username===$tweet.$authenticate.username">
+    <md-button ng-click="$tweet.unfollowuser($tweet.$profileService.username)" ng-hide="!$tweet.checkfollower() || $tweet.$profileService.username===$tweet.$authenticateService.username">
       Unfollow
     </md-button>
 </h3>

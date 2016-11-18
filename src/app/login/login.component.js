@@ -2,12 +2,12 @@ import templateUrl from './login.component.html'
 
 /* @ngInject */
 class LoginController {
-  constructor ($log, $authenticate, $cookies, $stateService) {
-    this.$authenticate = $authenticate
-    this.$authenticate.incorrectUser = undefined
-    $authenticate.username = $cookies.get('username')
-    $authenticate.password = $cookies.get('password')
-    $authenticate.login('home', true)
+  constructor ($log, $authenticateService, $cookies, $stateService) {
+    this.$authenticateService = $authenticateService
+    this.$authenticateService.incorrectUser = undefined
+    $authenticateService.username = $cookies.get('username')
+    $authenticateService.password = $cookies.get('password')
+    $authenticateService.login('home', true)
     $log.debug('LoginController instantiated')
   }
 }

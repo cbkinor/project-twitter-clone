@@ -2,10 +2,10 @@ import templateUrl from './tweet.component.html'
 
 /* @ngInject */
 class tweetController {
-  constructor ($log, $state, $profileService, $authenticate, $followService, $homeService, $scope, $stateService, $searchService, $tweetService) {
+  constructor ($log, $state, $profileService, $authenticateService, $followService, $homeService, $scope, $stateService, $searchService, $tweetService) {
     this.$profileService = $profileService
     this.$followService = $followService
-    this.$authenticate = $authenticate
+    this.$authenticateService = $authenticateService
     this.$homeService = $homeService
     this.$tweetService = $tweetService
     this.$state = $state
@@ -38,13 +38,13 @@ class tweetController {
   }
 
   checkfollower () {
-    let shit = this.$authenticate.username
+    let shit = this.$authenticateService.username
     if (this.$followService.arrfollower.length > 0 && this.$followService.arrfollower.filter(function (follower) { return follower.username === shit }).length === 1) {
       return this.$followService.arrfollower.filter(function (follower) { return follower.username === shit })[0].username === shit
     } else {
       return false
     }
-    // this.$log.debug(this.$followService.arrfollower.includes(this.$profileService.getSingleUser(this.$authenticate.username)))
+    // this.$log.debug(this.$followService.arrfollower.includes(this.$profileService.getSingleUser(this.$authenticateService.username)))
   }
 
   goToProfile = (name) => {

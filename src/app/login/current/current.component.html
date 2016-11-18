@@ -4,16 +4,16 @@
       <div>
         <md-input-container flex>
           <label>Username</label>
-          <input type="text" ng-model="$current.$authenticate.username" name="username"required/>
+          <input type="text" ng-model="$current.$authenticateService.username" name="username"required/>
         </md-input-container>
         <md-input-container flex>
           <label>Password</label>
-          <input type="text" ng-model="$current.$authenticate.password" required/>
+          <input type="text" ng-model="$current.$authenticateService.password" required/>
         </md-input-container>
       </div>
       <div>
         <md-button type="submit" class="md-raised md-primary" ng-click="$current.login()" layout-fill>Login</md-button>
-        <div ng-show="$current.$authenticate.incorrectUser" class="error">
+        <div ng-show="$current.$authenticateService.incorrectUser" class="error">
           *Username and/or password are incorrect
         </div>
       </div>

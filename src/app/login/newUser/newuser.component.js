@@ -2,20 +2,20 @@ import templateUrl from './newuser.component.html'
 
 /* @ngInject */
 class NewUserController {
-  constructor ($log, $authenticate, $stateService) {
-    this.$authenticate = $authenticate
+  constructor ($log, $authenticateService, $stateService) {
+    this.$authenticateService = $authenticateService
     this.$stateService = $stateService
     $log.debug('NewUserController instantiated')
   }
 
   create () {
-    this.$authenticate.create()
-    if (this.$authenticate.username)
+    this.$authenticateService.create()
+    if (this.$authenticateService.username)
       this.stateService.state['home']()
   }
 
   validateUsername () {
-    this.$authenticate.validateUsername()
+    this.$authenticateService.validateUsername()
   }
 }
 

@@ -1,10 +1,10 @@
 export class TweetService {
 
   /* @ngInject */
-  constructor ($http, $authenticate, $log, $homeService, $profileService, $mdDialog) {
+  constructor ($http, $authenticateService, $log, $homeService, $profileService, $mdDialog) {
     this.$log = $log
     this.$http = $http
-    this.$authenticate = $authenticate
+    this.$authenticateService = $authenticateService
     this.$homeService = $homeService
     this.$profileService = $profileService
     this.$mdDialog = $mdDialog
@@ -13,18 +13,18 @@ export class TweetService {
   postTweet (content) {
     const tweet = {
       'content': content,
-      'credentials': this.$authenticate.getCredentials()
+      'credentials': this.$authenticateService.getCredentials()
     }
-
     this.$http({
       method: 'POST',
       url: 'http://localhost:8080/tweets',
       data: tweet
     }).then((response) => {
-      this.$homeService.refreshFeed(this.$authenticate.username)
+      this.$homeService.refreshFeed(this.$authenticateService.username)
       this.$profileService.refreshProfile(this.$profileService.username)
     })
   }
+
   showTweetPrompt ($event, id) {
     let confirm = this.$mdDialog.prompt()
       .title('Post a tweet!')
@@ -41,10 +41,11 @@ export class TweetService {
         console.log('tweet didn\'t have contents')
       })
   }
+
   replyTweet (content, id) {
     const tweet = {
       'content': content,
-      'credentials': this.$authenticate.getCredentials()
+      'credentials': this.$authenticateService.getCredentials()
     }
 
     this.$http({
@@ -52,27 +53,29 @@ export class TweetService {
       url: 'http://localhost:8080/tweets/' + id + '/reply',
       data: tweet
     }).then((response) => {
-      this.$homeService.refreshFeed(this.$authenticate.username)
+      this.$homeService.refreshFeed(this.$authenticateService.username)
       this.$profileService.refreshProfile(this.$profileService.username)
     })
   }
+
   repostTweet (id) {
     this.$http({
       method: 'POST',
       url: 'http://localhost:8080/tweets/' + id + '/repost',
-      data: this.$authenticate.getCredentials()
+      data: this.$authenticateService.getCredentials()
     }).then((response) => {
-      this.$homeService.refreshFeed(this.$authenticate.username)
+      this.$homeService.refreshFeed(this.$authenticateService.username)
       this.$profileService.refreshProfile(this.$profileService.username)
     })
   }
+
   likeTweet (item) {
     this.$http({
       method: 'POST',
       url: 'http://localhost:8080/tweets/' + item.id + '/like',
       data: {
-        username: this.$authenticate.username,
-        password: this.$authenticate.password
+        username: this.$authenticateService.username,
+        password: this.$authenticateService.password
       }
     }).then(
           (response) => {
@@ -84,13 +87,14 @@ export class TweetService {
           }
         )
   }
+
   unlikeTweet (item) {
     this.$http({
       method: 'POST',
       url: 'http://localhost:8080/tweets/' + item.id + '/unlike',
       data: {
-        username: this.$authenticate.username,
-        password: this.$authenticate.password
+        username: this.$authenticateService.username,
+        password: this.$authenticateService.password
       }
     }).then(
           (response) => {
@@ -103,27 +107,4 @@ export class TweetService {
         )
   }
 
-  checkAllTweetLikes (tweets) {
-    tweets.forEach(tweet => {
-      this.$http({
-        method: 'GET',
-        url: 'http://localhost:8080/tweets/' + tweet.id + '/likes',
-        data: {
-          username: this.$authenticate.username,
-          password: this.$authenticate.password
-        }
-      }).then(
-            (response) => {
-              tweet.liked = false
-              response.data.forEach(user => {
-                if (user.username === this.$authenticate.username) tweet.liked = true
-              })
-            },
-            () => {
-              this.$log.debug('tweet had no likes')
-            }
-          )
-    })
-    return tweets
-  }
 }

@@ -2,15 +2,15 @@ import templateUrl from './current.component.html'
 
 /* @ngInject */
 class CurrentController {
-  constructor ($log, $authenticate, $stateService) {
-    this.$authenticate = $authenticate
+  constructor ($log, $authenticateService, $stateService) {
+    this.$authenticateService = $authenticateService
     this.$stateService = $stateService
     $log.debug('LogController instantiated')
   }
 
   login () {
-    if (this.$authenticate.username)
-      this.$authenticate.login('home')
+    if (this.$authenticateService.username)
+      this.$authenticateService.login('home')
   }
 }
 

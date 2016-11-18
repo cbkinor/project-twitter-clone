@@ -2,18 +2,18 @@ import templateUrl from './edit.component.html'
 
 /* @ngInject */
 class EditController {
-  constructor ($log, $authenticate) {
-    this.$authenticate = $authenticate
+  constructor ($log, $authenticateService) {
+    this.$authenticateService = $authenticateService
     $log.debug('EditController instantiated')
 
   }
 
   update () {
-    this.$authenticate.update()
+    this.$authenticateService.update()
   }
 
   delete () {
-    this.$authenticate.delete()
+    this.$authenticateService.delete()
   }
 }
 

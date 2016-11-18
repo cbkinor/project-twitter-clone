@@ -4,34 +4,34 @@
       <div>
         <md-input-container>
           <label>First Name</label>
-          <input type="text" ng-model="$newuser.$authenticate.profile.firstName"/>
+          <input type="text" ng-model="$newuser.$authenticateService.profile.firstName"/>
         </md-input-container>
         <md-input-container>
           <label>Last Name</label>
-          <input type="text" ng-model="$newuser.$authenticate.profile.lastName"/>
+          <input type="text" ng-model="$newuser.$authenticateService.profile.lastName"/>
         </md-input-container>
       </div>
       <div>
         <md-input-container>
           <label>Username</label>
-          <input type="text" ng-model="$newuser.$authenticate.username" ng-blur="$newuser.validateUsername()" required/>
-          <div ng-show='$newuser.$authenticate.invalidUsername' class="error">
+          <input type="text" ng-model="$newuser.$authenticateService.username" ng-blur="$newuser.validateUsername()" required/>
+          <div ng-show='$newuser.$authenticateService.invalidUsername' class="error">
             *Username is already taken
           </div>
         </md-input-container>
         <md-input-container>
           <label>Password</label>
-          <input type="text" ng-model="$newuser.$authenticate.password" required/>
+          <input type="text" ng-model="$newuser.$authenticateService.password" required/>
         </md-input-container>
       </div>
       <div>
         <md-input-container>
           <label>Email</label>
-          <input type="text" ng-model="$newuser.$authenticate.profile.email" required/>
+          <input type="text" ng-model="$newuser.$authenticateService.profile.email" required/>
         </md-input-container>
         <md-input-container>
           <label>Phone</label>
-          <input type="text" ng-model="$newuser.$authenticate.profile.phone"/>
+          <input type="text" ng-model="$newuser.$authenticateService.profile.phone"/>
         </md-input-container>
       </div>
       <div align="center">

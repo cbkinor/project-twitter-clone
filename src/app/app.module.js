@@ -51,7 +51,7 @@ export default
       }
     }])
     .component('app', app)
-    .service('$authenticate', AuthenticateService)
+    .service('$authenticateService', AuthenticateService)
     .service('$stateService', StateService)
     .service('$searchService', SearchService)
     .service('$tweetService', TweetService)
