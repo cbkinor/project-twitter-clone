@@ -12,7 +12,7 @@ export class FollowService {
     $log.debug('FollowService created')
   }
 
-  getfollower (username) {
+  getFollower (username) {
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/followers'
@@ -22,7 +22,7 @@ export class FollowService {
       },
     )
   }
-  getfollowing (username) {
+  getFollowing (username) {
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/following'

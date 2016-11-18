@@ -10,16 +10,16 @@ class followController {
     this.$profileService = $profileService
     this.$homeService = $homeService
     this.followTabBoolean = true
-    this.initiatefollowers = $followService.getfollower($authenticateService.$cookies.get('username'))
-    this.initiatefollowings = $followService.getfollowing($authenticateService.$cookies.get('username'))
+    this.initiatefollowers = $followService.getFollower($authenticateService.$cookies.get('username'))
+    this.initiatefollowings = $followService.getFollowing($authenticateService.$cookies.get('username'))
     $log.debug('FollowController instantiated')
   }
 
-  getfollower () {
+  getFollower () {
     return this.$followService.arrfollower
   }
 
-  getfollowing () {
+  getFollowing () {
     return this.$followService.arrfollowing
   }
 
@@ -29,18 +29,18 @@ class followController {
     }
     let searchText = this.inputText
     if (this.followTabBoolean === true) {
-      let follower = this.getfollower()
+      let follower = this.getFollower()
       if (follower.length < 0) {
         return undefined
       } else {
-        return follower.filter(function (user) { return user.username.includes(searchText) })
+        return follower.filter(function (user) { return user.username.startsWith(searchText) })
       }
     } else {
-      let following = this.getfollowing()
+      let following = this.getFollowing()
       if (following.length < 0) {
         return undefined
       } else {
-        return following.filter(function (user) { return user.username.includes(searchText) })
+        return following.filter(function (user) { return user.username.startsWith(searchText) })
       }
     }
   }
@@ -52,10 +52,9 @@ class followController {
     this.followTabBoolean = false
   }
 
-  goToProfileFollow (username) {
-    console.log(username)
-    this.$followService.getfollower(username)
-    this.$followService.getfollowing(username)
+  goToProfileFeed (username) {
+    this.$followService.getFollower(username)
+    this.$followService.getFollowing(username)
     this.$profileService.refreshProfile(username)
     this.$stateService.state['profile'](username)
   }

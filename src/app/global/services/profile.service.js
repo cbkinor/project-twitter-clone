@@ -102,8 +102,8 @@ export class ProfileService {
   }
 
   refreshFollow (username) {
-    this.$followService.getfollower(username)
-    this.$followService.getfollowing(username)
+    this.$followService.getFollower(username)
+    this.$followService.getFollowing(username)
   }
 
   goToProfile = (name) => {

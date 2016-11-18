@@ -9,10 +9,10 @@
     <md-tab label="Follower" ng-click="$follow.setFollowerTabTrue()">
       <md-tab-body>
         <md-list flex>
-          <md-list-item ng-hide="$follow.getfollower().length > 0">Nobody follows you</md-list-item>
+          <md-list-item ng-hide="$follow.getFollower().length > 0">Nobody follows you</md-list-item>
           <md-list-item class="tweetListItem" ng-repeat="item in $follow.getTargetFollows()">
             <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
-              <md-button class ="followButton" ng-click="$follow.goToProfileFollow(item.username)">{{item.username}}</md-button>
+              <md-button class ="followButton" ng-click="$follow.goToProfileFeed(item.username)">{{item.username}}</md-button>
             </div>
           </md-list-item>
         </md-list>
@@ -21,10 +21,10 @@
     <md-tab label="Following" ng-click="$follow.setFollowingTabFalse()">
       <md-tab-body>
         <md-list flex>
-          <md-list-item ng-hide="$follow.getfollowing().length > 0">You follow nobody</md-list-item>
+          <md-list-item ng-hide="$follow.getFollowing().length > 0">You follow nobody</md-list-item>
           <md-list-item class="tweetListItem" ng-repeat="item in $follow.getTargetFollows()">
             <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
-              <md-button class="followButton" ng-click="$follow.goToProfileFollow(item.username)">{{item.username}}</md-button>
+              <md-button class="followButton" ng-click="$follow.goToProfileFeed(item.username)">{{item.username}}</md-button>
             </div>
           </md-list-item>
         </md-list>
