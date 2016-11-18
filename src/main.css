@@ -172,7 +172,8 @@ html {
 }
 
 .followButton {
-   min-width: 15vw;
+  background: linear-gradient(-90deg, white, turquoise);
+  min-width: 15vw;
 }
 
 .dialogdemoBasicUsage #popupContainer {
