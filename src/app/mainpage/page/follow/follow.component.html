@@ -13,7 +13,10 @@
             <md-list-item ng-hide="$follow.getFollower().length === 0 || $follow.getTargetFollows().length > 0"> No results for {{$follow.inputText}}</md-list-item>
             <md-list-item class="tweetListItem" ng-repeat="item in $follow.getTargetFollows()">
               <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
-                <md-button class ="followButton" ng-click="$follow.$profileService.goToProfile(item.username)">{{item.username}}</md-button>
+                <md-button class ="followButton" ng-click="$follow.$profileService.goToProfile(item.username)">
+                    <i class="material-icons profileButtonIcon">person</i>
+                    {{item.username}}
+                  </md-button>
               </div>
             </md-list-item>
           </md-list>
