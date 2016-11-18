@@ -40,13 +40,12 @@ class tweetController {
   }
 
   checkfollower () {
-    let shit = this.$authenticateService.username
-    if (this.$followService.arrfollower.length > 0 && this.$followService.arrfollower.filter(function (follower) { return follower.username === shit }).length === 1) {
-      return this.$followService.arrfollower.filter(function (follower) { return follower.username === shit })[0].username === shit
+    let checkUser = this.$authenticateService.username
+    if (this.$followService.arrfollower.length > 0 && this.$followService.arrfollower.filter(function (follower) { return follower.username === checkUser }).length === 1) {
+      return this.$followService.arrfollower.filter(function (follower) { return follower.username === checkUser })[0].username === checkUser
     } else {
       return false
     }
-    // this.$log.debug(this.$followService.arrfollower.includes(this.$profileService.getSingleUser(this.$authenticateService.username)))
   }
 
   goToProfile = (name) => {
