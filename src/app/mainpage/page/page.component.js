@@ -7,6 +7,7 @@ class PageController {
     this.$stateService = $stateService  // NEEDED FOR HTML
     this.$searchService = $searchService
     let currentState = $cookies.get('currentState')
+    $log.debug(currentState)
     !currentState
       ? $authenticate.authenticate('login')
       : (currentState === 'login')

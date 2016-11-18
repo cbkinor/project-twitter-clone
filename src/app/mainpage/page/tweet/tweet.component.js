@@ -15,7 +15,6 @@ class tweetController {
     this.$searchService = $searchService
     $log.debug('TweetController instantiated')
     this.$log = $log
-    this.$profileService.refreshProfile()
   }
 
   getFeed () {

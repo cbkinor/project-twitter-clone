@@ -42,12 +42,32 @@ export class ProfileService {
       }
     )
     this.mentioned = undefined
+    this.$log.debug("================================")
+    this.$log.debug(username)
+    this.$log.debug("================================")
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/@' + username + '/mentions'
     }).then(
       (response) => {
-        this.mentioned = response
+        this.mentioned = response.data
+          .map(tweet => {
+            if (tweet.content === null) tweet.content = ''
+            tweet.content = tweet.content
+              .split(' ')
+              .map(word => {
+                    let temp = word.replace(/[^a-z0-9]/gmi, '')
+                    this.$log.debug(word)
+                    return (word.substring(0, 1) === '@')
+                      ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                      : (word.substring(0, 1) === '#')
+                        ? '<a href="#" ng-click="search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                        : word
+                  })
+              .join(' ')
+
+            return tweet
+          })
         this.refreshFollow(username)
       },
       (error) => {
@@ -91,5 +111,6 @@ export class ProfileService {
   goToProfile = (name) => {
     this.$stateService.state['profile']()
     this.refreshProfile(name)
+    this.$log.debug('CALLED')
   }
 }

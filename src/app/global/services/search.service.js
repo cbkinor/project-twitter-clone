@@ -14,12 +14,43 @@ export class SearchService {
     $log.debug('SearchService created')
   }
 
+  getMentions (username) {
+    this.$http({
+      method: 'GET',
+      url: 'http://localhost:8080/users/@' + this.searchText + '/mentions'
+    }).then(
+      (response) => {
+        this.mentioned = response.data
+        .map(tweet => {
+          if (tweet.content === null) tweet.content = ''
+          tweet.content = tweet.content
+            .split(' ')
+            .map(word => {
+                  let temp = word.replace(/[^a-z0-9]/gmi, '')
+                  this.$log.debug(word)
+                  return (word.substring(0, 1) === '@')
+                    ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                    : (word.substring(0, 1) === '#')
+                      ? '<a href="#" ng-click="search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                      : word
+                })
+            .join(' ')
+
+          return tweet
+        })
+      },
+      (error) => {
+        this.$log.debug(error)
+      }
+    )
+  }
+
   search () {
     this.searchText = this.inputText
     this.$log.debug(this.searchText)
     this.$http({
       method: 'GET',
-      url: 'http://localhost:8080/users/@' + this.searchText + '/mentions'
+      url: 'http://localhost:8080/users/partial/@' + this.searchText + '/mentions'
     }).then(
       (response) => {
         this.mentioned = response.data

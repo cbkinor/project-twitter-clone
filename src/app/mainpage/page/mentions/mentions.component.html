@@ -1,6 +1,6 @@
 <md-list flex="">
-  <md-list-item ng-hide="$mentions.$searchService.mentioned && $mentions.$searchService.mentioned.length > 0">No results found</md-list-item>
-  <md-list-item class="md-3-line tweetListItem" ng-repeat="tweet in $mentions.$searchService.mentioned">
+  <md-list-item ng-hide="$mentions.$profileService.mentioned && $mentions.$profileService.mentioned.length > 0">No results found</md-list-item>
+  <md-list-item class="md-3-line tweetListItem" ng-repeat="tweet in $mentions.$profileService.mentioned">
     <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
       <div class="tweetHead">
         <div class="author">

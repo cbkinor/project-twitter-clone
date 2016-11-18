@@ -4,7 +4,7 @@
     <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
       <div class="tweetHead">
         <div class="author">
-          <h2>Author: <a href="" ng-click="$profileService.goToProfile(item.author.username)">{{ tweet.author.username }}</a></h2>
+          <h2>Author: <a href="" ng-click="$profileService.goToProfile(tweet.author.username)">{{ tweet.author.username }}</a></h2>
           <p>Posted: {{ tweet.posted | date:'medium' }}</p>
         </div>
         <md-button ng-click="$feed.$tweetService.likeTweet(tweet)" ng-hide="tweet.liked" class="like">Like</md-button>
