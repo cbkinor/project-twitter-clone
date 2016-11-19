@@ -111,10 +111,6 @@
   padding-left: 16px;
 }
 
-.replyIcon {
-
-}
-
 .delete {
   color: #aab8c2;
 }
@@ -244,11 +240,20 @@ md-dialog {
   color: white;
 }
 
+.tweetButtonContainer {
+  outline: 0;
+}
+
+.tweetButton {
+  outline: 0;
+}
+
 .tweetButton:hover {
   cursor: pointer;
 }
 
-.tweetIcon {
+.tweetButtonIcon {
+  outline: 0;
   font-size: 48px;
 }
 
