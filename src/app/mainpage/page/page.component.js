@@ -2,10 +2,9 @@ import templateUrl from './page.component.html'
 
 /* @ngInject */
 class PageController {
-  constructor ($log, $stateService, $searchService) {
+  constructor ($log, $stateService) {
     $log.debug('page instantiated')
     this.$stateService = $stateService  // NEEDED FOR HTML
-    this.$searchService = $searchService
   }
 }
 

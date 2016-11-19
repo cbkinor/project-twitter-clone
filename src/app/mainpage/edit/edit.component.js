@@ -16,7 +16,6 @@ class EditController {
   }
 
   delete () {
-    this.$log.debug('heeeyyyyyy')
     this.$authenticateService.delete()
   }
 

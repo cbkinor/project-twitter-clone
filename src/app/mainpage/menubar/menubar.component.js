@@ -3,7 +3,7 @@ import templateUrl from './menubar.component.html'
 /* @ngInject */
 class MenubarController {
 
-  constructor ($log, $state, $authenticateService, $searchService, $mdDialog, $tweetService, $profileService, $stateService, $homeService, $followService) {
+  constructor ($log, $state, $authenticateService, $searchService, $mdDialog, $tweetService, $profileService, $stateService, $homeService, $followService, $scope) {
     $log.debug('menuBar instantiated')
 
     this.$log = $log
@@ -15,6 +15,7 @@ class MenubarController {
     this.$profileService = $profileService
     this.$homeService = $homeService
     this.$followService = $followService
+    this.$scope = $scope
     this.openMenu = function ($mdOpenMenu, ev) {
       this.originatorEv = ev
       $mdOpenMenu(ev)
@@ -23,7 +24,7 @@ class MenubarController {
     this.home = () => {
       this.$followService.getFollower($authenticateService.username)
       this.$followService.getFollowing($authenticateService.username)
-      this.$homeService.refreshFeed(this.$authenticateService.username)
+      this.$homeService.refreshFeed(this.$authenticateService.username, this.$scope)
       this.$stateService.state['home']()
     }
 

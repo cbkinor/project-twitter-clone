@@ -2,13 +2,12 @@ import templateUrl from './tweet.component.html'
 
 /* @ngInject */
 class TweetController {
-  constructor ($log, $scope, $searchService, $profileService, $authenticateService, $tweetService, $stateService, $contextService, $mdDialog) {
+  constructor ($log, $scope, $searchService, $profileService, $tweetService, $stateService, $contextService, $mdDialog) {
     this.$log = $log
     this.$scope = $scope
     this.$searchService = $searchService
     this.$profileService = $profileService
     this.$stateService = $stateService
-    this.$authenticateService = $authenticateService
     this.$tweetService = $tweetService
     this.$scope.goToProfile = this.goToProfile
     this.$scope.search = this.search

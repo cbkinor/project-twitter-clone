@@ -2,22 +2,15 @@ import templateUrl from './profile.component.html'
 
 /* @ngInject */
 class ProfileController {
-  constructor ($log, $cookies, $profileService, $authenticateService, $followService, $scope, $tweetService, $stateParams) {
+  constructor ($log, $cookies, $profileService, $authenticateService, $followService, $tweetService, $stateParams) {
     $cookies.put('currentState', 'profile')
-
     this.$log = $log
-    this.$scope = $scope
-    this.$scope.$profileService = $profileService
-    this.$scope.goToProfile = this.goToProfile
-    this.$scope.search = this.search
-    this.$scope.username = $stateParams.currentProfile || ''
     this.$profileService = $profileService
     this.$followService = $followService
     this.$authenticateService = $authenticateService
     this.$tweetService = $tweetService
-
     $authenticateService.authenticate('profile')
-    this.$profileService.refreshProfile($scope.username)
+    this.$profileService.refreshProfile($stateParams.currentProfile || '')
 
     $log.debug('TweetController instantiated')
   }
@@ -36,6 +29,10 @@ class ProfileController {
     } else {
       return false
     }
+  }
+
+  getTweets () {
+    return this.$profileService.tweets.list
   }
 }
 

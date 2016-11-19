@@ -15,6 +15,7 @@ import { configure } from './app.config'
 import { visualizeRouting } from './app.run'
 import { AuthenticateService } from './global/services/auth.service.js'
 import { SearchService } from './global/services/search.service.js'
+import { TweetListService } from './global/services/tweetList.service.js'
 
 export default
   angular
@@ -30,13 +31,13 @@ export default
 
     ])
     .directive('compile', ['$compile', function ($compile) {
-      return function(scope, element, attrs) {
+      return function (scope, element, attrs) {
         scope.$watch(
-          function(scope) {
+          function (scope) {
             // watch the 'compile' expression for changes
             return scope.$eval(attrs.compile)
           },
-          function(value) {
+          function (value) {
             // when the 'compile' expression changes
             // assign it into the current DOM
             element.html(value)
@@ -57,6 +58,7 @@ export default
     .service('$tweetService', TweetService)
     .service('$profileService', ProfileService)
     .service('$homeService', HomeService)
+    .service('$tweetListService', TweetListService)
     .config(configure)
     .run(visualizeRouting)
     .name

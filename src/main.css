@@ -2,10 +2,6 @@
   font-family: Noto Sans;
 }
 
-.noPadding {
-  padding: 0;
-}
-
 .pageWidth {
   width: 90vw;
 }
@@ -18,14 +14,14 @@
   padding: 5px;
 }
 
+.tweetListItem:hover {
+  cursor: default;
+}
+
 .userListItem {
   padding: 5px;
   margin-top: 6px;
   margin-bottom: 6px;
-}
-
-.tweetListItem:hover {
-  cursor: default;
 }
 
 .followListItem {
@@ -332,24 +328,3 @@ html {
   background: linear-gradient(-90deg, white, turquoise);
   width: 100px;
 }
-
-/*.dialogdemoBasicUsage #popupContainer {
-  position: relative; }
-
-.dialogdemoBasicUsage .footer {
-  width: 100%;
-  text-align: center;
-  margin-left: 20px; }
-
-.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
-  font-size: 0.8em;
-  margin-top: 50px; }
-
-.dialogdemoBasicUsage button {
-  width: 200px; }
-
-.dialogdemoBasicUsage div#status {
-  color: #c60008; }
-
-.dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
-  margin-bottom: 0; }*/

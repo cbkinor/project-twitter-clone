@@ -1,11 +1,9 @@
 export class FollowService {
 
   /* @ngInject */
-  constructor ($log, $http, $state) {
+  constructor ($log, $http) {
     this.$log = $log
     this.$http = $http
-    this.$state = $state
-    this.number = [1, 2, 3, 4]
     this.arrfollower = []
     this.arrfollowing = []
     $log.debug('FollowService created')
@@ -31,7 +29,4 @@ export class FollowService {
       }
     )
   }
-
-
-
 }

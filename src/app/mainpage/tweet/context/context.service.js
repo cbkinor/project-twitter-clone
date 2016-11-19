@@ -74,16 +74,16 @@ export class ContextService {
           password: this.$authenticateService.password
         }
       }).then(
-            (response) => {
-              tweet.liked = false
-              response.data.forEach(user => {
-                if (user.username === this.$authenticateService.username) tweet.liked = true
-              })
-            },
-            (error) => {
-              this.$log.debug(error)
-            }
-          )
+        (response) => {
+          tweet.liked = false
+          response.data.forEach(user => {
+            if (user.username === this.$authenticateService.username) tweet.liked = true
+          })
+        },
+        (error) => {
+          this.$log.debug(error)
+        }
+      )
     })
     return tweets
   }
