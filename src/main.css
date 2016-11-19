@@ -333,7 +333,7 @@ html {
   width: 100px;
 }
 
-.dialogdemoBasicUsage #popupContainer {
+/*.dialogdemoBasicUsage #popupContainer {
   position: relative; }
 
 .dialogdemoBasicUsage .footer {
@@ -352,4 +352,4 @@ html {
   color: #c60008; }
 
 .dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
-  margin-bottom: 0; }
+  margin-bottom: 0; }*/
