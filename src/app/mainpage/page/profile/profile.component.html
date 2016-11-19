@@ -11,6 +11,6 @@
     </md-button>
 </h3>
 <md-list flex="">
-  <md-list-item ng-hide="$profileService.getTweets()  && $profileService.getTweets().length > 0">No results found</md-list-item>
-  <tweet tweet="tweet" ng-repeat="tweet in $profileService.getTweets()"></tweet>
+  <md-list-item ng-hide="$profile.getTweets()  && $profile.getTweets().length > 0">No results found</md-list-item>
+  <tweet tweet="tweet" ng-repeat="tweet in $profile.getTweets()"></tweet>
 </md-list>

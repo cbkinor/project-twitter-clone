@@ -33,7 +33,7 @@
         <md-tab-label>Tweets with Hashtag</md-tab-label>
         <md-tab-body>
           <md-list flex="">
-            <md-list-item ng-hide="$search.$searchService.tweets && $search.$searchService.tweets.length > 0">No results found</md-list-item>
+            <md-list-item ng-hide="$search.getTweets() && $search.getTweets().length > 0">No results found</md-list-item>
             <tweet tweet="tweet" ng-repeat="tweet in $search.getTweets()"></tweet>
           </md-list>
         </md-tab-body>
@@ -42,8 +42,8 @@
         <md-tab-label>Mentions</md-tab-label>
         <md-tab-body>
           <md-list flex="">
-            <md-list-item ng-hide="$search.$searchService.mentioned && $search.$searchService.mentioned.length > 0">No results found</md-list-item>
-            <tweet tweet="tweet" ng-repeat="tweet in $search.$searchService.mentioned"></tweet>
+            <md-list-item ng-hide="$search.getMentioned() && $search.getMentioned().length > 0">No results found</md-list-item>
+            <tweet tweet="tweet" ng-repeat="tweet in $search.getMentioned()"></tweet>
           </md-list>
         </md-tab-body>
       </md-tab>

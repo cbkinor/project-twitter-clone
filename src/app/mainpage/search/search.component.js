@@ -3,31 +3,23 @@ import templateUrl from './search.component.html'
 /* @ngInject */
 class SearchController {
 
-  constructor ($scope, $log, $cookies, $searchService, $profileService, $tweetService, $stateService, $followService, $authenticateService) {
+  constructor ($scope, $log, $cookies, $searchService, $profileService, $stateService, $authenticateService) {
     $cookies.put('currentState', 'search')
     this.$scope = $scope
-    $scope.goToProfile = this.goToProfile
-    $scope.search = this.search
+    this.$log = $log
+    $scope.goToProfile = $profileService.goToProfile
     this.$searchService = $searchService
-    this.$tweetService = $tweetService
-    this.$profileService = $profileService
-    this.$scope.goToProfile = $profileService.goToProfile
     this.$stateService = $stateService
-    this.$followService = $followService
-    this.$authenticateService = $authenticateService
-    this.$scope.$profileService = $profileService
     $log.debug('SearchController instantiated')
     $authenticateService.authenticate('search')
   }
 
   getTweets () {
-    return this.$searchService.tweets
+    return this.$searchService.tweets.list
   }
 
-  search = (searchText) => {
-    this.$searchService.inputText = searchText
-    this.$searchService.search()
-    this.$stateService.state['search']()
+  getMentioned () {
+    return this.$searchService.mentioned.list
   }
 }
 
