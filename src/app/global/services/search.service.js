@@ -29,9 +29,9 @@ export class SearchService {
             .map(word => {
               let temp = word.replace(/[^a-z0-9]/gmi, '')
               return (word.substring(0, 1) === '@')
-                ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                ? '<md-button class="tweet" ng-click="goToProfile(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
                 : (word.substring(0, 1) === '#')
-                  ? '<a href="#" ng-click="search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                  ? '<md-button class="tweet" ng-click="search(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
                   : word
             })
             .join(' ')
@@ -65,9 +65,9 @@ export class SearchService {
             .map(word => {
               let temp = word.replace(/[^a-z0-9]/gmi, '')
               return (word.substring(0, 1) === '@')
-                ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                ? '<md-button class="tweet" ng-click="goToProfile(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
                 : (word.substring(0, 1) === '#')
-                  ? '<a href="#" ng-click="search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                  ? '<md-button class="tweet" ng-click="search(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
                   : word
             })
             .join(' ')
@@ -115,9 +115,9 @@ export class SearchService {
               .map(word => {
                 let temp = word.replace(/[^a-z0-9]/gmi, '')
                 return (word.substring(0, 1) === '@')
-                  ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
+                  ? '<md-button class="tweet" ng-click="goToProfile(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
                   : (word.substring(0, 1) === '#')
-                    ? '<a href="#" ng-click="search(' + "'" + temp + "'" + ')">' + word + '</a>'
+                    ? '<md-button class="tweet" ng-click="search(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
                     : word
               })
               .join(' ')

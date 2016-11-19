@@ -55,6 +55,20 @@
   color: black;
 }
 
+.tweet {
+  min-width: 1%;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.tweet>text {
+  color: #0084B4;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
 .footer {
   padding-top: 2px;
   margin-left: 0px;
@@ -90,7 +104,6 @@
   font-size: 18px;
   color: black
 }
-
 
 .timestamp {
   color: #aab8c2;
