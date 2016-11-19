@@ -52,8 +52,8 @@ class MenubarController {
     this.showTweetPrompt = ($event) => {
       let confirm = $mdDialog.prompt()
         .title('Post a tweet!')
+        .clickOutsideToClose(true)
         .placeholder('Post content')
-        .ariaLabel('Dog name')
         .initialValue('')
         .targetEvent($event)
         .ok('Post!')
@@ -72,13 +72,13 @@ class MenubarController {
     }
 
     this.mouseOnTweet = ($event) => {
-      if ($event.target.id !== 'tweetIcon') {
+      if ($event.target.id !== 'tweetButtonIcon') {
         $event.target.setAttribute('stroke', 'rgba(231,236,238,.5)')
       }
     }
 
     this.mouseOffTweet = ($event) => {
-      if ($event.target.id !== 'tweetIcon') {
+      if ($event.target.id !== 'tweetButtonIcon') {
         $event.target.setAttribute('stroke', 'white')
       }
     }

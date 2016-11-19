@@ -44,6 +44,7 @@ export class TweetService {
   showTweetPrompt ($event, id) {
     let confirm = this.$mdDialog.prompt()
       .title('Post a tweet!')
+      .clickOutsideToClose(true)
       .placeholder('Post content')
       .initialValue('')
       .targetEvent($event)

@@ -18,6 +18,12 @@
   padding: 5px;
 }
 
+.userListItem {
+  padding: 5px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
 .tweetListItem:hover {
   cursor: default;
 }
@@ -38,11 +44,22 @@
   font-size: 36px;
 }
 
+.headingText {
+  font-weight: bold;
+  font-size: 32px;
+}
+
 .tweetAuthorButton {
 
   margin: 0px;
   padding-left: 0px;
   float: left;
+}
+
+.userSearch {
+  padding: 0px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .tweetAuthorButton>text {
@@ -109,10 +126,6 @@
   color: #aab8c2;
   padding-top: 8px;
   padding-left: 16px;
-}
-
-.replyIcon {
-
 }
 
 .delete {
@@ -244,11 +257,20 @@ md-dialog {
   color: white;
 }
 
+.tweetButtonContainer {
+  outline: 0;
+}
+
+.tweetButton {
+  outline: 0;
+}
+
 .tweetButton:hover {
   cursor: pointer;
 }
 
-.tweetIcon {
+.tweetButtonIcon {
+  outline: 0;
   font-size: 48px;
 }
 
