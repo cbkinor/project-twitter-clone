@@ -128,10 +128,6 @@
   padding-left: 16px;
 }
 
-.replyIcon {
-
-}
-
 .delete {
   color: #aab8c2;
 }
@@ -207,6 +203,15 @@
   display: flex;
 }
 
+.searchButton {
+  min-width: 1%;
+  min-height: 50%;
+}
+
+.searchButton>i {
+  margin-top: 2px;
+}
+
 .searchContainer {
   width: 20vw;
   margin-top: 40px;
@@ -252,11 +257,20 @@ md-dialog {
   color: white;
 }
 
+.tweetButtonContainer {
+  outline: 0;
+}
+
+.tweetButton {
+  outline: 0;
+}
+
 .tweetButton:hover {
   cursor: pointer;
 }
 
-.tweetIcon {
+.tweetButtonIcon {
+  outline: 0;
   font-size: 48px;
 }
 
