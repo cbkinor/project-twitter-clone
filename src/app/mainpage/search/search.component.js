@@ -11,22 +11,13 @@ class SearchController {
     this.$searchService = $searchService
     this.$tweetService = $tweetService
     this.$profileService = $profileService
+    this.$scope.goToProfile = $profileService.goToProfile
     this.$stateService = $stateService
     this.$followService = $followService
     this.$authenticateService = $authenticateService
     this.$scope.$profileService = $profileService
     $log.debug('SearchController instantiated')
     $authenticateService.authenticate('search')
-  }
-
-  userProfile (username) {
-    this.$profileService.refreshProfile(username)
-    this.$stateService.state['profile'](username)
-  }
-
-  goToProfile = (name) => {
-    this.$stateService.state['profile'](name)
-    this.$profileService.refreshProfile(name)
   }
 
   getTweets () {

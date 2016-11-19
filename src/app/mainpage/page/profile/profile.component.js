@@ -2,36 +2,24 @@ import templateUrl from './profile.component.html'
 
 /* @ngInject */
 class ProfileController {
-  constructor ($log, $state, $cookies, $profileService, $authenticateService, $followService, $homeService, $scope, $stateService, $searchService, $tweetService, $stateParams) {
+  constructor ($log, $cookies, $profileService, $authenticateService, $followService, $scope, $tweetService, $stateParams) {
     $cookies.put('currentState', 'profile')
-    $scope.username = $stateParams.currentProfile || ''
+
+    this.$log = $log
+    this.$scope = $scope
+    this.$scope.$profileService = $profileService
+    this.$scope.goToProfile = this.goToProfile
+    this.$scope.search = this.search
+    this.$scope.username = $stateParams.currentProfile || ''
     this.$profileService = $profileService
     this.$followService = $followService
     this.$authenticateService = $authenticateService
-    this.$homeService = $homeService
     this.$tweetService = $tweetService
-    this.$state = $state
-    $scope.$profileService = $profileService
-    $scope.goToProfile = this.goToProfile
-    $scope.search = this.search
-    this.$stateService = $stateService
-    this.$searchService = $searchService
-    $log.debug('TweetController instantiated')
+
     $authenticateService.authenticate('profile')
-    this.$log = $log
     this.$profileService.refreshProfile($scope.username)
-  }
 
-  getFeed () {
-    return this.$homeService.feed
-  }
-
-  getuser () {
-    return this.$profileService.username
-  }
-
-  gettweets () {
-    return this.$profileService.arrtweets
+    $log.debug('TweetController instantiated')
   }
 
   followuser (username) {
@@ -48,17 +36,6 @@ class ProfileController {
     } else {
       return false
     }
-  }
-
-  goToProfile = (name) => {
-    this.$stateService.state['profile'](name)
-    this.$profileService.refreshProfile(name)
-  }
-
-  search = (searchText) => {
-    this.$searchService.inputText = searchText
-    this.$searchService.search()
-    this.$stateService.state['search']()
   }
 }
 

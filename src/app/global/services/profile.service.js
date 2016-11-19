@@ -73,6 +73,10 @@ export class ProfileService {
     )
   }
 
+  getTweets () {
+    return this.arrtweets
+  }
+
   followProfile (username) {
     this.$http({
       method: 'POST',

@@ -11,27 +11,6 @@
     </md-button>
 </h3>
 <md-list flex="">
-  <md-list-item ng-hide="$profile.gettweets()  && $profile.gettweets().length > 0">No results found</md-list-item>
-  <md-list-item class="md-3-line tweetListItem" ng-repeat="tweet in $profile.gettweets()">
-    <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
-      <div class="tweetHead">
-        <div class="author">
-          <h2>Author: <a href="" ng-click="$profileService.goToProfile(tweet.author.username)">{{ tweet.author.username }}</a></h2>
-          <p>Posted: {{ tweet.posted | date:'medium' }}</p>
-        </div>
-        <md-button ng-click="$profile.$tweetService.likeTweet(tweet)" ng-hide="tweet.liked" class="like">Like</md-button>
-        <md-button ng-click="$profile.$tweetService.unlikeTweet(tweet)" ng-show="tweet.liked" class="unlike">Unlike</md-button>
-        <md-button ng-click="$profile.$tweetService.repostTweet(tweet.id)" class="repost">repost</md-button>
-        <md-button ng-click="$profile.$tweetService.showTweetPrompt($event, tweet.id)" class="reply">reply</md-button>
-        <md-button ng-click="$profile.$tweetService.deleteTweet(tweet)" ng-show="tweet.author.username == $profile.$authenticateService.username" class="unlike">Delete</md-button>
-      </div>
-      <p compile="tweet.content" style="font-size:20px; color:black"></p>
-      <div ng-show='tweet.inReplyTo'>
-        <h3>In Reply To: <a href ng-click="$profileService.goToProfile(tweet.inReplyTo.author.username)">{{ tweet.inReplyTo.author.username }}</a>: <a href ng-click="null">{{ tweet.inReplyTo.content }}</a></h3>
-      </div>
-      <div ng-show='tweet.repostOf'>
-        <h3>Repost Of: <a href ng-click="$profileService.goToProfile(tweet.repostOf.author.username)">{{ tweet.repostOf.author.username }}</a>: <a href ng-click="null">{{ tweet.repostOf.content }}</a></h3>
-      </div>
-    </div>
-  </md-list-item>
+  <md-list-item ng-hide="$profileService.getTweets()  && $profileService.geTtweets().length > 0">No results found</md-list-item>
+  <tweet class="md-3-line tweetListItem" tweet="tweet" ng-repeat="tweet in $profileService.getTweets()"></tweet>
 </md-list>
