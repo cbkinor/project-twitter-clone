@@ -190,6 +190,15 @@
   display: flex;
 }
 
+.searchButton {
+  min-width: 1%;
+  min-height: 50%;
+}
+
+.searchButton>i {
+  margin-top: 2px;
+}
+
 .searchContainer {
   width: 20vw;
   margin-top: 40px;
