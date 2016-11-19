@@ -10,7 +10,7 @@ class TweetController {
     this.$stateService = $stateService
     this.$authenticateService = $authenticateService
     this.$tweetService = $tweetService
-    this.$scope.goToProfile = $profileService.goToProfile
+    this.$scope.goToProfile = this.goToProfile
     this.$scope.search = this.search
     this.$mdDialog = $mdDialog
     this.$contextService = $contextService
@@ -21,6 +21,11 @@ class TweetController {
     this.$searchService.inputText = searchText
     this.$searchService.search()
     this.$stateService.state['search']()
+  }
+
+  goToProfile = (username) => {
+    this.$profileService.goToProfile(username)
+    this.$mdDialog.hide()
   }
 
   showContext = (ev) => {
