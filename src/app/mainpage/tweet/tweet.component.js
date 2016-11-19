@@ -2,7 +2,7 @@ import templateUrl from './tweet.component.html'
 
 /* @ngInject */
 class TweetController {
-  constructor ($log, $scope, $searchService, $profileService, $authenticateService, $tweetService, $stateService) {
+  constructor ($log, $scope, $searchService, $profileService, $authenticateService, $tweetService, $stateService, $contextService, $mdDialog) {
     this.$log = $log
     this.$scope = $scope
     this.$searchService = $searchService
@@ -12,6 +12,8 @@ class TweetController {
     this.$tweetService = $tweetService
     this.$scope.goToProfile = $profileService.goToProfile
     this.$scope.search = this.search
+    this.$mdDialog = $mdDialog
+    this.$contextService = $contextService
     $log.debug('TweetController instantiated')
   }
 
@@ -20,7 +22,24 @@ class TweetController {
     this.$searchService.search()
     this.$stateService.state['search']()
   }
+
+  showContext = (ev) => {
+    this.$contextService.getContext(this.tweet)
+    this.$mdDialog.show({
+      template: '<context></context>',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      fullscreen: this.$scope.customFullscreen // Only for -xs, -sm breakpoints.
+    })
+    .then((answer) => {
+      // this.$scope.status = 'You said the information was "' + answer + '".'
+    }, () => {
+      // this.$scope.status = 'You cancelled the dialog.'
+    })
+  }
 }
+
 export const tweet = {
   templateUrl,
   controller: TweetController,

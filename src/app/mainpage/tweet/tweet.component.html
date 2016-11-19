@@ -1,7 +1,7 @@
 <md-list-item class="md-3-line tweetListItem">
   <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
     <div class="tweetHead">
-      <div class="author">
+      <div class="author" ng-click="$tweet.showContext($event)">
         <h2>
           <a href="" ng-click="goToProfile($tweet.tweet.author.username)">
             {{ $tweet.tweet.author.username }}
