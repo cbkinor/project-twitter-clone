@@ -17,9 +17,9 @@
           <md-button class="tweetFooterButton md-primary" ng-click="goToProfile($tweet.tweet.inReplyTo.author.username)">
             <text class="tweetFooterText">{{ $tweet.tweet.inReplyTo.author.username }}</text>
           </md-button>
-          <md-button layout-align="none" class="tweetFooterTweetButton md-primary" ng-click="null">
+          <div layout-align="none" class="tweetFooterTweetButton md-primary">
             <text class="tweetFooterText">  {{ $tweet.tweet.inReplyTo.content }}</text>
-          </md-button>
+          </div>
         </div>
       </div>
       <div ng-show='$tweet.tweet.repostOf' class="footer">
@@ -27,9 +27,9 @@
           <md-button class="tweetFooterButton md-primary" ng-click="goToProfile($tweet.tweet.repostOf.author.username)">
             <text class="tweetFooterText">{{ $tweet.tweet.repostOf.author.username }}</text>
           </md-button>
-          <md-button layout-align="none" class="tweetFooterTweetButton md-primary" ng-click="null">
+          <div layout-align="none" class="tweetFooterTweetButton md-primary">
             <text class="tweetFooterText">  {{ $tweet.tweet.repostOf.content }}</text>
-          </md-button>
+          </div>
         </div>
       </div>
     </div>
