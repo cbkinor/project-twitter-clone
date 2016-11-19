@@ -32,7 +32,7 @@
         <md-tab-body>
           <md-list flex="">
             <md-list-item ng-hide="$search.$searchService.tweets && $search.$searchService.tweets.length > 0">No results found</md-list-item>
-            <tweet class="md-3-line tweetListItem" tweet="tweet" ng-repeat="tweet in $search.getTweets()"></tweet>
+            <tweet tweet="tweet" ng-repeat="tweet in $search.getTweets()"></tweet>
           </md-list>
         </md-tab-body>
       </md-tab>
@@ -41,7 +41,7 @@
         <md-tab-body>
           <md-list flex="">
             <md-list-item ng-hide="$search.$searchService.mentioned && $search.$searchService.mentioned.length > 0">No results found</md-list-item>
-            <tweet class="md-3-line tweetListItem" tweet="tweet" ng-repeat="tweet in $search.$searchService.mentioned"></tweet>
+            <tweet tweet="tweet" ng-repeat="tweet in $search.$searchService.mentioned"></tweet>
           </md-list>
         </md-tab-body>
       </md-tab>
