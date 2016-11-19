@@ -27,8 +27,8 @@ class TweetController {
     this.$mdDialog.hide()
   }
 
-  showContext = (ev) => {
-    this.$contextService.getContext(this.tweet)
+  showContext = (ev, tweet) => {
+    this.$contextService.getContext(tweet)
     this.$mdDialog.show({
       template: '<context></context>',
       parent: angular.element(document.body),

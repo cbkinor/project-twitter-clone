@@ -35,7 +35,6 @@ class MenubarController {
     this.search = () => {
       this.$searchService.search()
       this.$stateService.state['search']()
-      document.getElementById('resetForm').reset()
     }
 
     this.logout = () => {
