@@ -53,8 +53,8 @@ class MenubarController {
     this.showTweetPrompt = ($event) => {
       let confirm = $mdDialog.prompt()
         .title('Post a tweet!')
+        .clickOutsideToClose(true)
         .placeholder('Post content')
-        .ariaLabel('Dog name')
         .initialValue('')
         .targetEvent($event)
         .ok('Post!')
