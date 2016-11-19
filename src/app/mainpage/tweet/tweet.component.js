@@ -20,6 +20,7 @@ class TweetController {
     this.$searchService.inputText = searchText
     this.$searchService.search()
     this.$stateService.state['search']()
+    this.$mdDialog.hide()
   }
 
   goToProfile = (username) => {

@@ -1,18 +1,15 @@
 export class ContextService {
 
   /* @ngInject */
-  constructor ($log, $http, $authenticateService) {
+  constructor ($log, $http, $authenticateService, $embedService) {
     this.$log = $log
     this.$http = $http
     this.$authenticateService = $authenticateService
+    this.$embedService = $embedService
     this.tweet
     this.after
     this.before
     $log.debug('ContextService instantiated')
-  }
-
-  ngInjectMandatoryFunction () {
-    return
   }
 
   getContext (tweet) {
@@ -24,39 +21,10 @@ export class ContextService {
       (response) => {
         this.after = this.checkAllTweetLikes(response.data.after)
         this.after = this.after
-        .map(tweet => {
-          if (tweet.content === null) tweet.content = ''
-          tweet.content = tweet.content
-            .split(' ')
-            .map(word => {
-              let temp = word.replace(/[^a-z0-9]/gmi, '')
-              return (word.substring(0, 1) === '@')
-                ? '<md-button class="tweet" ng-click="goToProfile(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
-                : (word.substring(0, 1) === '#')
-                  ? '<md-button class="tweet" ng-click="search(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
-                  : word
-            })
-            .join(' ')
-          return tweet
-        })
+          .map(tweet => this.$embedService.embedLinks(tweet))
         this.before = this.checkAllTweetLikes(response.data.before)
         this.before = this.before
-        .map(tweet => {
-          if (tweet.content === null) tweet.content = ''
-          tweet.content = tweet.content
-            .split(' ')
-            .map(word => {
-              let temp = word.replace(/[^a-z0-9]/gmi, '')
-              return (word.substring(0, 1) === '@')
-                ? '<md-button class="tweet" ng-click="goToProfile(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
-                : (word.substring(0, 1) === '#')
-                  ? '<md-button class="tweet" ng-click="search(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
-                  : word
-            })
-            .join(' ')
-
-          return tweet
-        })
+          .map(tweet => this.$embedService.embedLinks(tweet))
       },
         (error) => {
           this.$log.debug(error)
@@ -74,16 +42,16 @@ export class ContextService {
           password: this.$authenticateService.password
         }
       }).then(
-        (response) => {
-          tweet.liked = false
-          response.data.forEach(user => {
-            if (user.username === this.$authenticateService.username) tweet.liked = true
-          })
-        },
-        (error) => {
-          this.$log.debug(error)
-        }
-      )
+            (response) => {
+              tweet.liked = false
+              response.data.forEach(user => {
+                if (user.username === this.$authenticateService.username) tweet.liked = true
+              })
+            },
+            (error) => {
+              this.$log.debug(error)
+            }
+          )
     })
     return tweets
   }

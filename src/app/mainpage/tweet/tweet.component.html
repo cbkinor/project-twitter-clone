@@ -18,7 +18,7 @@
             <text class="tweetFooterText">{{ $tweet.tweet.inReplyTo.author.username }}</text>
           </md-button>
           <div layout-align="none" class="tweetFooterTweetButton md-primary">
-            <text class="tweetFooterText">  {{ $tweet.tweet.inReplyTo.content }}</text>
+            <text class="tweetFooterText" compile="$tweet.tweet.inReplyTo.content" ></text>
           </div>
         </div>
       </md-button>
@@ -28,7 +28,7 @@
             <text class="tweetFooterText">{{ $tweet.tweet.repostOf.author.username }}</text>
           </md-button>
           <div layout-align="none" class="tweetFooterTweetButton md-primary">
-            <text class="tweetFooterText">  {{ $tweet.tweet.repostOf.content }}</text>
+            <text class="tweetFooterText" compile="$tweet.tweet.repostOf.content"></text>
           </div>
         </div>
       </md-button>

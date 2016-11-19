@@ -22,6 +22,8 @@ export class SearchService {
   search () {
     this.users = undefined
     this.hashtags = undefined
+    this.mentioned = { list: [] }
+    this.tweets = { list: [] }
     this.searchText = this.inputText
     this.$tweetListService.getTweetList(this.mentioned, 'users/@' + this.searchText + '/mentions/partial')
     this.$tweetListService.getTweetList(this.tweets, 'tags/' + this.searchText + '/partial')

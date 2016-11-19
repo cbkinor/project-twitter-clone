@@ -1,6 +1,7 @@
 export class ProfileService {
 
   /* @ngInject */
+
   constructor ($log, $http, $stateService, $authenticateService, $followService, $searchService, $tweetListService) {
     this.$authenticateService = $authenticateService
     this.$log = $log
@@ -28,9 +29,10 @@ export class ProfileService {
           username: this.$authenticateService.username,
           password: this.$authenticateService.password
           }
-    }).then(() => {
+    }).then( () => {
       this.refreshFollow(username)
     })
+
   }
 
   unfollowProfile (username) {
@@ -41,7 +43,7 @@ export class ProfileService {
         username: this.$authenticateService.username,
         password: this.$authenticateService.password
       }
-    }).then(() => {
+    }).then( () => {
       this.refreshFollow(username)
     })
   }

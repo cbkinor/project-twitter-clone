@@ -1,9 +1,10 @@
 export class TweetListService {
 
   /* @ngInject */
-  constructor ($log, $http, $authenticateService) {
+  constructor ($log, $http, $authenticateService, $embedService) {
     this.$log = $log
     this.$http = $http
+    this.$embedService = $embedService
     this.$authenticateService = $authenticateService
     $log.debug('TweetListService instantiated')
   }
@@ -16,22 +17,7 @@ export class TweetListService {
       (response) => {
         list.list = this.checkAllTweetLikes(response.data)
         list.list = list.list
-          .map(tweet => {
-            if (tweet.content === null) tweet.content = ''
-            tweet.content = tweet.content
-              .split(' ')
-              .map(word => {
-                let temp = word.replace(/[^a-z0-9]/gmi, '')
-                return (word.substring(0, 1) === '@')
-                      ? '<md-button class="tweet" ng-click="goToProfile(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
-                      : (word.substring(0, 1) === '#')
-                        ? '<md-button class="tweet" ng-click="search(' + "'" + temp + "'" + ')"><text>' + word + '</text></md-button>'
-                        : word
-              })
-              .join(' ')
-
-            return tweet
-          })
+          .map(tweet => this.$embedService.embedLinks(tweet))
       },
       (error) => {
         this.$log.debug(error)
@@ -62,4 +48,5 @@ export class TweetListService {
     })
     return tweets
   }
+
 }
