@@ -1,9 +1,10 @@
-import templateUrl from './feed.component.html'
+import templateUrl from './home.component.html'
 
 /* @ngInject */
-class feedController {
+class HomeController {
 
-  constructor ($scope, $log, $state, $homeService, $authenticateService, $profileService, $searchService, $stateService, $followService, $tweetService) {
+  constructor ($scope, $log, $state, $homeService, $authenticateService, $profileService, $searchService, $stateService, $cookies, $followService, $tweetService) {
+    $cookies.put('currentState', 'home')
     this.$log = $log
     this.$scope = $scope
     this.$homeService = $homeService
@@ -12,11 +13,13 @@ class feedController {
     this.$stateService = $stateService
     this.$followService = $followService
     this.$tweetService = $tweetService
+    this.$authenticateService = $authenticateService
     this.$state = $state
     this.$scope.$profileService = this.$profileService
     this.$scope.goToProfile = this.goToProfile
     this.$scope.search = this.search
     $log.debug('feedController instantiated')
+    $authenticateService.authenticate('home')
     $homeService.refreshFeed($authenticateService.username)
   }
 
@@ -25,7 +28,7 @@ class feedController {
   }
 
   goToProfile = (name) => {
-    this.$stateService.state['profile']()
+    this.$stateService.state['profile'](name)
     this.$profileService.refreshProfile(name)
   }
 
@@ -36,8 +39,8 @@ class feedController {
   }
 }
 
-export const feed = {
+export const home = {
   templateUrl,
-  controller: feedController,
-  controllerAs: '$feed'
+  controller: HomeController,
+  controllerAs: '$home'
 }

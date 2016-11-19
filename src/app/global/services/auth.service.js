@@ -25,7 +25,6 @@ export class AuthenticateService {
   }
 
   login (state, initial) {
-    this.$log.debug('logging in')
     if (initial === undefined) initial = false
     if (!this.username || !this.password) {
       this.$stateService.state['login']()
@@ -36,19 +35,16 @@ export class AuthenticateService {
       url: 'http://localhost:8080/users/@' + this.username + '/@' + this.password
     }).then(
       (response) => {
-        this.$log.debug(response.data)
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
         this.profile = response.data.profile
-        this.$stateService.state[state]()
+        if(initial)
+          this.$stateService.state['home']()
       },
       (error) => {
         this.$log.debug(error)
-        if (error.data.message === 'Username not found' && !initial) {
-          this.$log.debug('Username not found')
           this.$stateService.state['login']()
           this.incorrectUser = true
-        }
       }
     )
   }
@@ -68,11 +64,7 @@ export class AuthenticateService {
       url: 'http://localhost:8080/validate/username/available/@' + this.username
     }).then(
       (response) => {
-        this.$log.debug(response.data)
-        if (response.data === false) {
-          this.$log.debug('Testing')
-          this.invalidUsername = true
-        } else this.invalidUsername = false
+          this.invalidUsername = response.data
       },
       (error) => {
         this.$log.debug(error)
@@ -90,7 +82,6 @@ export class AuthenticateService {
             }
     }).then(
       (response) => {
-        this.$log.debug(response)
         this.profile = response.data.profile
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
@@ -107,12 +98,11 @@ export class AuthenticateService {
       method: 'PATCH',
       url: 'http://localhost:8080/users/@' + this.username,
       data: {
-              "credentials": this.getCredentials(),
-              "profile": this.profile
-            }
+        "credentials": this.getCredentials(),
+        "profile": this.profile
+      }
     }).then(
       (response) => {
-        this.$log.debug(response)
         this.$stateService.state['home']()
       },
       (error) => {

@@ -2,7 +2,7 @@ import templateUrl from './mentions.component.html'
 
 /* @ngInject */
 class MentionsController {
-  constructor ($log, $stateService, $searchService, $profileService, $scope, $tweetService) {
+  constructor ($log, $stateService, $searchService, $authenticateService, $profileService, $scope, $tweetService) {
     this.$log = $log
     this.$scope = $scope
     this.$profileService = $profileService
@@ -10,12 +10,13 @@ class MentionsController {
     this.$stateService = $stateService
     this.$scope.goToProfile = this.goToProfile
     this.$scope.search = this.search
+    this.$authenticateService = $authenticateService
     this.$tweetService = $tweetService
     $log.debug('MentionsController instantiated')
   }
 
   goToProfile = (name) => {
-    this.$stateService.state['profile']()
+    this.$stateService.state['profile'](name)
     this.$profileService.refreshProfile(name)
   }
 

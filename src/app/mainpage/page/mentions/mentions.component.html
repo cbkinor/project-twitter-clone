@@ -1,24 +1,4 @@
 <md-list flex="">
-  <md-list-item ng-hide="$mentions.$profileService.mentioned && $mentions.$profileService.mentioned.length > 0">No results found</md-list-item>
-  <md-list-item class="md-3-line tweetListItem" ng-repeat="tweet in $mentions.$profileService.mentioned">
-    <div class="md-list-item-text md-whiteframe-3dp tweetListItem whiteBackground" layout="column">
-      <div class="tweetHead">
-        <div class="author">
-          <h2>Author: <a href="" ng-click="$mentions.goToProfile(tweet.author.username)">{{ tweet.author.username }}</a></h2>
-          <p>Posted: {{ tweet.posted | date:'medium' }}</p>
-        </div>
-        <md-button ng-click="$mentions.$tweetService.likeTweet(tweet)" ng-hide="tweet.liked" class="like">Like</md-button>
-        <md-button ng-click="$mentions.$tweetService.unlikeTweet(tweet)" ng-show="tweet.liked" class="unlike">Unlike</md-button>
-        <md-button ng-click="$mentions.$tweetService.repostTweet(tweet.id)" class="repost">repost</md-button>
-        <md-button ng-click="$mentions.$tweetService.showTweetPrompt($event, tweet.id)" class="reply">reply</md-button>
-      </div>
-      <p compile="tweet.content" style="font-size:20px; color:black"></p>
-      <div ng-show='tweet.inReplyTo'>
-        <h3>In Reply To: <a href ng-click="$mentions.goToProfile(tweet.inReplyTo.author.username)">{{ tweet.inReplyTo.author.username }}</a>: <a href ng-click="null">{{ tweet.inReplyTo.content }}</a></h3>
-      </div>
-      <div ng-show='tweet.repostOf'>
-        <h3>Repost Of: <a href ng-click="$mentions.goToProfile(tweet.repostOf.author.username)">{{ tweet.repostOf.author.username }}</a>: <a href ng-click="null">{{ tweet.repostOf.content }}</a></h3>
-      </div>
-    </div>
-  </md-list-item>
+  <md-list-item ng-hide="$mentions.$searchService.mentioned && $mentions.$searchService.mentioned.length > 0">No results found</md-list-item>
+  <tweet class="md-3-line tweetListItem" tweet="tweet" ng-repeat="tweet in $mentions.$searchService.mentioned"></tweet>
 </md-list>

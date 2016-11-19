@@ -1,16 +1,15 @@
 export class SearchService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $cookies, $tweetService, $authenticateService) {
+  constructor ($log, $http, $state, $authenticateService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
-    this.$cookies = $cookies
-    this.$tweetService = $tweetService
     this.$authenticateService = $authenticateService
     this.tweets = undefined
     this.users = undefined
-    this.hashtag = undefined
+    this.hashtags = undefined
+    this.mentioned = undefined
     this.searchText = ''
     $log.debug('SearchService created')
   }
@@ -18,7 +17,7 @@ export class SearchService {
   getMentions (username) {
     this.$http({
       method: 'GET',
-      url: 'http://localhost:8080/users/@' + this.searchText + '/mentions'
+      url: 'http://localhost:8080/users/@' + username + '/mentions'
     }).then(
       (response) => {
         this.mentioned = this.checkAllTweetLikes(response.data)
@@ -29,7 +28,6 @@ export class SearchService {
             .split(' ')
             .map(word => {
               let temp = word.replace(/[^a-z0-9]/gmi, '')
-              this.$log.debug(word)
               return (word.substring(0, 1) === '@')
                 ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                 : (word.substring(0, 1) === '#')
@@ -48,8 +46,11 @@ export class SearchService {
   }
 
   search () {
+    this.tweets = undefined
+    this.users = undefined
+    this.hashtags = undefined
+    this.mentioned = undefined
     this.searchText = this.inputText
-    this.$log.debug(this.searchText)
     this.$http({
       method: 'GET',
       url: 'http://localhost:8080/users/partial/@' + this.searchText + '/mentions'
@@ -63,7 +64,6 @@ export class SearchService {
             .split(' ')
             .map(word => {
               let temp = word.replace(/[^a-z0-9]/gmi, '')
-              this.$log.debug(word)
               return (word.substring(0, 1) === '@')
                 ? '<a href="#" ng-click="goToProfile(' + "'" + temp + "'" + ')">' + word + '</a>'
                 : (word.substring(0, 1) === '#')
@@ -85,6 +85,17 @@ export class SearchService {
     }).then(
       (response) => {
         this.users = response.data
+      },
+      (error) => {
+        this.$log.debug(error)
+      }
+    )
+    this.$http({
+      method: 'GET',
+      url: 'http://localhost:8080/tags/partialtag/' + this.searchText
+    }).then(
+      (response) => {
+        this.hashtags = response.data
       },
       (error) => {
         this.$log.debug(error)
@@ -136,8 +147,8 @@ export class SearchService {
                 if (user.username === this.$authenticateService.username) tweet.liked = true
               })
             },
-            () => {
-              this.$log.debug('tweet had no likes')
+            (error) => {
+              this.$log.debug(error)
             }
           )
     })

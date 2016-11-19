@@ -1,13 +1,15 @@
 export class TweetService {
 
   /* @ngInject */
-  constructor ($http, $authenticateService, $log, $homeService, $profileService, $mdDialog) {
+  constructor ($http, $authenticateService, $log, $homeService, $profileService, $mdDialog, $searchService, $stateService) {
     this.$log = $log
     this.$http = $http
     this.$authenticateService = $authenticateService
     this.$homeService = $homeService
     this.$profileService = $profileService
+    this.$stateService = $stateService
     this.$mdDialog = $mdDialog
+    this.$searchService = $searchService
   }
 
   postTweet (content) {
@@ -20,8 +22,22 @@ export class TweetService {
       url: 'http://localhost:8080/tweets',
       data: tweet
     }).then((response) => {
-      this.$homeService.refreshFeed(this.$authenticateService.username)
-      this.$profileService.refreshProfile(this.$profileService.username)
+      this.refreshStateContents()
+    })
+  }
+
+  deleteTweet (tweet) {
+    this.$http({
+      headers: {
+        'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:3000/'
+      },
+      method: 'DELETE',
+      url: 'http://localhost:8080/tweets/' + tweet.id,
+      data: this.$authenticateService.getCredentials()
+    }).then((response) => {
+      this.refreshStateContents()
     })
   }
 
@@ -38,7 +54,6 @@ export class TweetService {
       .then((result) => {
         this.replyTweet(result, id)
       }, () => {
-        console.log('tweet didn\'t have contents')
       })
   }
 
@@ -53,8 +68,7 @@ export class TweetService {
       url: 'http://localhost:8080/tweets/' + id + '/reply',
       data: tweet
     }).then((response) => {
-      this.$homeService.refreshFeed(this.$authenticateService.username)
-      this.$profileService.refreshProfile(this.$profileService.username)
+      this.refreshStateContents()
     })
   }
 
@@ -64,8 +78,7 @@ export class TweetService {
       url: 'http://localhost:8080/tweets/' + id + '/repost',
       data: this.$authenticateService.getCredentials()
     }).then((response) => {
-      this.$homeService.refreshFeed(this.$authenticateService.username)
-      this.$profileService.refreshProfile(this.$profileService.username)
+      this.refreshStateContents()
     })
   }
 
@@ -80,10 +93,9 @@ export class TweetService {
     }).then(
           (response) => {
             item.liked = true
-            this.$log.debug(response)
           },
-          () => {
-            this.$log.debug('tweet not liked')
+          (error) => {
+            this.$log.debug(error)
           }
         )
   }
@@ -99,12 +111,20 @@ export class TweetService {
     }).then(
           (response) => {
             item.liked = false
-            this.$log.debug(response)
           },
-          () => {
-            this.$log.debug('tweet not unliked')
+          (error) => {
+            this.$log.debug(error)
           }
         )
   }
 
+  refreshStateContents () {
+    if (this.$stateService.currentState === 'profile') {
+      this.$profileService.refreshProfile(this.$profileService.username)
+    } else if (this.$stateService.currentState === 'home') {
+      this.$homeService.refreshFeed(this.$authenticateService.username)
+    } else if (this.$stateService.currentState === 'search') {
+      this.$searchService.search()
+    }
+  }
 }

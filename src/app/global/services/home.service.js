@@ -1,19 +1,21 @@
 export class HomeService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $stateService, $followService, $profileService, $authenticateService) {
+  constructor ($log, $http, $state, $stateService, $followService, $profileService, $authenticateService, $searchService) {
     this.$log = $log
     this.$http = $http
     this.$state = $state
     this.$stateService = $stateService
     this.$followService = $followService
     this.$profileService = $profileService
+    this.$searchService = $searchService
     this.$authenticateService = $authenticateService
     this.feed = []
     this.$log.debug('HomeService instantiated')
   }
 
   refreshFeed (username) {
+    this.$searchService.getMentions(username)
     this.$profileService.refreshFollow(username)
     this.$http({
       method: 'GET',
@@ -38,7 +40,6 @@ export class HomeService {
 
             return tweet
           })
-        this.$log.debug(this.feed)
       },
       (error) => {
         this.$log.debug(error)
@@ -62,8 +63,8 @@ export class HomeService {
                 if (user.username === this.$authenticateService.username) tweet.liked = true
               })
             },
-            () => {
-              this.$log.debug('tweet had no likes')
+            (error) => {
+              this.$log.debug(error)
             }
           )
     })
