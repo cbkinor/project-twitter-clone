@@ -16,7 +16,7 @@ This program was a class group project where our teams were tasked with creating
 
 ###Installation/Run:
 - From the command line:
-- Clone backend repository - https://github.com/TeamSlowTrack/Third-Assessment.git
+- Clone backend repository - https://github.com/csturco0331/second-assessment-skeleton.git
 - Open pgAdmin III and create a schema called Twitter in your database and edit the backend repository to properly connect to the database.
 - Open Eclipse and import a Maven project from clone.
 - Run project as Spring Boot App or Java Application.
