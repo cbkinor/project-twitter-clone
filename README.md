@@ -14,18 +14,18 @@ _This program was a class group project where our teams were tasked with creatin
 *_Postman or another tool to inject data into database._
 *Nodejs – latest version._
 ###Installation/Run:
-*_From the command line:
-_Clone backend repository - https://github.com/TeamSlowTrack/Third-Assessment.git_
-_Open pgAdmin III and create a scheme called Twitter._
-_Open Eclipse and import a Maven project from clone._
-*_Run project as Spring Boot App or Java Application._
-*_Run in postman - PopulateData.postman_collection.json to add data to database._
-*_From the command line, Clone this repository._
-*_Change your directory to this cloned repository._
-*_type – npm install._
-*_type – npm start ._
-*_Open web browser and enter localhost:3000_
-*_Register and enjoy!_
+- From the command line:
+- Clone backend repository - https://github.com/TeamSlowTrack/Third-Assessment.git
+- Open pgAdmin III and create a scheme called Twitter.
+- Open Eclipse and import a Maven project from clone.
+- Run project as Spring Boot App or Java Application.
+- Run in postman - PopulateData.postman_collection.json to add data to database.
+- From the command line, Clone this repository.
+- Change your directory to this cloned repository.
+- type – npm install.
+- type – npm start .
+- Open web browser and enter localhost:3000
+- Register and enjoy!
 
 ## Known Bugs
 _No known bugs at this time but as we know software may have bugs undetected by these fabulous developers!_
