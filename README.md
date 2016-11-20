@@ -5,7 +5,7 @@ relatively basic twitter clone with a good deal of thought and design implemente
 
 ## Description
 
-_This program was a class group project where our teams were tasked with creating a Twitter clone.  Using Angularjs, Materialize, Node and webpack, each team embarked on a mission to create a frontend, User appealing application designed to work closely with a Java backend. Previously, we implemented a backend program using Java, Maven, Spring framework and PostgreSQL creating 30+ endpoints for multiple ways of creating, reading, updating and deleting data stored in a SQL database. _
+This program was a class group project where our teams were tasked with creating a Twitter clone.  Using Angularjs, Materialize, Node and webpack, each team embarked on a mission to create a frontend, User appealing application designed to work closely with a Java backend. Previously, we implemented a backend program using Java, Maven, Spring framework and PostgreSQL creating 30+ endpoints for multiple ways of creating, reading, updating and deleting data stored in a SQL database.
 
 ## Setup/Installation Requirements
 ### Required:
