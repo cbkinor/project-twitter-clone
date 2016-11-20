@@ -3,7 +3,7 @@ import templateUrl from './menubar.component.html'
 /* @ngInject */
 class MenubarController {
 
-  constructor ($log, $state, $authenticateService, $searchService, $mdDialog, $tweetService, $profileService, $stateService, $homeService, $followService) {
+  constructor ($log, $state, $authenticateService, $searchService, $mdDialog, $tweetService, $profileService, $stateService, $homeService, $followService, $scope) {
     $log.debug('menuBar instantiated')
 
     this.$log = $log
@@ -15,6 +15,7 @@ class MenubarController {
     this.$profileService = $profileService
     this.$homeService = $homeService
     this.$followService = $followService
+    this.$scope = $scope
     this.openMenu = function ($mdOpenMenu, ev) {
       this.originatorEv = ev
       $mdOpenMenu(ev)
@@ -23,7 +24,7 @@ class MenubarController {
     this.home = () => {
       this.$followService.getFollower($authenticateService.username)
       this.$followService.getFollowing($authenticateService.username)
-      this.$homeService.refreshFeed(this.$authenticateService.username)
+      this.$homeService.refreshFeed(this.$authenticateService.username, this.$scope)
       this.$stateService.state['home']()
     }
 
@@ -52,8 +53,8 @@ class MenubarController {
     this.showTweetPrompt = ($event) => {
       let confirm = $mdDialog.prompt()
         .title('Post a tweet!')
+        .clickOutsideToClose(true)
         .placeholder('Post content')
-        .ariaLabel('Dog name')
         .initialValue('')
         .targetEvent($event)
         .ok('Post!')
@@ -72,13 +73,13 @@ class MenubarController {
     }
 
     this.mouseOnTweet = ($event) => {
-      if ($event.target.id !== 'tweetIcon') {
+      if ($event.target.id !== 'tweetButtonIcon') {
         $event.target.setAttribute('stroke', 'rgba(231,236,238,.5)')
       }
     }
 
     this.mouseOffTweet = ($event) => {
-      if ($event.target.id !== 'tweetIcon') {
+      if ($event.target.id !== 'tweetButtonIcon') {
         $event.target.setAttribute('stroke', 'white')
       }
     }

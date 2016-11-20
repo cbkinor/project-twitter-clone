@@ -1,4 +1,4 @@
 <md-list flex="">
-  <md-list-item ng-hide="$mentions.$searchService.mentioned && $mentions.$searchService.mentioned.length > 0">No results found</md-list-item>
-  <tweet class="md-3-line tweetListItem" tweet="tweet" ng-repeat="tweet in $mentions.$searchService.mentioned"></tweet>
+  <md-list-item ng-hide="$mentions.getMentioned() && $mentions.getMentioned().length > 0">No results found</md-list-item>
+  <tweet tweet="tweet" ng-repeat="tweet in $mentions.getMentioned()"></tweet>
 </md-list>

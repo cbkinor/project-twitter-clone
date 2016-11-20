@@ -15,6 +15,8 @@ import { configure } from './app.config'
 import { visualizeRouting } from './app.run'
 import { AuthenticateService } from './global/services/auth.service.js'
 import { SearchService } from './global/services/search.service.js'
+import { EmbedService } from './global/services/embed.service.js'
+import { TweetListService } from './global/services/tweetList.service.js'
 
 export default
   angular
@@ -57,6 +59,9 @@ export default
     .service('$tweetService', TweetService)
     .service('$profileService', ProfileService)
     .service('$homeService', HomeService)
+    .service('$embedService', EmbedService)
+
+    .service('$tweetListService', TweetListService)
     .config(configure)
     .run(visualizeRouting)
     .name

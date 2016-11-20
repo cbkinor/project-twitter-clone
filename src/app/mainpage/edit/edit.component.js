@@ -16,7 +16,6 @@ class EditController {
   }
 
   delete () {
-    this.$log.debug('heeeyyyyyy')
     this.$authenticateService.delete()
   }
 
@@ -25,6 +24,7 @@ class EditController {
           .title('Delete Your Account?')
           .textContent('Are you sure you want to delete your account?')
           .targetEvent(ev)
+          .clickOutsideToClose(true)
           .ok('Please do it!')
           .cancel('Don\'t do it!')
     this.$mdDialog.show(confirm).then(() => {

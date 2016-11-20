@@ -5,7 +5,7 @@ class CurrentController {
   constructor ($log, $authenticateService, $stateService) {
     this.$authenticateService = $authenticateService
     this.$stateService = $stateService
-    $log.debug('LogController instantiated')
+    $log.debug('CurrentController instantiated')
   }
 
   login () {

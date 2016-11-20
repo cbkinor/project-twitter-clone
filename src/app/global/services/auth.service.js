@@ -1,17 +1,16 @@
 export class AuthenticateService {
 
   /* @ngInject */
-  constructor ($log, $http, $state, $cookies, $stateService) {
+  constructor ($log, $http, $cookies, $stateService) {
     this.$log = $log
     this.$http = $http
-    this.$state = $state
     this.$cookies = $cookies
     this.profile = {
-                      firstName: this.firstName,
-                      lastName: this.lastName,
-                      email: this.email,
-                      phone: this.phone
-                    }
+      firstName: this.firstName,
+      lastName: this.lastName,
+      email: this.email,
+      phone: this.phone
+    }
     this.incorrectUser = false
     this.invalidUsername = false
     this.$stateService = $stateService
@@ -38,13 +37,14 @@ export class AuthenticateService {
         this.$cookies.put('username', this.username)
         this.$cookies.put('password', this.password)
         this.profile = response.data.profile
-        if(initial)
+        if (initial) {
           this.$stateService.state['home']()
+        }
       },
       (error) => {
         this.$log.debug(error)
-          this.$stateService.state['login']()
-          this.incorrectUser = true
+        this.$stateService.state['login']()
+        this.incorrectUser = true
       }
     )
   }
@@ -64,7 +64,7 @@ export class AuthenticateService {
       url: 'http://localhost:8080/validate/username/available/@' + this.username
     }).then(
       (response) => {
-          this.invalidUsername = response.data
+        this.invalidUsername = response.data
       },
       (error) => {
         this.$log.debug(error)
@@ -77,9 +77,9 @@ export class AuthenticateService {
       method: 'POST',
       url: 'http://localhost:8080/users',
       data: {
-              "credentials": this.getCredentials(),
-              "profile": this.profile
-            }
+        'credentials': this.getCredentials(),
+        'profile': this.profile
+      }
     }).then(
       (response) => {
         this.profile = response.data.profile
@@ -98,8 +98,8 @@ export class AuthenticateService {
       method: 'PATCH',
       url: 'http://localhost:8080/users/@' + this.username,
       data: {
-        "credentials": this.getCredentials(),
-        "profile": this.profile
+        'credentials': this.getCredentials(),
+        'profile': this.profile
       }
     }).then(
       (response) => {

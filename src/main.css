@@ -2,10 +2,6 @@
   font-family: Noto Sans;
 }
 
-.noPadding {
-  padding: 0;
-}
-
 .pageWidth {
   width: 90vw;
 }
@@ -18,6 +14,20 @@
   padding: 5px;
 }
 
+.tweetListItem:hover {
+  cursor: default;
+}
+
+.userListItem {
+  padding: 5px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.followListItem {
+  width: 100%;
+}
+
 .listItem {
   padding: 5px;
 }
@@ -26,30 +36,133 @@
   display: flex;
 }
 
-.author {
-  display: flex;
-  flex-direction: column;
-  flex: 3;
+.tweetIcons {
+  font-size: 36px;
 }
 
-.repost {
-  background-color: rgba(0, 0, 255, 0.5);
+.headingText {
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.tweetAuthorButton {
+
+  margin: 0px;
+  padding-left: 0px;
+  float: left;
+}
+
+.userSearch {
+  padding: 0px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.tweetAuthorButton>text {
+  margin-left: 0px;
+  padding-left: 0px;
+  float: left;
+
+  font-size: 32px;
+  font-weight: bold;
+  color: black;
+}
+
+.tweet {
+  min-width: 1%;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.tweet>text {
+  color: #0084B4;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer {
+  padding-top: 2px;
+  margin-left: 0px;
+  border: 2px solid #aab8c2;
+  border-radius: 10px;
+}
+
+.footerContainer {
+  float: left;
+}
+
+.tweetFooterButton {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.tweetFooterButton>text {
+  padding-left: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  color: black
+}
+
+.tweetFooterTweetButton {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.tweetFooterTweetButton>text {
+  padding-left: 8px;
+  font-size: 18px;
+  color: black
+}
+
+.timestamp {
+  color: #aab8c2;
+  padding-top: 8px;
+  padding-left: 16px;
+}
+
+.delete {
+  color: #aab8c2;
+}
+
+.delete:hover {
+  color: rgb(204, 24, 30);
+}
+
+.reply {
+  background-color: rgba(255, 255, 255, 0);
   font-weight: bolder;
 }
 
 .reply {
-  background-color: rgba(0, 0, 255, 0.5);
-  font-weight: bolder;
+  color: #aab8c2;
+}
+
+.reply:hover {
+  color: #1da1f2;
+}
+
+.repost {
+  color: #aab8c2;
+}
+
+.repost:hover {
+  color: #19cf86;
 }
 
 .like {
-  background-color: rgba(0, 255, 0, 0.5);
-  font-weight: bolder;
+  color: #aab8c2;
 }
 
-.unlike {
-  background-color: rgba(255, 0, 0, 0.5);
-  font-weight: bolder;
+.like:hover {
+  color: #e81c4f;
+}
+
+.liked {
+  color: #e81c4f;
 }
 
 .tweetHead.md-button {
@@ -86,6 +199,19 @@
   display: flex;
 }
 
+.menuBarLeftButtons {
+  min-width: 26%;
+}
+
+.searchButton {
+  min-width: 1%;
+  min-height: 50%;
+}
+
+.searchButton>i {
+  margin-top: 2px;
+}
+
 .searchContainer {
   width: 20vw;
   margin-top: 40px;
@@ -96,18 +222,32 @@
 }
 
 md-dialog {
-  width: 40vw;
+  width: 60vw;
 }
 
 .md-button {
   text-transform: none;
 }
 
-.profileButtonIcon {
-  text-transform: none;
+.homeButtonIcon {
+  color: rgba(255,255,255,0.9);
+}
+
+.profileDropDownIcon {
+  color: rgb(40, 40, 40);
   margin-top: 6px;
   float: left;
+}
+
+.profileButtonIcon {
   color: rgba(255,255,255,0.87);
+  margin-top: 6px;
+  float: left;
+}
+
+.profileDropdownText {
+  color: rgb(40, 40, 40);
+  padding-left: 8px;
 }
 
 .profileButtonText {
@@ -117,11 +257,20 @@ md-dialog {
   color: white;
 }
 
+.tweetButtonContainer {
+  outline: 0;
+}
+
+.tweetButton {
+  outline: 0;
+}
+
 .tweetButton:hover {
   cursor: pointer;
 }
 
-.tweetIcon {
+.tweetButtonIcon {
+  outline: 0;
   font-size: 48px;
 }
 
@@ -141,6 +290,10 @@ input[type=text].searchInput {
 i {
   align-items: center;
   justify-content: center;
+}
+
+.tweetContainer {
+  width: 70%
 }
 
 .tweetButton:hover {
@@ -179,24 +332,3 @@ html {
   background: linear-gradient(-90deg, white, turquoise);
   width: 100px;
 }
-
-.dialogdemoBasicUsage #popupContainer {
-  position: relative; }
-
-.dialogdemoBasicUsage .footer {
-  width: 100%;
-  text-align: center;
-  margin-left: 20px; }
-
-.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
-  font-size: 0.8em;
-  margin-top: 50px; }
-
-.dialogdemoBasicUsage button {
-  width: 200px; }
-
-.dialogdemoBasicUsage div#status {
-  color: #c60008; }
-
-.dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
-  margin-bottom: 0; }
