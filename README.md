@@ -15,9 +15,9 @@ _This program was a class group project where our teams were tasked with creatin
 *Nodejs – latest version._
 ###Installation/Run:
 *_From the command line:
-*_Clone backend repository - https://github.com/TeamSlowTrack/Third-Assessment.git_
-*_Open pgAdmin III and create a scheme called Twitter._
-*_Open Eclipse and import a Maven project from clone._
+_Clone backend repository - https://github.com/TeamSlowTrack/Third-Assessment.git_
+_Open pgAdmin III and create a scheme called Twitter._
+_Open Eclipse and import a Maven project from clone._
 *_Run project as Spring Boot App or Java Application._
 *_Run in postman - PopulateData.postman_collection.json to add data to database._
 *_From the command line, Clone this repository._
