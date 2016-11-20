@@ -1,7 +1,7 @@
 # twitter Clone
 relatively basic twitter clone with a good deal of thought and design implemented.
 
-#### By Cory Turco, Quinton Bolt, Chris Kuiper, Miles Neitz, Yer Yang
+#### By: Cory Turco, Quinton Bolt, Chris Kuiper, Miles Neitz, Yer Yang
 
 ## Description
 
@@ -45,4 +45,4 @@ _Contact any of us through Github_
 
 *This software is licensed under the MIT license.*
 
-Copyright (c) 2016 **By Cory Turco, Quinton Bolt, Chris Kuiper, Miles Neitz, Yer Yang **
+Copyright (c) 2016 **By: Cory Turco, Quinton Bolt, Chris Kuiper, Miles Neitz, Yer Yang **
