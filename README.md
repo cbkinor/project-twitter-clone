@@ -17,14 +17,14 @@ This program was a class group project where our teams were tasked with creating
 ###Installation/Run:
 - From the command line:
 - Clone backend repository - https://github.com/TeamSlowTrack/Third-Assessment.git
-- Open pgAdmin III and create a scheme called Twitter.
+- Open pgAdmin III and create a schema called Twitter in your database and edit the backend repository to properly connect to the database.
 - Open Eclipse and import a Maven project from clone.
 - Run project as Spring Boot App or Java Application.
-- Run in postman - PopulateData.postman_collection.json to add data to database.
+- Run in postman - PopulateData.twitter_collection.json in the resource to add data to database.
 - From the command line, Clone this repository.
 - Change your directory to this cloned repository.
-- type – npm install.
-- type – npm start .
+- type – npm install
+- type – npm start
 - Open web browser and enter localhost:3000
 - Register and enjoy!
 
