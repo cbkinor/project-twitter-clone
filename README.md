@@ -9,10 +9,10 @@ _This program was a class group project where our teams were tasked with creatin
 
 ## Setup/Installation Requirements
 ### Required:
-*_pgAdmin III – database repository._
-*_Latest version of Eclipse and Java 1.8._
-*_Postman or another tool to inject data into database._
-*Nodejs – latest version._
+- pgAdmin III – database repository.
+- Latest version of Eclipse and Java 1.8.
+- Postman or another tool to inject data into database.
+- Nodejs – latest version.
 ###Installation/Run:
 - From the command line:
 - Clone backend repository - https://github.com/TeamSlowTrack/Third-Assessment.git
