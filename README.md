@@ -1,8 +1,6 @@
 # Twitter Clone
 relatively basic twitter clone with a good deal of thought and design implemented.
 
-#### By: Cory Turco, Quinton Bolt, Chris Kuiper, Miles Neitz, Yer Yang
-
 ## Description
 
 This program was a class group project where our teams were tasked with creating a Twitter clone.  Using Angularjs, Materialize, Node and webpack, each team embarked on a mission to create a frontend, User appealing application designed to work closely with a Java backend. Previously, we implemented a backend program using Java, Maven, Spring framework and PostgreSQL creating 30+ endpoints for multiple ways of creating, reading, updating and deleting data stored in a SQL database.
@@ -45,5 +43,3 @@ _Contact any of us through Github_
 ### License
 
 *This software is licensed under the MIT license.*
-
-Copyright (c) 2016 **By: Cory Turco, Quinton Bolt, Chris Kuiper, Miles Neitz, Yer Yang **
